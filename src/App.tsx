@@ -1,8 +1,9 @@
-import React from 'react';
-import './App.css';
+import { Button } from '@/components'
 
-function App() {
-  return <h1 className="text-3xl bg-red-500 font-bold underline">Hello world!</h1>;
+export function App() {
+  return (
+    <h1 className='container mx-auto bg-red-500 px-10'>
+      <Button text='Hello world!' />
+    </h1>
+  )
 }
-
-export default App;
