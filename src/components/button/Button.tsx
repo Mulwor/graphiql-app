@@ -1,7 +1,12 @@
 type ButtonProps = {
   text: string
+  classes: string
 }
 
-export function Button({ text }: ButtonProps) {
-  return <button className='text-3xl font-bold underline'>{text}</button>
+export const Button = ({ text, classes }: ButtonProps) => {
+  return (
+    <button className={classes}>
+      <a href='#'>{text}</a>
+    </button>
+  )
 }
