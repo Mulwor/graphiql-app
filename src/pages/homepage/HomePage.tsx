@@ -15,17 +15,19 @@ export const HomePage = () => {
           <div>придумать что еще тут написать</div>
           <div className='mt-5 flex gap-7'>
             <Button
-              classes={
-                'w-24 rounded-full border border-solid border-mainblue bg-mainblue p-1.5 text-white hover:bg-hoverblue hover:border-hoverblue'
+              className={
+                'w-24 rounded-full border border-solid border-mainblue bg-mainblue p-1.5 text-white hover:border-hoverblue hover:bg-hoverblue'
               }
-              text='Sign in'
-            />
+            >
+              <a href='#'>Sign in</a>
+            </Button>
             <Button
-              classes={
-                'w-24 rounded-full border border-solid border-mainblue p-1.5 hover:text-white hover:bg-hoverblue hover:border-hoverblue'
+              className={
+                'w-24 rounded-full border border-solid border-mainblue p-1.5 hover:border-hoverblue hover:bg-hoverblue hover:text-white'
               }
-              text='Sign up'
-            />
+            >
+              <a href='#'>Sign in</a>
+            </Button>
           </div>
         </div>
         <div className='flex h-full max-w-full shrink grow basis-0.5'>
