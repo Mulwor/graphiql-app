@@ -14,18 +14,10 @@ export const HomePage = () => {
           <div className='text-2xl'>Application for your queries</div>
           <div>придумать что еще тут написать</div>
           <div className='mt-5 flex gap-7'>
-            <Button
-              className={
-                'w-24 rounded-full border border-solid border-mainblue bg-mainblue p-1.5 text-white hover:border-hoverblue hover:bg-hoverblue'
-              }
-            >
+            <Button className={'login-button button-hover bg-mainblue text-white'}>
               <a href='#'>Sign in</a>
             </Button>
-            <Button
-              className={
-                'w-24 rounded-full border border-solid border-mainblue p-1.5 hover:border-hoverblue hover:bg-hoverblue hover:text-white'
-              }
-            >
+            <Button className={'login-button button-hover'}>
               <a href='#'>Sign in</a>
             </Button>
           </div>

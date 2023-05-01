@@ -13,13 +13,13 @@ export const Header = () => {
       </div>
       <div className='uppercase'>
         <a
-          className='mr-5 pb-2.5 hover:border-b-2 hover:border-hoverblue hover:text-hoverblue'
+          className='header-link mr-5'
           href='#'
         >
           sign in
         </a>
         <a
-          className='pb-2.5 hover:border-b-2 hover:border-hoverblue hover:text-hoverblue'
+          className='header-link'
           href='#'
         >
           sign up
