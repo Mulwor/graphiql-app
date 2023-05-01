@@ -2,9 +2,9 @@ import './authpage.css'
 
 import { Footer } from '@root/src/components/footer/Footer'
 import { SVGComponent } from '@root/src/components/svgComponent/SvgComponent'
-import authimage from 'src/assets/authpage.svg'
 
-import { Header } from '../../components/header/Header'
+import authimage from '@/assets/authpage.svg'
+import { Header } from '@/components/header/Header'
 
 export const AuthPage = () => {
   return (

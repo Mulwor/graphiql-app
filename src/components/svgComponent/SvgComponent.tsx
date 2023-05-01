@@ -1,9 +1,7 @@
-import { FC } from 'react'
-
 interface SVGProp {
   src: string
 }
 
-export const SVGComponent: FC<SVGProp> = ({ src }) => {
+export const SVGComponent = ({ src }: SVGProp) => {
   return <img src={src} />
 }
