@@ -1,29 +1,13 @@
 // import { Link } from 'react-router-dom'
 import './header.css'
 
+import { Nav } from '../nav/Nav'
+
 export const Header = () => {
   return (
     <header className='header'>
-      <div className='link'>
-        <a
-          className='link-item active'
-          href='#'
-        >
-          home
-        </a>
-        <a
-          className='link-item'
-          href='#'
-        >
-          sign in/sign up
-        </a>
-        <a
-          className='link-item'
-          href='#'
-        >
-          graphiql
-        </a>
-      </div>
+      <Nav />
+
       <div className='settings'>
         <a href='#'>схема</a>
         <a href='#'>язык</a>
