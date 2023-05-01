@@ -1,9 +1,14 @@
 import { Button } from '@/components'
+import { AuthPage } from '@/pages/authpage/AuthPage'
+import { GraphiPage } from '@/pages/graphipage/GraphiPage'
+import { HomePage } from '@/pages/homepage/HomePage'
 
-export function App() {
+export const App = () => {
   return (
-    <h1 className='container mx-auto bg-red-500 px-10'>
-      <Button text='Hello world!' />
-    </h1>
+    <>
+      <HomePage />
+      {/* <AuthPage /> */}
+      {/* <GraphiPage /> */}
+    </>
   )
 }

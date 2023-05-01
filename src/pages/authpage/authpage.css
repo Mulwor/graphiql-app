@@ -1,0 +1,30 @@
+.container {
+  background: #FAFAFA;
+  color: #62AFBD;
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  
+}
+
+.wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.title {
+  color: #D81B60;
+  font-weight: 700;
+  font-size: 40px;
+  text-transform: uppercase;
+}
+
+.image {
+  width: 500px;
+  height: 500px;
+}
