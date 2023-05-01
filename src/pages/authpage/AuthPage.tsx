@@ -11,7 +11,14 @@ export const AuthPage = () => {
     <div className='container'>
       <Header />
       <div className='wrapper'>
-        <div className='image'>{<SVGComponent src={authimage} />}</div>
+        <div className='image'>
+          {
+            <SVGComponent
+              src={authimage}
+              classes={'max-w-full'}
+            />
+          }
+        </div>
         <div className='info'>
           <h1 className='title'>Sign up</h1>
           <div className='description'>

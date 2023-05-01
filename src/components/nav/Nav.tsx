@@ -1,28 +1,26 @@
-import './nav.css'
-
 export const Nav = () => {
   return (
     <nav className='nav'>
-      <ul className='links'>
-        <li className='link'>
+      <ul className='flex uppercase'>
+        <li className='mr-5 hover:border-hoverblue hover:text-hoverblue'>
           <a
-            className='link-item active'
+            className='pb-2.5 hover:border-b-2'
             href='#'
           >
             home
           </a>
         </li>
-        <li className='link'>
+        <li className='mr-5 hover:border-hoverblue hover:text-hoverblue'>
           <a
-            className='link-item'
+            className='pb-2.5 hover:border-b-2'
             href='#'
           >
             sign in/sign up
           </a>
         </li>
-        <li className='link'>
+        <li className='hover:border-hoverblue hover:text-hoverblue'>
           <a
-            className='link-item'
+            className='pb-2.5 hover:border-b-2'
             href='#'
           >
             graphiql

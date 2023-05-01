@@ -1,12 +1,11 @@
-import './button.css'
-
 type ButtonProps = {
   text: string
+  classes: string
 }
 
-export function Button({ text }: ButtonProps) {
+export const Button = ({ text, classes }: ButtonProps) => {
   return (
-    <button className='button'>
+    <button className={classes}>
       <a href='#'>{text}</a>
     </button>
   )
