@@ -52,3 +52,14 @@
   width: 100%;
   aspect-ratio: 1/1.15;
 }
+
+.buttons {
+  display: flex;
+  margin-top: 20px;
+  gap: 30px;
+}
+
+.buttons:first-child {
+  background: #62AFBD;
+  color: white;
+}

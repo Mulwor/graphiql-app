@@ -1,10 +1,10 @@
 import './homepage.css'
 
-import { Footer } from '@root/src/components/footer/Footer'
-import { SVGComponent } from '@root/src/components/svgComponent/SvgComponent'
-
 import homeimage from '@/assets/homepage.svg'
+import { Button } from '@/components/button/Button'
+import { Footer } from '@/components/footer/Footer'
 import { Header } from '@/components/header/Header'
+import { SVGComponent } from '@/components/svgComponent/SvgComponent'
 
 export const HomePage = () => {
   return (
@@ -15,6 +15,10 @@ export const HomePage = () => {
           <h1 className='title'>GraphiQL</h1>
           <div className='description'>Application for your queries</div>
           <div>придумать что еще тут написать</div>
+          <div className='buttons'>
+            <Button text='Sign in' />
+            <Button text='Sign up' />
+          </div>
         </div>
         <div className='image'>{<SVGComponent src={homeimage} />}</div>
       </div>

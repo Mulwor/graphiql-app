@@ -26,3 +26,16 @@
     border-bottom: 2px solid #62AFBD;
 
 }
+
+
+.sign {
+  text-transform: uppercase;
+}
+
+.sign-item:hover {
+  border-bottom: 2px solid #62AFBD;
+}
+.sign-item:not(:last-child) {
+  margin-right: 20px;
+
+}

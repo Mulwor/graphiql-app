@@ -15,7 +15,7 @@ export const Header = () => {
           className='link-item'
           href='#'
         >
-          login/register
+          sign in/sign up
         </a>
         <a
           className='link-item'
@@ -27,6 +27,20 @@ export const Header = () => {
       <div className='settings'>
         <a href='#'>схема</a>
         <a href='#'>язык</a>
+      </div>
+      <div className='sign'>
+        <a
+          className='sign-item'
+          href='#'
+        >
+          sign in
+        </a>
+        <a
+          className='sign-item'
+          href='#'
+        >
+          sign up
+        </a>
       </div>
     </header>
   )
