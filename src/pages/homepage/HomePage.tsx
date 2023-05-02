@@ -1,14 +1,11 @@
 import homeimage from '@/assets/homepage.svg'
 import { Button } from '@/components/button/Button'
-import { Footer } from '@/components/footer/Footer'
-import { Header } from '@/components/header/Header'
 import { SVGComponent } from '@/components/svgComponent/SvgComponent'
 
 export const HomePage = () => {
   return (
-    <div className='mx-auto flex h-full max-w-screen-lg flex-col'>
-      <Header />
-      <div className='flex w-full grow items-start justify-center gap-7'>
+    <>
+      <div className='flex h-full w-full grow items-start justify-center gap-7'>
         <div className='mt-[20%] flex w-full shrink grow basis-0.5 flex-col'>
           <h1 className='text-4xl font-bold uppercase text-mainred'>GraphiQL</h1>
           <div className='text-2xl'>Application for your queries</div>
@@ -37,7 +34,6 @@ export const HomePage = () => {
           }
         </div>
       </div>
-      <Footer />
-    </div>
+    </>
   )
 }

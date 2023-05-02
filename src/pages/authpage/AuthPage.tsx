@@ -1,34 +1,24 @@
-import './authpage.css'
-
-import { Footer } from '@root/src/components/footer/Footer'
 import { SVGComponent } from '@root/src/components/svgComponent/SvgComponent'
 
 import authimage from '@/assets/authpage.svg'
-import { Header } from '@/components/header/Header'
 
 export const AuthPage = () => {
   return (
-    <div className='container'>
-      <Header />
-      <div className='wrapper'>
-        <div className='image'>
+    <>
+      <div className='flex h-full w-full grow items-start justify-center gap-7'>
+        <div className='flex h-full max-w-full shrink grow basis-0.5'>
           {
             <SVGComponent
               src={authimage}
-              classes={'max-w-full'}
+              classes={'max-w-full justify-start shrink grow-0 basis-0.5'}
             />
           }
         </div>
-        <div className='info'>
-          <h1 className='title'>Sign up</h1>
-          <div className='description'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis explicabo, minima non
-            molestiae voluptatem maxime itaque sit excepturi veniam dolorem iste, voluptatum vero
-            voluptate. Nulla, natus reprehenderit. Enim, natus dolorem.
-          </div>
+        <div className='mt-10 flex w-full shrink grow basis-0.5 flex-col'>
+          <h2 className='text-4xl font-bold uppercase text-mainred'>GraphiQL</h2>
+          <div className='text-2xl'>Authoruzation</div>
         </div>
       </div>
-      <Footer />
-    </div>
+    </>
   )
 }
