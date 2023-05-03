@@ -1,10 +1,10 @@
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { Nav } from '@/components/nav/Nav'
 
 export const Header = () => {
   return (
-    <header className='mb-8 flex w-full justify-between'>
+    <header className='mx-auto mb-8 flex w-full max-w-screen-lg justify-between'>
       <Nav />
 
       <div className='settings'>
@@ -28,18 +28,18 @@ export const Header = () => {
         </label>
       </div>
       <div className='uppercase'>
-        <a
-          className='header-link mr-5'
-          href='#'
+        <Link
+          to={'/auth'}
+          className='mr-5 pb-2.5 hover:border-b-2 hover:border-hoverblue hover:text-hoverblue'
         >
           sign in
-        </a>
-        <a
-          className='header-link'
-          href='#'
+        </Link>
+        <Link
+          to={'/auth'}
+          className='pb-2.5 hover:border-b-2 hover:border-hoverblue hover:text-hoverblue'
         >
           sign up
-        </a>
+        </Link>
       </div>
     </header>
   )

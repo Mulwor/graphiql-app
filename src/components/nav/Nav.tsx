@@ -1,22 +1,24 @@
+import { NavLink } from 'react-router-dom'
+
 export const Nav = () => {
   return (
     <nav className='nav'>
       <ul className='flex uppercase'>
-        <li className='mr-5'>
-          <a
-            className='header-link'
-            href='#'
+        <li className='mr-5 hover:border-hoverblue hover:text-hoverblue'>
+          <NavLink
+            to={'/'}
+            className='pb-2.5 hover:border-b-2 active:border-mainblue '
           >
             home
-          </a>
+          </NavLink>
         </li>
-        <li>
-          <a
-            className='header-link'
-            href='#'
+        <li className='hover:border-hoverblue hover:text-hoverblue'>
+          <NavLink
+            to={'/graphi'}
+            className='pb-2.5 hover:border-b-2 active:border-mainblue'
           >
             graphiql
-          </a>
+          </NavLink>
         </li>
       </ul>
     </nav>
