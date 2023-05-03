@@ -1,13 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,700;1,400&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 #root {
   font-family: 'Quicksand', sans-serif;
+  font-family: 'Mulish', sans-serif;
   background: #fafafa;
-  padding: 30px;
+  padding: 20px 20px 10px;
   height: 100vh;
   color: #62afbd;
+}
+
+.header-link {
+  @apply pb-2.5 hover:border-b-2 hover:border-hoverblue hover:text-hoverblue;
+}
+
+.login-button {
+  @apply w-24 rounded-full border border-solid border-mainblue p-1.5;
+}
+.button-hover {
+  @apply hover:border-hoverblue hover:bg-hoverblue hover:text-white;
 }

@@ -11,6 +11,3 @@ export const SVGComponent = ({ src, classes }: SVGProp) => {
     />
   )
 }
-
-// width: 100%;
-// aspect-ratio: 1/1.15;

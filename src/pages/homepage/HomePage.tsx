@@ -1,6 +1,8 @@
-import homeimage from '@/assets/homepage.svg'
+/// <reference types="vite-plugin-svgr/client" />
+import { Link } from 'react-router-dom'
+
+import { ReactComponent as Homeimage } from '@/assets/homepage.svg'
 import { Button } from '@/components/button/Button'
-import { SVGComponent } from '@/components/svgComponent/SvgComponent'
 
 export const HomePage = () => {
   return (
@@ -11,27 +13,16 @@ export const HomePage = () => {
           <div className='text-2xl'>Application for your queries</div>
           <div>придумать что еще тут написать</div>
           <div className='mt-5 flex gap-7'>
-            <Button
-              classes={
-                'w-24 rounded-full border border-solid border-mainblue bg-mainblue p-1.5 text-white hover:bg-hoverblue hover:border-hoverblue'
-              }
-              text='Sign in'
-            />
-            <Button
-              classes={
-                'w-24 rounded-full border border-solid border-mainblue p-1.5 hover:text-white hover:bg-hoverblue hover:border-hoverblue'
-              }
-              text='Sign up'
-            />
+            <Button className={'login-button button-hover bg-mainblue text-white'}>
+              <Link to={'/auth'}>Sign in</Link>
+            </Button>
+            <Button className={'login-button button-hover'}>
+              <Link to={'/auth'}>Sign in</Link>
+            </Button>
           </div>
         </div>
         <div className='flex h-full max-w-full shrink grow basis-0.5'>
-          {
-            <SVGComponent
-              src={homeimage}
-              classes={'max-w-full justify-start shrink grow-0 basis-0.5'}
-            />
-          }
+          <Homeimage />
         </div>
       </div>
     </>
