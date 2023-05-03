@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom'
-
+import { Button } from '@/components/button/Button'
 import { Nav } from '@/components/nav/Nav'
 
 export const Header = () => {
@@ -27,19 +26,13 @@ export const Header = () => {
           <span className='ml-1 text-sm'>Russian</span>
         </label>
       </div>
-      <div className='uppercase'>
-        <Link
-          to={'/auth'}
-          className='mr-5 pb-2.5 hover:border-b-2 hover:border-hoverblue hover:text-hoverblue'
-        >
-          sign in
-        </Link>
-        <Link
-          to={'/auth'}
-          className='pb-2.5 hover:border-b-2 hover:border-hoverblue hover:text-hoverblue'
-        >
-          sign up
-        </Link>
+      <div className='flex gap-7'>
+        <Button className={'login-button button-hover bg-mainblue text-white'}>
+          <a href='#'>Sign in</a>
+        </Button>
+        <Button className={'login-button button-hover'}>
+          <a href='#'>Sign in</a>
+        </Button>
       </div>
     </header>
   )

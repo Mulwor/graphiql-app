@@ -1,8 +1,6 @@
 /// <reference types="vite-plugin-svgr/client" />
 import { ReactComponent as Homeimage } from '@/assets/homepage.svg'
 import { Button } from '@/components/button/Button'
-import { Footer } from '@/components/footer/Footer'
-import { Header } from '@/components/header/Header'
 
 export const HomePage = () => {
   return (

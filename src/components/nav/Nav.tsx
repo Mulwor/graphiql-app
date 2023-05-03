@@ -7,7 +7,11 @@ export const Nav = () => {
         <li className='mr-5 hover:border-hoverblue hover:text-hoverblue'>
           <NavLink
             to={'/'}
-            className='pb-2.5 hover:border-b-2 active:border-mainblue '
+            className={({ isActive }) =>
+              isActive
+                ? 'border-b-2 border-mainblue pb-2.5 hover:border-hoverblue'
+                : 'pb-2.5 hover:border-b-2'
+            }
           >
             home
           </NavLink>
@@ -15,7 +19,11 @@ export const Nav = () => {
         <li className='hover:border-hoverblue hover:text-hoverblue'>
           <NavLink
             to={'/graphi'}
-            className='pb-2.5 hover:border-b-2 active:border-mainblue'
+            className={({ isActive }) =>
+              isActive
+                ? 'border-b-2 border-mainblue pb-2.5 hover:border-hoverblue'
+                : 'pb-2.5 hover:border-b-2'
+            }
           >
             graphiql
           </NavLink>
