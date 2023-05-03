@@ -4,24 +4,24 @@ export const Nav = () => {
   return (
     <nav className='nav'>
       <ul className='flex uppercase'>
-        <li className='mr-5 hover:border-hoverblue hover:text-hoverblue'>
+        <li className='mr-5 hover:border-hoverblue hover:text-hoverblue dark:hover:text-white'>
           <NavLink
             to={'/'}
             className={({ isActive }) =>
               isActive
-                ? 'border-b-2 border-mainblue pb-2.5 hover:border-hoverblue'
+                ? 'border-b-2 border-mainblue pb-2.5 hover:border-hoverblue dark:hover:border-white'
                 : 'pb-2.5 hover:border-b-2'
             }
           >
             home
           </NavLink>
         </li>
-        <li className='hover:border-hoverblue hover:text-hoverblue'>
+        <li className='hover:border-hoverblue hover:text-hoverblue dark:hover:text-white'>
           <NavLink
             to={'/graphi'}
             className={({ isActive }) =>
               isActive
-                ? 'border-b-2 border-mainblue pb-2.5 hover:border-hoverblue'
+                ? 'border-b-2 border-mainblue pb-2.5 hover:border-hoverblue dark:hover:border-white'
                 : 'pb-2.5 hover:border-b-2'
             }
           >

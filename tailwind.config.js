@@ -4,12 +4,14 @@ export default {
   darkMode: 'class',
   theme: {
     colors: {
-      'mainblue': '#62AFBD',
+      'mainblue': '#418f9d',
       'mainred': '#D81B60',
       'backgroundcolor': '#FAFAFA',
       'hoverblue': '#00698a',
       'white': '#FFFFFF',
-      'darkblue': '#005077'
+      'darkblue': '#00324b',
+      'lightblue': '#95d0db',
+      'hoverlight': '#e3d8d8'
     },
     extend: {
      },

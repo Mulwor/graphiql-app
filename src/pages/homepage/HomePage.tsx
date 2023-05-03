@@ -12,12 +12,13 @@ export const HomePage = () => {
           <h1 className='text-4xl font-bold uppercase text-mainred'>GraphiQL</h1>
           <div className='text-2xl'>Application for your queries</div>
           <div>придумать что еще тут написать</div>
-          <div className='mt-5 flex gap-7'>
-            <Button className={'login-button button-hover bg-mainblue text-white'}>
-              <Link to={'/auth'}>Sign in</Link>
-            </Button>
-            <Button className={'login-button button-hover'}>
-              <Link to={'/auth'}>Sign in</Link>
+          <div className='mt-5'>
+            <Button
+              className={
+                'button-hover w-1/2 rounded-full bg-mainblue p-1.5 text-white dark:bg-lightblue dark:text-darkblue'
+              }
+            >
+              <Link to={'/auth'}>Get started</Link>
             </Button>
           </div>
         </div>

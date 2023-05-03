@@ -7,10 +7,11 @@
 #root {
   font-family: 'Quicksand', sans-serif;
   font-family: 'Mulish', sans-serif;
-  /* background: #fafafa; */
-  padding: 20px 20px 10px;
-  height: 100vh;
-  color: #62afbd;
+  /* background: #e3d8d8; */
+  /* padding: 20px 20px 10px; */
+  /* background: #ab7f91; */
+  /* height: 100vh; */
+  /* color: #418f9d; */
 }
 
 .header-link {
@@ -18,8 +19,8 @@
 }
 
 .login-button {
-  @apply w-24 rounded-full border border-solid border-mainblue p-1.5;
+  @apply w-24 rounded-full border border-solid border-mainblue p-1.5 dark:border-lightblue;
 }
 .button-hover {
-  @apply hover:border-hoverblue hover:bg-hoverblue hover:text-white;
+  @apply hover:border-hoverblue hover:bg-hoverblue hover:text-white dark:hover:bg-hoverblue dark:hover:text-white;
 }

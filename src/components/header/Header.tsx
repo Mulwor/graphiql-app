@@ -32,7 +32,11 @@ export const Header = () => {
         <Toggle text='rus' />
       </div>
       <div className='flex gap-7'>
-        <Button className={'login-button button-hover bg-mainblue text-white'}>
+        <Button
+          className={
+            'login-button button-hover bg-mainblue text-white dark:bg-lightblue dark:text-darkblue'
+          }
+        >
           <Link to={'/auth'}>Sign in</Link>
         </Button>
         <Button className={'login-button button-hover'}>
