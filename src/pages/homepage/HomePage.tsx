@@ -1,4 +1,6 @@
 /// <reference types="vite-plugin-svgr/client" />
+import { Link } from 'react-router-dom'
+
 import { ReactComponent as Homeimage } from '@/assets/homepage.svg'
 import { Button } from '@/components/button/Button'
 
@@ -12,10 +14,10 @@ export const HomePage = () => {
           <div>придумать что еще тут написать</div>
           <div className='mt-5 flex gap-7'>
             <Button className={'login-button button-hover bg-mainblue text-white'}>
-              <a href='#'>Sign in</a>
+              <Link to={'/auth'}>Sign in</Link>
             </Button>
             <Button className={'login-button button-hover'}>
-              <a href='#'>Sign in</a>
+              <Link to={'/auth'}>Sign in</Link>
             </Button>
           </div>
         </div>

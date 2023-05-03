@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { Button } from '@/components/button/Button'
 import { Nav } from '@/components/nav/Nav'
 
@@ -28,10 +30,10 @@ export const Header = () => {
       </div>
       <div className='flex gap-7'>
         <Button className={'login-button button-hover bg-mainblue text-white'}>
-          <a href='#'>Sign in</a>
+          <Link to={'/auth'}>Sign in</Link>
         </Button>
         <Button className={'login-button button-hover'}>
-          <a href='#'>Sign in</a>
+          <Link to={'/auth'}>Sign up</Link>
         </Button>
       </div>
     </header>
