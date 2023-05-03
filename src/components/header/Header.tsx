@@ -20,7 +20,7 @@ export const Header = () => {
     setDark(!dark)
   }
   return (
-    <header className='mx-auto mb-8 flex w-full max-w-screen-lg justify-between'>
+    <header className='max-w-screen-xl mx-auto mb-8 flex w-full justify-between'>
       <Nav />
 
       <div className='settings'>
