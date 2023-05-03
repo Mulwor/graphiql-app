@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
-import { Button } from '@/components/button/Button'
 import { Nav } from '@/components/nav/Nav'
 import { Toggle } from '@/components/Toggle'
 
@@ -20,7 +19,7 @@ export const Header = () => {
     setDark(!dark)
   }
   return (
-    <header className='max-w-screen-xl mx-auto mb-8 flex w-full justify-between'>
+    <header className='mx-auto mb-8 flex w-full max-w-screen-xl justify-between'>
       <Nav />
 
       <div className='settings'>
@@ -32,16 +31,18 @@ export const Header = () => {
         <Toggle text='rus' />
       </div>
       <div className='flex gap-7'>
-        <Button
-          className={
-            'login-button button-hover bg-mainblue text-white dark:bg-lightblue dark:text-darkblue'
-          }
+        <NavLink
+          to={'/auth'}
+          className='login-button button-hover bg-mainblue text-center text-white dark:bg-lightblue dark:text-darkblue'
         >
-          <Link to={'/auth'}>Sign in</Link>
-        </Button>
-        <Button className={'login-button button-hover'}>
-          <Link to={'/auth'}>Sign up</Link>
-        </Button>
+          Sign in
+        </NavLink>
+        <NavLink
+          to={'/auth'}
+          className='login-button button-hover text-center'
+        >
+          Sign up
+        </NavLink>
       </div>
     </header>
   )
