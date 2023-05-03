@@ -6,19 +6,19 @@
 
 #root {
   font-family: 'Quicksand', sans-serif;
-  background: #FAFAFA;
+  background: #fafafa;
   padding: 30px;
   height: 100vh;
-  color: #62AFBD;
+  color: #62afbd;
 }
 
 .header-link {
-  @apply pb-2.5 hover:border-b-2 hover:border-hoverblue hover:text-hoverblue
+  @apply pb-2.5 hover:border-b-2 hover:border-hoverblue hover:text-hoverblue;
 }
 
 .login-button {
   @apply w-24 rounded-full border border-solid border-mainblue p-1.5;
 }
 .button-hover {
-  @apply hover:border-hoverblue hover:bg-hoverblue hover:text-white
+  @apply hover:border-hoverblue hover:bg-hoverblue hover:text-white;
 }

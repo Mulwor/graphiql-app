@@ -1,8 +1,8 @@
-import homeimage from '@/assets/homepage.svg'
+/// <reference types="vite-plugin-svgr/client" />
+import { ReactComponent as Homeimage } from '@/assets/homepage.svg'
 import { Button } from '@/components/button/Button'
 import { Footer } from '@/components/footer/Footer'
 import { Header } from '@/components/header/Header'
-import { SVGComponent } from '@/components/svgComponent/SvgComponent'
 
 export const HomePage = () => {
   return (
@@ -23,12 +23,7 @@ export const HomePage = () => {
           </div>
         </div>
         <div className='flex h-full max-w-full shrink grow basis-0.5'>
-          {
-            <SVGComponent
-              src={homeimage}
-              classes={'max-w-full justify-start shrink grow-0 basis-0.5'}
-            />
-          }
+          <Homeimage />
         </div>
       </div>
       <Footer />
