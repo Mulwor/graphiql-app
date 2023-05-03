@@ -4,13 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
 #root {
   font-family: 'Quicksand', sans-serif;
-  background: #FAFAFA;
+  background: #fafafa;
   padding: 30px;
   height: 100vh;
-  color: #62AFBD;
+  color: #62afbd;
 }
