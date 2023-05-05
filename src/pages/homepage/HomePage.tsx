@@ -1,7 +1,7 @@
 /// <reference types="vite-plugin-svgr/client" />
 import { Link } from 'react-router-dom'
 
-import { ReactComponent as HomeImage } from '@/assets/homepage.svg'
+import { ReactComponent as HomeImage } from '@/assets/home.svg'
 import { Button } from '@/components/button/Button'
 
 export const HomePage = () => {
