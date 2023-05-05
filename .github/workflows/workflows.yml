@@ -8,4 +8,26 @@ jobs:
     env:
       NODE_OPTIONS: '--max_old_space_size=4096'
     steps:
-      - uses: Borodutch/build-and-lint-code@v1.0.4
+      name: Build and lint code
+      description: Action that installs dependencies, builds and lints the code
+      branding:
+        icon: 'check'
+        color: 'green'
+      runs:
+        using: "composite"
+        steps:
+          - uses: actions/checkout@v3
+          - name: Setup Node.js
+            uses: actions/setup-node@v3
+            with:
+              node-version: '16'
+              cache: 'pnpm'
+          - name: Install modules
+            run: pnpm
+            shell: bash
+          - name: Build code
+            run: pnpm build
+            shell: bash
+          - name: Lint code
+            run: pnpm lint
+            shell: bash
