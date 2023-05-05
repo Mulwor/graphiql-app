@@ -4,6 +4,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import { resolve } from 'node:path'
 import svgr from "vite-plugin-svgr";
 
+/// <reference types="vite-plugin-svgr/client" />
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), tsconfigPaths(), svgr()],
