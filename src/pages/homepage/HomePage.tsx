@@ -1,28 +1,29 @@
 /// <reference types="vite-plugin-svgr/client" />
 import { Link } from 'react-router-dom'
 
-import { ReactComponent as Homeimage } from '@/assets/homepage.svg'
+import { ReactComponent as HomeImage } from '@/assets/homepage.svg'
 import { Button } from '@/components/button/Button'
 
 export const HomePage = () => {
   return (
     <>
-      <div className='flex h-full w-full grow items-start justify-center gap-7'>
-        <div className='mt-[20%] flex w-full shrink grow basis-0.5 flex-col'>
+      <div className='mx-auto shrink grow gap-7 sm:flex sm:columns-2'>
+        <div className='mx-auto max-w-md shrink grow flex-col sm:mt-[10%] sm:flex md:mt-[20%]'>
           <h1 className='text-4xl font-bold uppercase text-mainred'>GraphiQL</h1>
           <div className='text-2xl'>Application for your queries</div>
           <div>придумать что еще тут написать</div>
-          <div className='mt-5 flex gap-7'>
-            <Button className={'login-button button-hover bg-mainblue text-white'}>
-              <Link to={'/auth'}>Sign in</Link>
-            </Button>
-            <Button className={'login-button button-hover'}>
-              <Link to={'/auth'}>Sign in</Link>
+          <div className='mt-5'>
+            <Button
+              className={
+                'button-hover w-1/2 max-w-full rounded-full bg-mainblue p-1.5 text-white dark:bg-lightblue dark:text-darkblue'
+              }
+            >
+              <Link to={'/auth'}>Get started</Link>
             </Button>
           </div>
         </div>
-        <div className='flex h-full max-w-full shrink grow basis-0.5'>
-          <Homeimage />
+        <div className='mx-auto max-w-md shrink grow sm:w-full lg:self-center'>
+          <HomeImage />
         </div>
       </div>
     </>

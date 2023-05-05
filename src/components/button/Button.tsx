@@ -1,4 +1,3 @@
-import cx from 'clsx'
 import { ReactNode } from 'react'
 
 type ButtonProps = {
@@ -7,5 +6,5 @@ type ButtonProps = {
 }
 
 export const Button = ({ children, className }: ButtonProps) => {
-  return <button className={cx(className)}>{children}</button>
+  return <button className={className}>{children}</button>
 }
