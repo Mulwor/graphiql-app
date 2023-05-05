@@ -1,7 +1,7 @@
+import { Nav } from '@root/src/components/Navbar'
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { Nav } from '@/components/nav/Nav'
 import { Toggle } from '@/components/Toggle'
 
 export const Header = () => {
