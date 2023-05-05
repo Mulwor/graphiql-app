@@ -1,8 +1,8 @@
 /// <reference types="vite-plugin-svgr/client" />
 import { Link } from 'react-router-dom'
 
-import { ReactComponent as Github } from '@/assets/icon-github.svg'
-import { ReactComponent as RSS } from '@/assets/rs_school.svg'
+import { ReactComponent as Github } from '@/assets/github.svg'
+import { ReactComponent as RSS } from '@/assets/rsschool.svg'
 
 export const Footer = () => {
   return (
