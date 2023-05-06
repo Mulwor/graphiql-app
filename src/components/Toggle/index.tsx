@@ -1,7 +1,7 @@
 type ToggleProp = {
   text: string
-  choise: boolean
-  onChange: () => void
+  choise?: boolean
+  onChange?: () => void
 }
 
 export const Toggle = ({ text, choise, onChange }: ToggleProp) => {

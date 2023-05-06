@@ -1,4 +1,3 @@
-/// <reference types="vite-plugin-svgr/client" />
 import { Link } from 'react-router-dom'
 
 import { ReactComponent as Github } from '@/assets/github.svg'
