@@ -1,5 +1,6 @@
 import { buildClientSchema, printSchema } from 'graphql'
 
+import { QueryEditor } from '@/components'
 import { useGetSchemaQuery } from '@/store'
 
 export const GraphiPage = () => {
@@ -7,7 +8,11 @@ export const GraphiPage = () => {
 
   if (isFetching) return <div>isFetching</div>
 
-  console.log(data && printSchema(buildClientSchema(data)))
+  // console.log(data && printSchema(buildClientSchema(data)))
 
-  return <div>Graphi Hello</div>
+  return (
+    <div className='h-full w-full'>
+      <QueryEditor schema={data && buildClientSchema(data)} />
+    </div>
+  )
 }
