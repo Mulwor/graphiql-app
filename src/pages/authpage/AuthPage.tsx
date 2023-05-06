@@ -1,5 +1,5 @@
 /// <reference types="vite-plugin-svgr/client" />
-import { ReactComponent as AuthImage } from '@/assets/authpage.svg'
+import { ReactComponent as AuthImage } from '@/assets/auth.svg'
 
 export const AuthPage = () => {
   return (
