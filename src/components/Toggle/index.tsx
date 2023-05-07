@@ -1,14 +1,14 @@
-import { RootState, useAppSelector } from '@root/src/store'
-
 import { ReactComponent as Dark } from '@/assets/dark.svg'
 import { ReactComponent as Light } from '@/assets/light.svg'
+import { useAppSelector } from '@/store'
 
 type ToggleProp = {
   onClick: () => void
 }
 
 export const Toggle = ({ onClick }: ToggleProp) => {
-  const { isDark } = useAppSelector((state: RootState) => state.slice)
+  const isDark = useAppSelector((state) => state.theme.isDark)
+
   return (
     <button
       id='theme-toggle'

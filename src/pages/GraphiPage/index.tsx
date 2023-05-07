@@ -5,8 +5,6 @@ import { QueryEditor, Response } from '@/components'
 import { useGetSchemaQuery, useLazyGetDataQuery } from '@/store'
 
 export const GraphiPage = () => {
-  console.log(1)
-
   const { data: schema, isFetching } = useGetSchemaQuery()
   const [request, { data, error, isError }] = useLazyGetDataQuery()
 
@@ -14,7 +12,7 @@ export const GraphiPage = () => {
 
   const handkeKeyDown = (target: EditorView) => {
     const value = target.state.doc.toJSON().join('')
-    request(value)
+    void request(value)
   }
 
   return (
