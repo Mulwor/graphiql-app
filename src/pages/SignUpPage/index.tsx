@@ -13,8 +13,9 @@ export const SignUp = () => {
   const history = useNavigate()
 
   const register = () => {
-    registerWithEmailAndPassword(name, email, password)
+    void registerWithEmailAndPassword(name, email, password)
   }
+
   useEffect(() => {
     if (loading) return
     if (user) history('/')
