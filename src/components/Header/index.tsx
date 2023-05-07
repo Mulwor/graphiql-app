@@ -29,13 +29,13 @@ export const Header = () => {
       </div>
       <div className='flex gap-7'>
         <NavLink
-          to={'/auth'}
+          to={'/signin'}
           className='login-button button-hover bg-mainblue text-center text-white dark:bg-lightblue dark:text-darkblue'
         >
           Sign in
         </NavLink>
         <NavLink
-          to={'/auth'}
+          to={'/signup'}
           className='login-button button-hover text-center'
         >
           Sign up
