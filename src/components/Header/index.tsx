@@ -8,7 +8,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { Nav, Toggle } from '@/components'
 
 export const Header = () => {
-  const [user, loading, error] = useAuthState(auth)
+  const [user, loading] = useAuthState(auth)
   const [name, setName] = useState('')
   const navigate = useNavigate()
 
@@ -43,7 +43,7 @@ export const Header = () => {
   useEffect(() => {
     if (loading) return
     if (!user) return navigate('/')
-  }, [user, loading])
+  }, [user, loading, navigate])
 
   return (
     <header className='mx-auto mb-8 flex w-full max-w-screen-xl justify-between'>
@@ -57,6 +57,12 @@ export const Header = () => {
         {user ? (
           <div className='dashboard'>
             <div className='flex'>
+              <NavLink
+                to={'/'}
+                className='login-button button-hover mr-5 bg-mainblue text-center text-white dark:bg-lightblue dark:text-darkblue'
+              >
+                Main page
+              </NavLink>
               <div>{name}</div>
               <div>{user?.email}</div>
               <button
