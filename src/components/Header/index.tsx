@@ -27,6 +27,7 @@ export const Header = () => {
     actions.setIsDark({ isDark: !isDark })
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const fetchUserName = async () => {
     try {
       const q = query(collection(db, 'users'), where('uid', '==', user?.uid))
