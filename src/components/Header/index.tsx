@@ -1,5 +1,5 @@
-import { RootState, useActionCreators, useAppDispatch, useAppSelector } from '@root/src/store'
-import { useEffect, useState } from 'react'
+import { RootState, useActionCreators, useAppSelector } from '@root/src/store'
+import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { Nav, Toggle } from '@/components'
