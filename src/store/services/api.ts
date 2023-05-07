@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getIntrospectionQuery, IntrospectionQuery } from 'graphql'
+import { gql } from 'graphql-request'
 
 export const api = createApi({
   reducerPath: 'api',
@@ -15,11 +16,25 @@ export const api = createApi({
           query: getIntrospectionQuery(),
         },
       }),
-      transformResponse: (response: { data: IntrospectionQuery }) => {
-        return response.data
+      transformResponse: ({ data }: { data: IntrospectionQuery }) => {
+        return data
+      },
+    }),
+    getData: query<Record<string, unknown>, string>({
+      query: (data) => ({
+        url: '/',
+        method: 'POST',
+        body: {
+          query: gql`
+            ${data}
+          `,
+        },
+      }),
+      transformResponse: ({ data }: { data: Record<string, unknown> }) => {
+        return data
       },
     }),
   }),
 })
 
-export const { useGetSchemaQuery } = api
+export const { useGetSchemaQuery, useLazyGetDataQuery } = api

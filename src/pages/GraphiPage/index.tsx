@@ -1,16 +1,29 @@
+import { EditorView } from '@codemirror/view'
 import { buildClientSchema } from 'graphql'
 
-import { QueryEditor } from '@/components'
-import { useGetSchemaQuery } from '@/store'
+import { QueryEditor, Response } from '@/components'
+import { useGetSchemaQuery, useLazyGetDataQuery } from '@/store'
 
 export const GraphiPage = () => {
-  const { data, isFetching } = useGetSchemaQuery()
+  console.log(1)
+
+  const { data: schema, isFetching } = useGetSchemaQuery()
+  const [request, { data, error, isError }] = useLazyGetDataQuery()
 
   if (isFetching) return <div>isFetching</div>
 
+  const handkeKeyDown = (target: EditorView) => {
+    const value = target.state.doc.toJSON().join('')
+    request(value)
+  }
+
   return (
-    <div className='h-full w-full'>
-      <QueryEditor schema={data && buildClientSchema(data)} />
+    <div className='grid h-full w-full grid-cols-2 gap-1'>
+      <QueryEditor
+        schema={schema && buildClientSchema(schema)}
+        onKeyDown={handkeKeyDown}
+      />
+      <Response value={JSON.stringify(isError ? error : data, null, 2)} />
     </div>
   )
 }
