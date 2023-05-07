@@ -1,33 +1,32 @@
+import { RootState, useActionCreators, useAppDispatch, useAppSelector } from '@root/src/store'
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { Nav, Toggle } from '@/components'
+import { themeActions } from '@/store/slices'
 
 export const Header = () => {
-  const [dark, setDark] = useState<boolean>(false)
+  const isDark = useAppSelector((state: RootState) => state.slice.isDark)
+  const actions = useActionCreators(themeActions)
 
   useEffect(() => {
-    if (dark) {
+    if (isDark) {
       document.documentElement.classList.add('dark')
     } else {
       document.documentElement.classList.remove('dark')
     }
-  }, [dark])
+  }, [isDark])
 
   const handlerDark = () => {
-    setDark(!dark)
+    actions.setIsDark({ isDark: !isDark })
   }
+
   return (
     <header className='mx-auto mb-8 flex w-full max-w-screen-xl justify-between'>
       <Nav />
 
       <div className='settings'>
-        <Toggle
-          text='darkmode'
-          onChange={handlerDark}
-          choise={dark}
-        />
-        <Toggle text='rus' />
+        <Toggle onClick={handlerDark} />
       </div>
       <div className='flex gap-7'>
         <NavLink
