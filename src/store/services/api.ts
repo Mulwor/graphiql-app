@@ -7,7 +7,7 @@ export const api = createApi({
     baseUrl: 'https://rickandmortyapi.com/graphql',
   }),
   endpoints: ({ query }) => ({
-    getSchema: query({
+    getSchema: query<IntrospectionQuery, void>({
       query: () => ({
         url: '/',
         method: 'POST',

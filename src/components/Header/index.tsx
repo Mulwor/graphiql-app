@@ -1,8 +1,7 @@
-import { Nav } from '@root/src/components/Navbar'
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { Toggle } from '@/components/Toggle'
+import { Nav, Toggle } from '@/components'
 
 export const Header = () => {
   const [dark, setDark] = useState<boolean>(false)
