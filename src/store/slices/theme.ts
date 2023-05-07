@@ -12,10 +12,10 @@ const slice = createSlice({
   name: 'theme',
   initialState,
   reducers: {
-    setQuery: (state, action: PayloadAction<ThemeState>) => {
+    setIsDark: (state, action: PayloadAction<ThemeState>) => {
       state.isDark = action.payload.isDark
     },
   },
 })
 
-export const { reducer: queryReducer, actions: queryActions } = slice
+export const { reducer: themeReducer, actions: themeActions } = slice

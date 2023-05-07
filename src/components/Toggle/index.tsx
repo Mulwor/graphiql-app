@@ -1,21 +1,27 @@
+import { RootState, useAppSelector } from '@root/src/store'
+
+import { ReactComponent as Dark } from '@/assets/dark.svg'
+import { ReactComponent as Light } from '@/assets/light.svg'
+
 type ToggleProp = {
-  text: string
-  choise?: boolean
-  onChange?: () => void
+  onClick: () => void
 }
 
-export const Toggle = ({ text, choise, onChange }: ToggleProp) => {
+export const Toggle = ({ onClick }: ToggleProp) => {
+  const { isDark } = useAppSelector((state: RootState) => state.slice)
   return (
-    <label className='relative mr-3 inline-flex cursor-pointer items-center'>
-      <input
-        type='checkbox'
-        value=''
-        className='peer sr-only'
-        onChange={onChange}
-        checked={choise}
+    <button
+      id='theme-toggle'
+      type='button'
+      className='fill-mainblue p-2.5 hover:fill-hoverblue focus:outline-none dark:fill-lightblue dark:hover:fill-white'
+      onClick={onClick}
+    >
+      <Dark
+        className={isDark ? 'hidden h-5 w-5 focus:outline-none' : 'h-5 w-5 focus:outline-none'}
       />
-      <div className="bg-write peer h-6 w-11 rounded-full border border-mainblue after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-mainblue after:bg-mainblue after:transition-all after:content-[''] hover:bg-hoverlight peer-checked:bg-mainblue peer-checked:after:translate-x-full peer-checked:after:border-white peer-checked:after:bg-white dark:bg-darkblue dark:hover:bg-hoverlight peer-checked:after:dark:border-darkblue peer-checked:after:dark:bg-darkblue"></div>
-      <span className='ml-1 text-sm'>{text}</span>
-    </label>
+      <Light
+        className={isDark ? 'h-5 w-5 focus:outline-none' : 'hidden h-5 w-5 focus:outline-none'}
+      />
+    </button>
   )
 }
