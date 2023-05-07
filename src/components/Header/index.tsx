@@ -1,12 +1,11 @@
-import { RootState, useActionCreators, useAppSelector } from '@root/src/store'
+import { themeActions, useActionCreators, useAppSelector } from '@root/src/store'
 import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { Nav, Toggle } from '@/components'
-import { themeActions } from '@/store/slices'
 
 export const Header = () => {
-  const isDark = useAppSelector((state: RootState) => state.slice.isDark)
+  const isDark = useAppSelector((state) => state.theme.isDark)
   const actions = useActionCreators(themeActions)
 
   useEffect(() => {

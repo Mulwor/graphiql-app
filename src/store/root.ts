@@ -1,11 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 
 import { api } from '@/store/services'
-
-import { themeReducer } from './slices'
+import { themeReducer } from '@/store/slices'
 
 const reducers = {
-  slice: themeReducer,
+  theme: themeReducer,
   [api.reducerPath]: api.reducer,
 }
 
