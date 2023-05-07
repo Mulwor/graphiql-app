@@ -51,7 +51,7 @@ export const SignInPage = () => {
 
               <button
                 className='button-hover mt-10 w-1/3 max-w-full justify-center rounded-full bg-mainblue p-3.5 text-white dark:bg-lightblue dark:text-darkblue'
-                onClick={() => logInWithEmailAndPassword(email, password)}
+                onClick={() => void logInWithEmailAndPassword(email, password)}
               >
                 Sign in grapiQL
               </button>
