@@ -1,0 +1,25 @@
+{
+  "header": {
+    "firstLink": "HOME",
+    "secondLink": "GRAPHIQL",
+    "thirdLink": "Sign in",
+    "fourthLink": "Sign up",
+    "fivethLink": "Home",
+    "sixLink": "Log out"
+  },
+  "graph": {
+    "firstValue": "Variables",
+    "secondValue": "Headers"
+  },
+  "section": {
+    "firstblock": {
+      "title": "GRAPHIQL",
+      "heading": "Application for your queries",
+      "paragraph": "...", 
+      "button": "Get started"
+    }
+  },
+  "footer": {
+    "rights": "All Rights Reserved."
+  }
+}

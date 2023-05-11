@@ -19,7 +19,7 @@
 }
 
 .login-button {
-  @apply w-24 rounded-full border border-solid border-mainblue py-1.5 dark:border-lightblue;
+  @apply rounded-full border border-solid border-mainblue px-5 py-1.5 dark:border-lightblue;
 }
 .button-hover {
   @apply hover:border-hoverblue hover:bg-hoverblue hover:text-white dark:hover:bg-hoverblue dark:hover:text-white;

@@ -1,6 +1,8 @@
+import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router-dom'
 
 export const Nav = () => {
+  const { t } = useTranslation()
   return (
     <nav className='nav flex uppercase'>
       <NavLink
@@ -11,7 +13,7 @@ export const Nav = () => {
             : 'mr-5 pb-2.5 hover:border-b-2'
         }
       >
-        home
+        <div>{t('header.firstLink')}</div>
       </NavLink>
 
       <NavLink
@@ -22,7 +24,7 @@ export const Nav = () => {
             : 'pb-2.5 hover:border-b-2'
         }
       >
-        graphiql
+        <div>{t('header.secondLink')}</div>
       </NavLink>
     </nav>
   )

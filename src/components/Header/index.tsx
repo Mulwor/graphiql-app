@@ -1,7 +1,9 @@
 import { auth, logout } from '@root/src/firebase.config'
+import { changeLanguage } from '@root/src/i18n'
 import { themeActions, useActionCreators, useAppSelector } from '@root/src/store'
 import { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { useTranslation } from 'react-i18next'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 import { Nav, Toggle } from '@/components'
@@ -9,6 +11,7 @@ import { Nav, Toggle } from '@/components'
 export const Header = () => {
   const [user, loading] = useAuthState(auth)
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const isDark = useAppSelector((state) => state.theme.isDark)
   const actions = useActionCreators(themeActions)
@@ -38,6 +41,9 @@ export const Header = () => {
         <Toggle onClick={handlerDark} />
       </div>
 
+      <button onClick={() => void changeLanguage('en')}>EN</button>
+      <button onClick={() => void changeLanguage('ru')}>RU</button>
+
       <div className='flex gap-7'>
         {user ? (
           <div className='dashboard'>
@@ -46,14 +52,14 @@ export const Header = () => {
                 to={'/'}
                 className='login-button button-hover mr-5 bg-mainblue text-center text-white dark:bg-lightblue dark:text-darkblue'
               >
-                Main page
+                <div>{t('header.fivethLink')}</div>
               </NavLink>
               <div>{user.email}</div>
               <button
                 className='login-button button-hover ml-5 bg-mainblue text-center text-white dark:bg-lightblue dark:text-darkblue'
                 onClick={logout}
               >
-                Logout
+                <div>{t('header.sixLink')}</div>
               </button>
             </div>
           </div>
@@ -63,13 +69,13 @@ export const Header = () => {
               to={'/signin'}
               className='login-button button-hover bg-mainblue text-center text-white dark:bg-lightblue dark:text-darkblue'
             >
-              Sign in
+              <div>{t('header.thirdLink')}</div>
             </NavLink>
             <NavLink
               to={'/signup'}
               className='login-button button-hover text-center'
             >
-              Sign up
+              <div>{t('header.fourthLink')}</div>
             </NavLink>
           </>
         )}
