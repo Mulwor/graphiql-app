@@ -1,7 +1,9 @@
 import { auth, logout } from '@root/src/firebase.config'
+import { changeLanguage } from '@root/src/i18n'
 import { settingActions, useActionCreators, useAppSelector } from '@root/src/store'
 import { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { useTranslation } from 'react-i18next'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 import { Lang, Nav, Toggle } from '@/components'
@@ -11,6 +13,7 @@ import { Burger } from '../Burger'
 export const Header = () => {
   const [user, loading] = useAuthState(auth)
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const isDark = useAppSelector((state) => state.setting.isDark)
   const isRu = useAppSelector((state) => state.setting.isRu)
@@ -47,6 +50,9 @@ export const Header = () => {
         <Lang onClick={handlerLang} />
       </div>
 
+      <button onClick={() => void changeLanguage('en')}>EN</button>
+      <button onClick={() => void changeLanguage('ru')}>RU</button>
+
       <div className='hidden gap-7 md:flex'>
         {user ? (
           <div className='dashboard'>
@@ -55,14 +61,14 @@ export const Header = () => {
                 to={'/'}
                 className='login-button button-hover mr-5 bg-mainblue text-center text-white dark:bg-lightblue dark:text-darkblue'
               >
-                Main page
+                <div>{t('header.fivethLink')}</div>
               </NavLink>
               <div>{user.email}</div>
               <button
                 className='login-button button-hover ml-5 bg-mainblue text-center text-white dark:bg-lightblue dark:text-darkblue'
                 onClick={logout}
               >
-                Logout
+                <div>{t('header.sixLink')}</div>
               </button>
             </div>
           </div>
@@ -76,7 +82,7 @@ export const Header = () => {
                   : 'login-button button-hover'
               }
             >
-              Sign in
+              <div>{t('header.thirdLink')}</div>
             </NavLink>
             <NavLink
               to={'/signup'}
@@ -86,7 +92,7 @@ export const Header = () => {
                   : 'login-button button-hover'
               }
             >
-              Sign up
+              <div>{t('header.fourthLink')}</div>
             </NavLink>
           </>
         )}

@@ -1,0 +1,25 @@
+{
+  "header": {
+    "firstLink": "ДОМОЙ",
+    "secondLink": "ГРАФИКЬЮЛЬ",
+    "thirdLink": "Войти",
+    "fourthLink": "Зарегистрироваться",
+    "fivethLink": "ДОМОЙ",
+    "sixLink": "Выйти"
+  },
+  "graph": {
+    "firstValue": "Переменные",
+    "secondValue": "Заголовки"
+  },
+  "section": {
+    "firstblock": {
+      "title": "ГРАФИКЬЮЛЬ",
+      "heading": "Приложения для ваших запросов",
+      "paragraph": "...",
+      "button": "Войти в систему"
+    }
+  },
+  "footer": {
+    "rights": "Все права защищены."
+  }
+}

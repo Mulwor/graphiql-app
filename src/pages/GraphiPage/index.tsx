@@ -2,6 +2,7 @@ import { signal } from '@preact/signals-react'
 import cx from 'clsx'
 import { buildClientSchema } from 'graphql'
 import { Fragment, useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels'
 import { toast, ToastContainer } from 'react-toastify'
 
@@ -19,6 +20,7 @@ const activeTab = signal<'variables' | 'headers' | null>(null)
 export const GraphiPage = () => {
   const { data: schema, isFetching } = useGetSchemaQuery()
   const [request, { data, error, isError }] = useLazyGetDataQuery()
+  const { t } = useTranslation()
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -74,7 +76,7 @@ export const GraphiPage = () => {
                   'inline-block cursor-pointer rounded-lg px-3 py-1 text-white hover:bg-[#333]',
                 )}
               >
-                Variables
+                <div>{t('graph.firstValue')}</div>
               </span>
               <span
                 onClick={() => (activeTab.value = 'headers')}
@@ -82,7 +84,7 @@ export const GraphiPage = () => {
                   'inline-block cursor-pointer rounded-lg px-3 py-1 text-white hover:bg-[#333]',
                 )}
               >
-                Headers
+                <div>{t('graph.secondValue')}</div>
               </span>
             </div>
           </PanelResizeHandle>
