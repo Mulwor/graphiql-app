@@ -11,7 +11,7 @@ import { Nav, Toggle } from '@/components'
 export const Header = () => {
   const [user, loading] = useAuthState(auth)
   const navigate = useNavigate()
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
 
   const isDark = useAppSelector((state) => state.theme.isDark)
   const actions = useActionCreators(themeActions)
