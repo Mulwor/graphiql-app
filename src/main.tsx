@@ -1,6 +1,7 @@
 import '@/index.css'
+import './i18n'
 
-import { StrictMode } from 'react'
+import { StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 
@@ -10,7 +11,9 @@ import { store } from '@/store'
 createRoot(document.querySelector('#root') as HTMLElement).render(
   <StrictMode>
     <Provider store={store}>
-      <App />
+      <Suspense fallback={<div>Loading...</div>}>
+        <App />
+      </Suspense>
     </Provider>
   </StrictMode>,
 )
