@@ -1,4 +1,25 @@
 {
-    "text": "Какой - то текст",
-    "hello": "Привет Мир!"
+  "header": {
+    "firstLink": "ДОМОЙ",
+    "secondLink": "ГРАФИКЬЮЛЬ",
+    "thirdLink": "Войти",
+    "fourthLink": "Зарегистрироваться",
+    "fivethLink": "ДОМОЙ",
+    "sixLink": "Выйти"
+  },
+  "graph": {
+    "firstValue": "Переменные",
+    "secondValue": "Головы"
+  },
+  "section": {
+    "firstblock": {
+      "title": "ГРАФИКЬЮЛЬ",
+      "heading": "Приложения для ваших запросов",
+      "paragraph": "...",
+      "button": "Get started"
+    }
+  },
+  "footer": {
+    "rights": "Все права защищены."
+  }
 }

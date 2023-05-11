@@ -1,21 +1,22 @@
-import i18n from 'i18next'
+import * as i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import Backend from 'i18next-http-backend'
 import { initReactI18next } from 'react-i18next'
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-i18n
-  .use(Backend)
+export const i18next = i18n
   .use(LanguageDetector)
+  .use(Backend)
   .use(initReactI18next)
   .init({
     fallbackLng: 'ru',
     debug: true,
     detection: {
-      order: ['queryString', 'cookie'],
+      order: ['queryString', 'cookies'],
       cache: ['cookie'],
     },
     interpolation: {
       escapeValue: false,
     },
   })
+
+export const changeLanguage = (language: string) => i18n.changeLanguage(language)

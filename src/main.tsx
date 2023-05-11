@@ -1,4 +1,5 @@
 import '@/index.css'
+import 'react-toastify/dist/ReactToastify.css'
 import './i18n'
 
 import { StrictMode, Suspense } from 'react'

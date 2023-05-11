@@ -27,9 +27,7 @@ export const Header = () => {
     actions.setIsDark({ isDark: !isDark })
   }
 
-  const changeLanguage = (language: string) => {
-    i18n.changeLanguage(language)
-  }
+  const changeLanguage = (language: string) => i18n.changeLanguage(language)
 
   useEffect(() => {
     if (loading) return
@@ -46,8 +44,6 @@ export const Header = () => {
 
       <button onClick={() => changeLanguage('en')}>EN</button>
       <button onClick={() => changeLanguage('ru')}>RU</button>
-      <div>{t('text')}</div>
-      <div>{t('hello')}</div>
 
       <div className='flex gap-7'>
         {user ? (
@@ -57,14 +53,14 @@ export const Header = () => {
                 to={'/'}
                 className='login-button button-hover mr-5 bg-mainblue text-center text-white dark:bg-lightblue dark:text-darkblue'
               >
-                Main page
+                <div>{t('header.fivethLink')}</div>
               </NavLink>
               <div>{user.email}</div>
               <button
                 className='login-button button-hover ml-5 bg-mainblue text-center text-white dark:bg-lightblue dark:text-darkblue'
                 onClick={logout}
               >
-                Logout
+                <div>{t('header.sixLink')}</div>
               </button>
             </div>
           </div>
@@ -74,13 +70,13 @@ export const Header = () => {
               to={'/signin'}
               className='login-button button-hover bg-mainblue text-center text-white dark:bg-lightblue dark:text-darkblue'
             >
-              Sign in
+              <div>{t('header.thirdLink')}</div>
             </NavLink>
             <NavLink
               to={'/signup'}
               className='login-button button-hover text-center'
             >
-              Sign up
+              <div>{t('header.fourthLink')}</div>
             </NavLink>
           </>
         )}
