@@ -32,7 +32,13 @@ export const Header = () => {
   }
 
   const handlerLang = () => {
-    actions.setIsRu({ isRu: !isRu })
+    if (isRu) {
+      actions.setIsRu({ isRu: false })
+      void changeLanguage('en')
+    } else {
+      actions.setIsRu({ isRu: true })
+      void changeLanguage('ru')
+    }
   }
 
   useEffect(() => {
@@ -50,8 +56,8 @@ export const Header = () => {
         <Lang onClick={handlerLang} />
       </div>
 
-      <button onClick={() => void changeLanguage('en')}>EN</button>
-      <button onClick={() => void changeLanguage('ru')}>RU</button>
+      {/* <button onClick={() => void changeLanguage('en')}>EN</button> */}
+      {/* <button onClick={() => void changeLanguage('ru')}>RU</button> */}
 
       <div className='hidden gap-7 md:flex'>
         {user ? (
