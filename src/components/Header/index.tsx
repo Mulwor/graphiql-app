@@ -1,4 +1,5 @@
 import { auth, logout } from '@root/src/firebase.config'
+import { changeLanguage } from '@root/src/i18n'
 import { themeActions, useActionCreators, useAppSelector } from '@root/src/store'
 import { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -31,8 +32,6 @@ export const Header = () => {
     if (loading) return
     if (!user) return navigate('/')
   }, [user, loading, navigate])
-
-  const changeLanguage = (language: 'ru' | 'en') => i18n.changeLanguage(language)
 
   return (
     <header className='mx-auto mb-8 flex w-full max-w-screen-xl justify-between'>

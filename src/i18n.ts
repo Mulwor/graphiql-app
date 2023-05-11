@@ -18,3 +18,5 @@ export const i18next = i18n
       escapeValue: false,
     },
   })
+
+export const changeLanguage = (language: 'ru' | 'en') => i18n.changeLanguage(language)

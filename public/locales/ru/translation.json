@@ -9,14 +9,14 @@
   },
   "graph": {
     "firstValue": "Переменные",
-    "secondValue": "Головы"
+    "secondValue": "Загаловки"
   },
   "section": {
     "firstblock": {
       "title": "ГРАФИКЬЮЛЬ",
       "heading": "Приложения для ваших запросов",
       "paragraph": "...",
-      "button": "Get started"
+      "button": "Войти в систему"
     }
   },
   "footer": {
