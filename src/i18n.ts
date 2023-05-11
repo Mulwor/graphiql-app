@@ -18,5 +18,3 @@ export const i18next = i18n
       escapeValue: false,
     },
   })
-
-export const changeLanguage = (language: string) => i18n.changeLanguage(language)
