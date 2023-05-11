@@ -27,6 +27,7 @@
   "plugins": ["react-refresh", "simple-import-sort"],
   "rules": {
     "react-refresh/only-export-components": "warn",
+    "react/display-name": "off",
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "unicorn/filename-case": "off",

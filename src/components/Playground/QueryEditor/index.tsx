@@ -1,46 +1,53 @@
 import { acceptCompletion, autocompletion } from '@codemirror/autocomplete'
 import { Prec } from '@codemirror/state'
-import { EditorView, keymap } from '@codemirror/view'
+import { keymap } from '@codemirror/view'
 import { materialLight, materialLightInit } from '@uiw/codemirror-themes-all'
 import CodeMirror from '@uiw/react-codemirror'
 import { graphql } from 'cm6-graphql'
 import { GraphQLSchema } from 'graphql'
+import { memo } from 'react'
+
+import { values } from '@/components/Playground'
+
+const extensions = (schema?: GraphQLSchema) => [
+  materialLightInit(),
+  graphql(schema),
+  autocompletion({
+    activateOnTyping: true,
+    icons: true,
+  }),
+  Prec.high(
+    keymap.of([
+      {
+        key: 'Tab',
+        run: acceptCompletion,
+      },
+      {
+        key: 'Mod-Enter',
+        run: () => true,
+      },
+    ]),
+  ),
+]
 
 type QueryEditorProps = {
   schema?: GraphQLSchema
-  onKeyDown?: (target: EditorView) => void
+  onKeyDown?: (event: React.KeyboardEvent<HTMLDivElement>) => void
 }
 
-export const QueryEditor = ({ schema, onKeyDown }: QueryEditorProps) => {
+const handleChange = (value: string) => {
+  values.value.document = value.trim()
+}
+
+export const QueryEditor = memo(({ schema, onKeyDown }: QueryEditorProps) => {
   return (
     <CodeMirror
-      className='h-full w-full'
+      className='h-full w-full border'
       height='100%'
-      width='100%'
       theme={materialLight}
-      extensions={[
-        materialLightInit(),
-        graphql(schema),
-        autocompletion({
-          activateOnTyping: true,
-          icons: true,
-        }),
-        Prec.high(
-          keymap.of([
-            {
-              key: 'Tab',
-              run: acceptCompletion,
-            },
-            {
-              key: 'Mod-Enter',
-              run: (target) => {
-                onKeyDown?.(target)
-                return true
-              },
-            },
-          ]),
-        ),
-      ]}
+      onChange={handleChange}
+      onKeyDown={onKeyDown}
+      extensions={extensions(schema)}
     />
   )
-}
+})
