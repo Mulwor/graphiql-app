@@ -22,7 +22,7 @@ export const SignUp = () => {
   }, [user, loading, history])
 
   return (
-    <div className='flex h-full w-full grow items-start justify-center gap-7'>
+    <div className='flex h-full w-full max-w-7xl grow items-start justify-center  gap-7 '>
       <div className='flex h-full max-w-full shrink grow basis-0.5'>
         <AuthImage />
       </div>

@@ -8,7 +8,7 @@
   font-family: 'Mulish', sans-serif;
   /* background: #e3d8d8; */
   /* padding: 20px 20px 10px; */
-  /* background: #ab7f91; */
+  background: #002030;
   /* height: 100vh; */
   /* color: #418f9d; */
 }
@@ -18,12 +18,12 @@
 }
 
 .login-button {
-  @apply w-24 rounded-full border border-solid border-mainblue py-1.5 dark:border-lightblue;
+  @apply w-24 rounded-full border border-solid border-mainblue py-1.5 text-center dark:border-lightblue;
 }
 .button-hover {
   @apply hover:border-hoverblue hover:bg-hoverblue hover:text-white dark:hover:bg-hoverblue dark:hover:text-white;
 }
 
-.theme-button {
-  @apply h-5 w-5 focus:outline-none hover:fill-hoverblue dark:hover:fill-white;
+.hover-svg {
+  @apply fill-mainblue hover:fill-hoverblue focus:outline-none dark:fill-lightblue dark:hover:fill-white;
 }

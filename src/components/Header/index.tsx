@@ -6,6 +6,8 @@ import { NavLink, useNavigate } from 'react-router-dom'
 
 import { Lang, Nav, Toggle } from '@/components'
 
+import { Burger } from '../Burger'
+
 export const Header = () => {
   const [user, loading] = useAuthState(auth)
   const navigate = useNavigate()
@@ -36,15 +38,16 @@ export const Header = () => {
   }, [user, loading, navigate])
 
   return (
-    <header className='mx-auto mb-5 flex w-full max-w-screen-xl items-baseline justify-between'>
+    <header className='mx-auto mb-5 flex w-full items-baseline justify-between'>
+      <Burger />
       <Nav />
 
-      <div className='settings flex'>
+      <div className='hidden md:flex'>
         <Toggle onClick={handlerDark} />
         <Lang onClick={handlerLang} />
       </div>
 
-      <div className='flex gap-7'>
+      <div className='hidden gap-7 md:flex'>
         {user ? (
           <div className='dashboard'>
             <div className='flex'>
@@ -67,13 +70,21 @@ export const Header = () => {
           <>
             <NavLink
               to={'/signin'}
-              className='login-button button-hover bg-mainblue text-center text-white dark:bg-lightblue dark:text-darkblue'
+              className={({ isActive }) =>
+                isActive
+                  ? 'login-button button-hover bg-mainblue text-white dark:bg-lightblue dark:text-darkblue'
+                  : 'login-button button-hover'
+              }
             >
               Sign in
             </NavLink>
             <NavLink
               to={'/signup'}
-              className='login-button button-hover text-center'
+              className={({ isActive }) =>
+                isActive
+                  ? 'login-button button-hover bg-mainblue text-white dark:bg-lightblue dark:text-darkblue'
+                  : 'login-button button-hover'
+              }
             >
               Sign up
             </NavLink>

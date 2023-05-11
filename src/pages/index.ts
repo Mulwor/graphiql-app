@@ -1,5 +1,5 @@
-export * from '@/pages/GraphiPage'
 export * from '@/pages/HomePage'
 export * from '@/pages/NotFound'
 export * from '@/pages/SignInPage'
 export * from '@/pages/SignUpPage'
+export * from '@root/src/pages/GraphiPage'

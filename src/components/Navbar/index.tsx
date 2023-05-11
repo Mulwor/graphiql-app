@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 
 export const Nav = () => {
   return (
-    <nav className='nav flex uppercase'>
+    <nav className='hidden uppercase md:flex'>
       <NavLink
         to={'/'}
         className={({ isActive }) =>

@@ -16,8 +16,8 @@ export const Toggle = ({ onClick }: ToggleProp) => {
       className='p-2.5'
       onClick={onClick}
     >
-      <Dark className={isDark ? 'theme-button hidden' : 'theme-button'} />
-      <Light className={isDark ? 'theme-button' : 'theme-button hidden'} />
+      <Dark className={isDark ? 'hover-svg hidden w-5' : 'hover-svg w-5'} />
+      <Light className={isDark ? 'hover-svg w-5' : 'hover-svg hidden w-5'} />
     </button>
   )
 }
