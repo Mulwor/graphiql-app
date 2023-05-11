@@ -55,7 +55,10 @@ export const Modal = ({ onClick }: ModalType) => {
   }
 
   return (
-    <div className='h-full w-full bg-white'>
+    <div
+      className='fixed left-0 top-0 z-40 h-screen w-screen bg-opacitycolor backdrop-blur'
+      onClick={onClick}
+    >
       <div className='fixed left-0 top-0 z-40 h-screen w-80 overflow-y-auto bg-white p-4 shadow-2xl transition-all dark:bg-modaldark dark:text-lightblue'>
         <h5 className='font-bold uppercase'>Menu</h5>
         <button
@@ -65,10 +68,11 @@ export const Modal = ({ onClick }: ModalType) => {
         >
           <CloseIcon className='hover-svg h-5 w-5 fill-mainblue' />
         </button>
-        <div className='overflow-y-auto py-4  '>
+        <div className='overflow-y-auto py-4'>
           <NavLink
             to={'/'}
             className='flex items-center rounded-lg p-2.5 hover:text-hoverblue dark:hover:text-white'
+            onClick={onClick}
           >
             <HouseIcon className='h-6 w-6 stroke-mainblue hover:stroke-hoverblue dark:stroke-lightblue dark:hover:stroke-white' />
             <span className='ml-3'>Home</span>
@@ -77,6 +81,7 @@ export const Modal = ({ onClick }: ModalType) => {
           <NavLink
             to={'/graphi'}
             className='flex items-center rounded-lg p-2.5 hover:text-hoverblue dark:hover:text-white'
+            onClick={onClick}
           >
             <GraphiIcon className='hover-svg h-6 w-6 fill-mainblue' />
             <span className='ml-3'>GraphiQL</span>
@@ -85,6 +90,7 @@ export const Modal = ({ onClick }: ModalType) => {
           <NavLink
             to={'/signin'}
             className='flex items-center rounded-lg p-2.5 hover:text-hoverblue dark:hover:text-white'
+            onClick={onClick}
           >
             <SignInIcon className='h-6 w-6 stroke-mainblue hover:stroke-hoverblue dark:stroke-lightblue dark:hover:stroke-white' />
 
@@ -94,6 +100,7 @@ export const Modal = ({ onClick }: ModalType) => {
           <NavLink
             to={'/signup'}
             className='flex items-center rounded-lg p-2.5 hover:text-hoverblue dark:hover:text-white'
+            onClick={onClick}
           >
             <SignUpIcon className='h-6 w-6 stroke-mainblue hover:stroke-hoverblue dark:stroke-lightblue dark:hover:stroke-white' />
 
