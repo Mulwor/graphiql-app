@@ -1,3 +1,4 @@
+import { changeLanguage } from '@root/src/i18n'
 import { settingActions, useActionCreators, useAppSelector } from '@root/src/store'
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
@@ -51,7 +52,13 @@ export const Modal = ({ onClick }: ModalType) => {
   }
 
   const handlerLang = () => {
-    actions.setIsRu({ isRu: !isRu })
+    if (isRu) {
+      actions.setIsRu({ isRu: false })
+      void changeLanguage('en')
+    } else {
+      actions.setIsRu({ isRu: true })
+      void changeLanguage('ru')
+    }
   }
 
   return (
