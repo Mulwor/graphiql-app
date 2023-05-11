@@ -1,17 +1,18 @@
 import { auth, logout } from '@root/src/firebase.config'
-import { themeActions, useActionCreators, useAppSelector } from '@root/src/store'
+import { settingActions, useActionCreators, useAppSelector } from '@root/src/store'
 import { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { NavLink, useNavigate } from 'react-router-dom'
 
-import { Nav, Toggle } from '@/components'
+import { Lang, Nav, Toggle } from '@/components'
 
 export const Header = () => {
   const [user, loading] = useAuthState(auth)
   const navigate = useNavigate()
 
-  const isDark = useAppSelector((state) => state.theme.isDark)
-  const actions = useActionCreators(themeActions)
+  const isDark = useAppSelector((state) => state.setting.isDark)
+  const isRu = useAppSelector((state) => state.setting.isRu)
+  const actions = useActionCreators(settingActions)
 
   useEffect(() => {
     if (isDark) {
@@ -25,17 +26,22 @@ export const Header = () => {
     actions.setIsDark({ isDark: !isDark })
   }
 
+  const handlerLang = () => {
+    actions.setIsRu({ isRu: !isRu })
+  }
+
   useEffect(() => {
     if (loading) return
     if (!user) return navigate('/')
   }, [user, loading, navigate])
 
   return (
-    <header className='mx-auto mb-8 flex w-full max-w-screen-xl justify-between'>
+    <header className='mx-auto mb-5 flex w-full max-w-screen-xl items-baseline justify-between'>
       <Nav />
 
-      <div className='settings'>
+      <div className='settings flex'>
         <Toggle onClick={handlerDark} />
+        <Lang onClick={handlerLang} />
       </div>
 
       <div className='flex gap-7'>

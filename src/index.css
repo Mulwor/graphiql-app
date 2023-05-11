@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 #root {
-  font-family: 'Quicksand', sans-serif;
   font-family: 'Mulish', sans-serif;
   /* background: #e3d8d8; */
   /* padding: 20px 20px 10px; */
@@ -23,4 +22,8 @@
 }
 .button-hover {
   @apply hover:border-hoverblue hover:bg-hoverblue hover:text-white dark:hover:bg-hoverblue dark:hover:text-white;
+}
+
+.theme-button {
+  @apply h-5 w-5 focus:outline-none hover:fill-hoverblue dark:hover:fill-white;
 }

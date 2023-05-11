@@ -7,8 +7,8 @@ export const Nav = () => {
         to={'/'}
         className={({ isActive }) =>
           isActive
-            ? 'mr-5 border-b-2 border-mainblue pb-2.5 hover:border-hoverblue dark:hover:border-white'
-            : 'mr-5 pb-2.5 hover:border-b-2'
+            ? 'mr-5 border-b-2 border-mainblue pb-2.5 hover:border-hoverblue dark:hover:border-white dark:hover:text-white'
+            : 'mr-5 border-b-2 border-backgroundcolor pb-2.5 hover:border-b-2 hover:border-hoverblue dark:border-darkblue dark:hover:border-white dark:hover:text-white'
         }
       >
         home
@@ -18,8 +18,8 @@ export const Nav = () => {
         to={'/graphi'}
         className={({ isActive }) =>
           isActive
-            ? 'border-b-2 border-mainblue pb-2.5 hover:border-hoverblue dark:hover:border-white'
-            : 'pb-2.5 hover:border-b-2'
+            ? 'border-b-2 border-mainblue pb-2.5 hover:border-hoverblue dark:hover:border-white dark:hover:text-white'
+            : 'border-b-2 border-backgroundcolor pb-2.5 hover:border-b-2 hover:border-hoverblue dark:border-darkblue dark:hover:border-white dark:hover:text-white'
         }
       >
         graphiql
