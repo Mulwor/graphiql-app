@@ -42,8 +42,21 @@ export const Header = () => {
         <Toggle onClick={handlerDark} />
       </div>
 
-      <button onClick={() => changeLanguage('en')}>EN</button>
-      <button onClick={() => changeLanguage('ru')}>RU</button>
+      <button
+        onClick={() => {
+          void changeLanguage('en')
+        }}
+      >
+        EN
+      </button>
+
+      <button
+        onClick={() => {
+          void changeLanguage('ru')
+        }}
+      >
+        RU
+      </button>
 
       <div className='flex gap-7'>
         {user ? (
