@@ -7,21 +7,17 @@ type ToggleProp = {
 }
 
 export const Toggle = ({ onClick }: ToggleProp) => {
-  const isDark = useAppSelector((state) => state.theme.isDark)
+  const isDark = useAppSelector((state) => state.setting.isDark)
 
   return (
     <button
       id='theme-toggle'
       type='button'
-      className='fill-mainblue p-2.5 hover:fill-hoverblue focus:outline-none dark:fill-lightblue dark:hover:fill-white'
+      className='p-2.5'
       onClick={onClick}
     >
-      <Dark
-        className={isDark ? 'hidden h-5 w-5 focus:outline-none' : 'h-5 w-5 focus:outline-none'}
-      />
-      <Light
-        className={isDark ? 'h-5 w-5 focus:outline-none' : 'hidden h-5 w-5 focus:outline-none'}
-      />
+      <Dark className={isDark ? 'hover-svg hidden w-5' : 'hover-svg w-5'} />
+      <Light className={isDark ? 'hover-svg w-5' : 'hover-svg hidden w-5'} />
     </button>
   )
 }

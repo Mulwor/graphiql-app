@@ -32,7 +32,7 @@ export const Footer = () => {
           className='flex justify-center'
         >
           <RSS
-            className='fill-mainblue hover:fill-hoverblue dark:fill-lightblue dark:hover:fill-white'
+            className='hover-svg'
             width={70}
           />
         </Link>

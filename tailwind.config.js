@@ -11,7 +11,9 @@ export default {
       'white': '#FFFFFF',
       'darkblue': '#00324b',
       'lightblue': '#95d0db',
-      'hoverlight': '#e3d8d8'
+      'hoverlight': '#e3d8d8',
+      'modaldark': '#002030',
+      'opacitycolor': '#00000022'
     },
     screens: {
       'sm': '640px',
