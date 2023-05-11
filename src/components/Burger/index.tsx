@@ -35,8 +35,7 @@ export type ModalType = {
 }
 
 export const Modal = ({ onClick }: ModalType) => {
-  const isDark = useAppSelector((state) => state.setting.isDark)
-  const isRu = useAppSelector((state) => state.setting.isRu)
+  const { isDark, isRu } = useAppSelector((state) => state.setting)
   const actions = useActionCreators(settingActions)
 
   useEffect(() => {

@@ -15,8 +15,7 @@ export const Header = () => {
   const navigate = useNavigate()
   const { t } = useTranslation()
 
-  const isDark = useAppSelector((state) => state.setting.isDark)
-  const isRu = useAppSelector((state) => state.setting.isRu)
+  const { isDark, isRu } = useAppSelector((state) => state.setting)
   const actions = useActionCreators(settingActions)
 
   useEffect(() => {
