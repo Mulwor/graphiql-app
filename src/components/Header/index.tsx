@@ -1,4 +1,5 @@
 import { auth, logout } from '@root/src/firebase.config'
+import { changeLanguage } from '@root/src/i18n'
 import { themeActions, useActionCreators, useAppSelector } from '@root/src/store'
 import { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -27,8 +28,6 @@ export const Header = () => {
     actions.setIsDark({ isDark: !isDark })
   }
 
-  const changeLanguage = (language: string) => i18n.changeLanguage(language)
-
   useEffect(() => {
     if (loading) return
     if (!user) return navigate('/')
@@ -42,21 +41,8 @@ export const Header = () => {
         <Toggle onClick={handlerDark} />
       </div>
 
-      <button
-        onClick={() => {
-          void changeLanguage('en')
-        }}
-      >
-        EN
-      </button>
-
-      <button
-        onClick={() => {
-          void changeLanguage('ru')
-        }}
-      >
-        RU
-      </button>
+      <button onClick={() => void i18n.changeLanguage('en')}>EN</button>
+      <button onClick={() => void i18n.changeLanguage('ru')}>RU</button>
 
       <div className='flex gap-7'>
         {user ? (

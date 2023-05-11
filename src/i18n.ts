@@ -12,7 +12,7 @@ export const i18next = i18n
     debug: true,
     detection: {
       order: ['queryString', 'cookies'],
-      cache: ['cookie'],
+      caches: ['cookie'],
     },
     interpolation: {
       escapeValue: false,
