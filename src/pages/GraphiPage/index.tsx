@@ -53,7 +53,7 @@ export const GraphiPage = () => {
 
   return (
     <Fragment>
-      <div className='grid grid-cols-2 h-full w-full gap-2'>
+      <div className='grid h-full w-full grid-cols-2 gap-2'>
         <PanelGroup
           direction='vertical'
           className='space-y-1'
@@ -71,7 +71,7 @@ export const GraphiPage = () => {
               <span
                 onClick={() => (activeTab.value = 'variables')}
                 className={cx(
-                  'rounded-lg inline-block py-1 px-3 cursor-pointer text-white hover:bg-[#333]',
+                  'inline-block cursor-pointer rounded-lg px-3 py-1 text-white hover:bg-[#333]',
                 )}
               >
                 Variables
@@ -79,7 +79,7 @@ export const GraphiPage = () => {
               <span
                 onClick={() => (activeTab.value = 'headers')}
                 className={cx(
-                  'rounded-lg inline-block py-1 px-3 cursor-pointer text-white hover:bg-[#333]',
+                  'inline-block cursor-pointer rounded-lg px-3 py-1 text-white hover:bg-[#333]',
                 )}
               >
                 Headers
@@ -87,7 +87,7 @@ export const GraphiPage = () => {
             </div>
           </PanelResizeHandle>
           <Panel defaultSize={50}>
-            <div className='h-full flex flex-col gap-1'>
+            <div className='flex h-full flex-col gap-1'>
               <VariableEditor
                 onKeyDown={handleKeyDown}
                 className={cx(activeTab.value !== 'variables' && 'hidden')}
