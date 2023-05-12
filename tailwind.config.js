@@ -13,7 +13,8 @@ export default {
       'lightblue': '#95d0db',
       'hoverlight': '#e3d8d8',
       'modaldark': '#002030',
-      'opacitycolor': '#00000022'
+      'opacitycolor': '#00000022',
+      'bggrey': '#eceff0',
     },
     screens: {
       'sm': '640px',
