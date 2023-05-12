@@ -8,7 +8,7 @@ export const i18next = i18n
   .use(Backend)
   .use(initReactI18next)
   .init({
-    fallbackLng: 'ru',
+    fallbackLng: 'en',
     debug: true,
     detection: {
       order: ['queryString', 'cookies'],
