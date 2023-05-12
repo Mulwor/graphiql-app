@@ -12,17 +12,16 @@ type Inputs = {
 }
 
 export const SignInPage = () => {
-  const [error, setError] = useState('')
   const [user, loading] = useAuthState(auth)
   const navigate = useNavigate()
-  const { register, errors, handleSubmit } = useForm()
+  const { register, handleSubmit, formState: { errors } } = useForm<Inputs>()
 
-  function onSubmit(data: Inputs) {
+  function handleLogin(data: Inputs) {
     logInWithEmailAndPassword(data.email, data.password)
       .then(() => {
         navigate('/')
       })
-      .catch((error: Error) => {
+      .catch((error) => {
         console.log(error)
       })
   }
@@ -45,14 +44,29 @@ export const SignInPage = () => {
 
           <div className='mt-10'>
             <div className='flex flex-col'>
-              <form onSubmit={handleSubmit(onSubmit)}>
+              <form onSubmit={handleSubmit(handleLogin)}>
                 <input
                   defaultValue='mulwor.001@yandex.ru'
-                  {...register('email')}
+                  {...register('email', {
+                    required: 'You need write your email',
+                    minLength: {
+                      value: 10,
+                      message: 'Your email must be more 10 characters',
+                    },
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: 'Invalid email',
+                    },
+                  })}
                   type='email'
                   id='email'
                   className='bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-full rounded-lg border p-2.5 text-sm dark:text-white'
                 />
+
+                <div style={{ height: 20 }}>
+                  {errors?.email && <p className='error'>{errors?.email?.message?.toString()}</p>}
+                </div>
+
                 <input
                   defaultValue='89095927614'
                   {...register('password')}

@@ -2,23 +2,40 @@ import { auth, registerWithEmailAndPassword } from '@root/src/firebase.config'
 import { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useNavigate } from 'react-router-dom'
-
+import { useForm } from 'react-hook-form'
 import { ReactComponent as AuthImage } from '@/assets/auth.svg'
 
+type Inputs = {
+  name: string
+  email: string
+  password: string
+}
+
 export const SignUp = () => {
-  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
   const [user, loading] = useAuthState(auth)
-  const history = useNavigate()
+  const navigate = useNavigate()
 
-  const register = () => {
-    void registerWithEmailAndPassword(name, email, password)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>()
+
+  function handleLogin(data: Inputs) {
+    registerWithEmailAndPassword(data.name, data.email, data.password)
+      .then(() => {
+        navigate('/')
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
   useEffect(() => {
     if (loading) return
-    if (user) history('/')
+    if (user) navigate('/')
   }, [user, loading, history])
 
   return (
@@ -32,33 +49,45 @@ export const SignUp = () => {
 
         <div className='mt-10'>
           <div className='flex flex-col'>
-            <input
-              type='text'
-              className='bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-full rounded-lg border p-2.5 text-sm dark:text-white'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder='Full Name'
-            />
-            <input
-              type='text'
-              className='bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-5 block w-full rounded-lg border p-2.5 text-sm dark:text-white'
-              placeholder='johnIsFigos@company.com'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type='password'
-              className='bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-5 block w-full rounded-lg border p-2.5 text-sm dark:text-white'
-              placeholder='Password'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button
-              className='button-hover mt-10 w-1/2 max-w-full justify-center rounded-full bg-mainblue p-3.5 text-white dark:bg-lightblue dark:text-darkblue'
-              onClick={register}
-            >
-              Sign up
-            </button>
+            <form onSubmit={handleSubmit(handleLogin)}>
+              <input
+                type='text'
+                className='bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-full rounded-lg border p-2.5 text-sm dark:text-white'
+                {...register('name')}
+                placeholder='Full Name'
+              />
+              
+              <input
+                type='text'
+                className='bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-5 block w-full rounded-lg border p-2.5 text-sm dark:text-white'
+                placeholder='johnIsFigos@company.com'
+                {...register('email', {
+                  required: 'You need write your email',
+                  minLength: {
+                    value: 10,
+                    message: 'Your email must be more 10 characters',
+                  },
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: 'Invalid email',
+                  },
+                })}
+              />
+              <div style={{ height: 20 }}>
+                {errors?.email && <p className='error'>{errors?.email?.message?.toString()}</p>}
+              </div>
+
+              <input
+                type='password'
+                className='bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-5 block w-full rounded-lg border p-2.5 text-sm dark:text-white'
+                placeholder='Password'
+                {...register('password')}
+              />
+              <button className='button-hover mt-10 w-1/2 max-w-full justify-center rounded-full bg-mainblue p-3.5 text-white dark:bg-lightblue dark:text-darkblue'>
+                Sign up
+              </button>
+            </form>
+            ,
           </div>
         </div>
       </div>

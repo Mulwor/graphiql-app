@@ -37,6 +37,15 @@
     "unicorn/prefer-spread": "off",
     "import/no-default-export": "error"
   },
+  "@typescript-eslint/no-misused-promises": [
+    "error",
+    {
+      "checksVoidReturn": {
+        "arguments": false,
+        "attributes": false
+      }
+    }
+  ],
   "settings": {
     "import/resolver": {
       "typescript": {}
