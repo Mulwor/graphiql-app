@@ -4,13 +4,15 @@ export default {
   darkMode: 'class',
   theme: {
     colors: {
-      'seagreen': '#418f9d',
+      'seagreen': '#005b7f',
+      //  '#418f9d',
       'fuchsia': '#D81B60',
       'whitesmoke': '#FAFAFA',
       'deepsea': '#00698a',
       'white': '#FFFFFF',
       'prussianblue': '#00324b',
-      'lightblue': '#95d0db',
+      'lightblue': '#a6e2ed',
+      // '#95d0db',
       'darknavy': '#002030',
       'opacitycolor': '#00000022',
     },

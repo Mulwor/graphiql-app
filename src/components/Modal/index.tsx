@@ -58,16 +58,16 @@ export const Modal = ({ onClick }: ModalType) => {
         <div className='overflow-y-auto py-4'>
           <NavLink
             to={'/'}
-            className='flex items-center rounded-lg p-2.5 hover:text-deepsea dark:hover:text-white'
+            className='flex items-center rounded-lg p-2.5 hover:text-prussianblue dark:hover:text-white'
             onClick={onClick}
           >
-            <HouseIcon className='h-6 w-6 stroke-seagreen hover:stroke-deepsea dark:stroke-lightblue dark:hover:stroke-white' />
+            <HouseIcon className='h-6 w-6 stroke-seagreen hover:stroke-prussianblue dark:stroke-lightblue dark:hover:stroke-white' />
             <span className='ml-3'>Home</span>
           </NavLink>
 
           <NavLink
             to={'/graphi'}
-            className='flex items-center rounded-lg p-2.5 hover:text-deepsea dark:hover:text-white'
+            className='flex items-center rounded-lg p-2.5 hover:text-prussianblue dark:hover:text-white'
             onClick={onClick}
           >
             <GraphiIcon className='hover-svg h-6 w-6 fill-seagreen' />
@@ -76,20 +76,20 @@ export const Modal = ({ onClick }: ModalType) => {
 
           <NavLink
             to={'/signin'}
-            className='flex items-center rounded-lg p-2.5 hover:text-deepsea dark:hover:text-white'
+            className='flex items-center rounded-lg p-2.5 transition-all hover:text-prussianblue dark:hover:text-white'
             onClick={onClick}
           >
-            <SignInIcon className='h-6 w-6 stroke-seagreen hover:stroke-deepsea dark:stroke-lightblue dark:hover:stroke-white' />
+            <SignInIcon className='h-6 w-6 stroke-seagreen transition-all hover:stroke-prussianblue dark:stroke-lightblue dark:hover:stroke-white' />
 
             <span className='ml-3'>Sign In</span>
           </NavLink>
 
           <NavLink
             to={'/signup'}
-            className='flex items-center rounded-lg p-2.5 hover:text-deepsea dark:hover:text-white'
+            className='flex items-center rounded-lg p-2.5 transition-all hover:text-prussianblue dark:hover:text-white'
             onClick={onClick}
           >
-            <SignUpIcon className='h-6 w-6 stroke-seagreen hover:stroke-deepsea dark:stroke-lightblue dark:hover:stroke-white' />
+            <SignUpIcon className='h-6 w-6 stroke-seagreen transition-all hover:stroke-prussianblue dark:stroke-lightblue dark:hover:stroke-white' />
 
             <span className='ml-3'>Sign Up</span>
           </NavLink>

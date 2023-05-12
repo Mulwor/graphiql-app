@@ -77,7 +77,7 @@ export const GraphiPage = () => {
               <span
                 onClick={() => (activeTab.value = 'variables')}
                 className={cx(
-                  'inline-block cursor-pointer px-3 py-1 text-white hover:text-prussianblue',
+                  'inline-block cursor-pointer px-3 py-1 text-white transition-all hover:text-prussianblue',
                 )}
               >
                 <div>{t('graph.firstValue')}</div>
@@ -85,7 +85,7 @@ export const GraphiPage = () => {
               <span
                 onClick={() => (activeTab.value = 'headers')}
                 className={cx(
-                  'inline-block cursor-pointer px-3 py-1 text-white hover:text-prussianblue',
+                  'inline-block cursor-pointer px-3 py-1 text-white transition-all hover:text-prussianblue',
                 )}
               >
                 <div>{t('graph.secondValue')}</div>
