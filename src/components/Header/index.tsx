@@ -64,13 +64,13 @@ export const Header = () => {
             <div className='flex'>
               <NavLink
                 to={'/'}
-                className='login-button button-hover mr-5 bg-mainblue text-center text-white dark:bg-lightblue dark:text-darkblue'
+                className='login-button button-hover mr-5 bg-seagreen text-center text-white dark:bg-lightblue dark:text-prussianblue'
               >
                 <div>{t('header.fivethLink')}</div>
               </NavLink>
               <div>{user.email}</div>
               <button
-                className='login-button button-hover ml-5 bg-mainblue text-center text-white dark:bg-lightblue dark:text-darkblue'
+                className='login-button button-hover ml-5 bg-seagreen text-center text-white dark:bg-lightblue dark:text-prussianblue'
                 onClick={logout}
               >
                 <div>{t('header.sixLink')}</div>
@@ -83,7 +83,7 @@ export const Header = () => {
               to={'/signin'}
               className={({ isActive }) =>
                 isActive
-                  ? 'login-button button-hover bg-mainblue text-white dark:bg-lightblue dark:text-darkblue'
+                  ? 'login-button button-hover bg-seagreen text-white dark:bg-lightblue dark:text-prussianblue'
                   : 'login-button button-hover'
               }
             >
@@ -93,7 +93,7 @@ export const Header = () => {
               to={'/signup'}
               className={({ isActive }) =>
                 isActive
-                  ? 'login-button button-hover bg-mainblue text-white dark:bg-lightblue dark:text-darkblue'
+                  ? 'login-button button-hover bg-seagreen text-white dark:bg-lightblue dark:text-prussianblue'
                   : 'login-button button-hover'
               }
             >

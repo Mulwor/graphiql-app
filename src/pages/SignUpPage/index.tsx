@@ -26,8 +26,8 @@ export const SignUp = () => {
       <div className='mx-auto w-full max-w-md shrink grow lg:self-center'>
         <AuthImage />
       </div>
-      <div className='mx-auto w-full max-w-lg px-5 sm:flex sm:flex-col sm:p-0 lg:mt-[10%]'>
-        <h2 className='text-4xl font-bold uppercase text-mainred'>GraphiQL</h2>
+      <div className='mx-auto w-full max-w-lg px-5 sm:flex sm:flex-col sm:p-0 lg:mt-[6%]'>
+        <h2 className='text-4xl font-bold uppercase text-fuchsia'>GraphiQL</h2>
         <div className='text-2xl'>Sign up</div>
 
         <div className='mt-10'>
@@ -54,7 +54,7 @@ export const SignUp = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <button
-              className='button-hover mt-10 w-full max-w-full justify-center rounded-full bg-mainblue p-1.5 text-white dark:bg-lightblue dark:text-darkblue md:w-1/2'
+              className='button-hover mt-10 w-full max-w-full justify-center rounded-full bg-seagreen p-1.5 text-white dark:bg-lightblue dark:text-prussianblue md:w-1/2'
               onClick={register}
             >
               Sign up

@@ -11,7 +11,7 @@ export const Lang = ({ onClick }: LangProp) => {
     <button
       id='lang-toggle'
       type='button'
-      className='fill-mainblue p-2.5 hover:text-hoverblue focus:outline-none dark:text-lightblue dark:hover:text-white'
+      className='fill-seagreen p-2.5 hover:text-deepsea focus:outline-none dark:text-lightblue dark:hover:text-white'
       onClick={onClick}
     >
       {isRu ? 'RU' : 'EN'}

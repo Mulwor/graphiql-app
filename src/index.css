@@ -8,22 +8,22 @@
   font-family: 'Mulish', sans-serif;
   /* background: #e3d8d8; */
   /* padding: 20px 20px 10px; */
-  background: #00000022;
+  background: #036d91;
   /* height: 100vh; */
   /* color: #418f9d; */
 }
 
 .header-link {
-  @apply pb-2.5 hover:border-b-2 hover:border-hoverblue hover:text-hoverblue;
+  @apply pb-2.5 hover:border-b-2 hover:border-deepsea hover:text-deepsea;
 }
 
 .login-button {
-  @apply rounded-full border border-solid border-mainblue px-5 py-1.5 dark:border-lightblue;
+  @apply rounded-full border border-solid border-seagreen px-5 py-1.5 dark:border-lightblue;
 }
 .button-hover {
-  @apply hover:border-hoverblue hover:bg-hoverblue hover:text-white dark:hover:bg-hoverblue dark:hover:text-white;
+  @apply hover:border-deepsea hover:bg-deepsea hover:text-white dark:hover:bg-deepsea dark:hover:text-white;
 }
 
 .hover-svg {
-  @apply fill-mainblue hover:fill-hoverblue focus:outline-none dark:fill-lightblue dark:hover:fill-white;
+  @apply fill-seagreen hover:fill-deepsea focus:outline-none dark:fill-lightblue dark:hover:fill-white;
 }

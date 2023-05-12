@@ -46,50 +46,50 @@ export const Modal = ({ onClick }: ModalType) => {
         className='fixed left-0 top-0 z-40 h-screen w-screen bg-opacitycolor backdrop-blur'
         onClick={onClick}
       ></div>
-      <div className='fixed left-0 top-0 z-40 h-screen w-80 overflow-y-auto bg-backgroundcolor p-4 shadow-2xl transition-all dark:bg-modaldark dark:text-lightblue'>
+      <div className='fixed left-0 top-0 z-40 h-screen w-80 overflow-y-auto bg-whitesmoke p-4 shadow-2xl transition-all dark:bg-darknavy dark:text-lightblue'>
         <h5 className='font-bold uppercase'>Menu</h5>
         <button
           type='button'
           onClick={onClick}
           className='absolute right-2.5 top-2.5 inline-flex items-center rounded-lg p-1.5'
         >
-          <CloseIcon className='hover-svg h-5 w-5 fill-mainblue' />
+          <CloseIcon className='hover-svg h-5 w-5 fill-seagreen' />
         </button>
         <div className='overflow-y-auto py-4'>
           <NavLink
             to={'/'}
-            className='flex items-center rounded-lg p-2.5 hover:text-hoverblue dark:hover:text-white'
+            className='flex items-center rounded-lg p-2.5 hover:text-deepsea dark:hover:text-white'
             onClick={onClick}
           >
-            <HouseIcon className='h-6 w-6 stroke-mainblue hover:stroke-hoverblue dark:stroke-lightblue dark:hover:stroke-white' />
+            <HouseIcon className='h-6 w-6 stroke-seagreen hover:stroke-deepsea dark:stroke-lightblue dark:hover:stroke-white' />
             <span className='ml-3'>Home</span>
           </NavLink>
 
           <NavLink
             to={'/graphi'}
-            className='flex items-center rounded-lg p-2.5 hover:text-hoverblue dark:hover:text-white'
+            className='flex items-center rounded-lg p-2.5 hover:text-deepsea dark:hover:text-white'
             onClick={onClick}
           >
-            <GraphiIcon className='hover-svg h-6 w-6 fill-mainblue' />
+            <GraphiIcon className='hover-svg h-6 w-6 fill-seagreen' />
             <span className='ml-3'>GraphiQL</span>
           </NavLink>
 
           <NavLink
             to={'/signin'}
-            className='flex items-center rounded-lg p-2.5 hover:text-hoverblue dark:hover:text-white'
+            className='flex items-center rounded-lg p-2.5 hover:text-deepsea dark:hover:text-white'
             onClick={onClick}
           >
-            <SignInIcon className='h-6 w-6 stroke-mainblue hover:stroke-hoverblue dark:stroke-lightblue dark:hover:stroke-white' />
+            <SignInIcon className='h-6 w-6 stroke-seagreen hover:stroke-deepsea dark:stroke-lightblue dark:hover:stroke-white' />
 
             <span className='ml-3'>Sign In</span>
           </NavLink>
 
           <NavLink
             to={'/signup'}
-            className='flex items-center rounded-lg p-2.5 hover:text-hoverblue dark:hover:text-white'
+            className='flex items-center rounded-lg p-2.5 hover:text-deepsea dark:hover:text-white'
             onClick={onClick}
           >
-            <SignUpIcon className='h-6 w-6 stroke-mainblue hover:stroke-hoverblue dark:stroke-lightblue dark:hover:stroke-white' />
+            <SignUpIcon className='h-6 w-6 stroke-seagreen hover:stroke-deepsea dark:stroke-lightblue dark:hover:stroke-white' />
 
             <span className='ml-3'>Sign Up</span>
           </NavLink>
