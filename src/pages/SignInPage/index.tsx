@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
 import { ReactComponent as AuthImage } from '@/assets/auth.svg'
+import { useTranslation } from 'react-i18next'
 
 type Inputs = {
   email: string
@@ -12,6 +13,7 @@ type Inputs = {
 }
 
 export const SignInPage = () => {
+  const { t } = useTranslation()
   const [user, loading] = useAuthState(auth)
   const navigate = useNavigate()
   const {
@@ -51,10 +53,10 @@ export const SignInPage = () => {
               <form onSubmit={handleSubmit(handleLogin)}>
                 <input
                   {...register('email', {
-                    required: 'You need write your email',
+                    required: `${t("validate.required")}`,
                     minLength: {
                       value: 10,
-                      message: 'Email must have - minimum 10 symbols',
+                      message: `${t("validate.required")}`,
                     },
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
