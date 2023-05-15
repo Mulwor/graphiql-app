@@ -1,5 +1,5 @@
 import { auth, logInWithEmailAndPassword } from '@root/src/firebase.config'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
