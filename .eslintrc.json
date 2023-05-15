@@ -37,6 +37,14 @@
     "unicorn/prefer-spread": "off",
     "import/no-default-export": "error"
   },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    },
+    "react": {
+      "version": "detect"
+    }
+  },
   "@typescript-eslint/no-misused-promises": [
     "error",
     {
@@ -45,13 +53,5 @@
         "attributes": false
       }
     }
-  ],
-  "settings": {
-    "import/resolver": {
-      "typescript": {}
-    },
-    "react": {
-      "version": "detect"
-    }
-  }
+  ]
 }
