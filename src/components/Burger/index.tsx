@@ -1,6 +1,9 @@
+import { auth, logout } from '@root/src/firebase.config'
 import { changeLanguage } from '@root/src/i18n'
 import { settingActions, useActionCreators, useAppSelector } from '@root/src/store'
 import { useEffect, useState } from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router-dom'
 
 import { ReactComponent as CloseIcon } from '@/assets/close.svg'
@@ -10,9 +13,6 @@ import { ReactComponent as Menu } from '@/assets/menu.svg'
 import { ReactComponent as SignInIcon } from '@/assets/signin.svg'
 import { ReactComponent as SignUpIcon } from '@/assets/signup.svg'
 import { Lang, Toggle } from '@/components'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth, logout } from '@root/src/firebase.config'
-import { useTranslation } from 'react-i18next'
 
 export const Burger = () => {
   const [modal, setModal] = useState<boolean>(false)

@@ -2,10 +2,10 @@ import { auth, logInWithEmailAndPassword } from '@root/src/firebase.config'
 import { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 import { ReactComponent as AuthImage } from '@/assets/auth.svg'
-import { useTranslation } from 'react-i18next'
 
 type Inputs = {
   email: string
@@ -53,13 +53,13 @@ export const SignInPage = () => {
               <form onSubmit={handleSubmit(handleLogin)}>
                 <input
                   {...register('email', {
-                    required: `${t("requiredEmail")}`,
+                    required: `${t('requiredEmail')}`,
                     minLength: {
                       value: 10,
-                      message: `${t("messageEmail")}`,
+                      message: `${t('messageEmail')}`,
                     },
                     pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      value: /^[\w%+.-]+@[\d.a-z-]+\.[a-z]{2,}$/i,
                       message: 'Invalid email',
                     },
                   })}
@@ -75,15 +75,15 @@ export const SignInPage = () => {
 
                 <input
                   {...register('password', {
-                    required: `${t("requiredPassword")}`,
+                    required: `${t('requiredPassword')}`,
                     minLength: {
                       value: 8,
-                      message: `${t("messagePassword")}`,
+                      message: `${t('messagePassword')}`,
                     },
                     validate: {
                       checkLength: (value) => value.length >= 8,
                       matchPattern: (value) =>
-                        /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!@#$*])/.test(value),
+                        /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!#$*@])/.test(value),
                     },
                   })}
                   type='password'
@@ -91,17 +91,13 @@ export const SignInPage = () => {
                   placeholder='**************'
                   className='bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-5 block w-full rounded-lg border p-2.5 text-sm dark:text-white'
                 />
-                
+
                 <div style={{ height: 20 }}>
                   {errors?.password && (
                     <p className='error'>{errors?.password?.message?.toString()}</p>
                   )}
 
-                  {errors.password?.type === 'matchPattern' && (
-                    <p>
-                      `${t("patternPassword")}`
-                    </p>
-                  )}
+                  {errors.password?.type === 'matchPattern' && <p>`${t('patternPassword')}`</p>}
                 </div>
 
                 <button className='button-hover mt-10 w-1/3 max-w-full justify-center rounded-full bg-mainblue p-3.5 text-white dark:bg-lightblue dark:text-darkblue'>

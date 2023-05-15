@@ -1,10 +1,11 @@
 import { auth, registerWithEmailAndPassword } from '@root/src/firebase.config'
 import { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import { ReactComponent as AuthImage } from '@/assets/auth.svg'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
+
+import { ReactComponent as AuthImage } from '@/assets/auth.svg'
 
 type Inputs = {
   name: string
@@ -36,7 +37,7 @@ export const SignUp = () => {
   useEffect(() => {
     if (loading) return
     if (user) navigate('/')
-  }, [user, loading, history])
+  }, [user, loading, navigate])
 
   return (
     <div className='flex h-full w-full grow items-start justify-center gap-7'>
@@ -71,7 +72,7 @@ export const SignUp = () => {
                     message: `${t('messageEmail')}`,
                   },
                   pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    value: /^[\w%+.-]+@[\d.a-z-]+\.[a-z]{2,}$/i,
                     message: `${t('messageEmail')}`,
                   },
                 })}
@@ -96,7 +97,7 @@ export const SignUp = () => {
                   validate: {
                     checkLength: (value) => value.length >= 8,
                     matchPattern: (value) =>
-                      /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!@#$*])/.test(value),
+                      /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!#$*@])/.test(value),
                   },
                 })}
                 type='password'
