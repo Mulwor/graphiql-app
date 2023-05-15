@@ -10,6 +10,8 @@ import { ReactComponent as Menu } from '@/assets/menu.svg'
 import { ReactComponent as SignInIcon } from '@/assets/signin.svg'
 import { ReactComponent as SignUpIcon } from '@/assets/signup.svg'
 import { Lang, Toggle } from '@/components'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth, logout } from '@root/src/firebase.config'
 
 export const Burger = () => {
   const [modal, setModal] = useState<boolean>(false)
@@ -35,6 +37,7 @@ export type ModalType = {
 }
 
 export const Modal = ({ onClick }: ModalType) => {
+  const [user, loading] = useAuthState(auth)
   const { isDark, isRu } = useAppSelector((state) => state.setting)
   const actions = useActionCreators(settingActions)
 
@@ -59,6 +62,10 @@ export const Modal = ({ onClick }: ModalType) => {
       void changeLanguage('ru')
     }
   }
+
+  useEffect(() => {
+    if (loading) return
+  }, [user, loading])
 
   return (
     <div
@@ -93,25 +100,47 @@ export const Modal = ({ onClick }: ModalType) => {
             <span className='ml-3'>GraphiQL</span>
           </NavLink>
 
-          <NavLink
-            to={'/signin'}
-            className='flex items-center rounded-lg p-2.5 hover:text-hoverblue dark:hover:text-white'
-            onClick={onClick}
-          >
-            <SignInIcon className='h-6 w-6 stroke-mainblue hover:stroke-hoverblue dark:stroke-lightblue dark:hover:stroke-white' />
+          {user ? (
+            <div className='dashboard'>
+              <div className=''>
+                <NavLink
+                  to={'/'}
+                  className='login-button button-hover ml-2 bg-mainblue text-center text-white dark:bg-lightblue dark:text-darkblue'
+                >
+                  Home
+                </NavLink>
+                <div className='m-3'>{user.email}</div>
+                <button
+                  className='login-button button-hover ml-2 bg-mainblue text-center text-white dark:bg-lightblue dark:text-darkblue'
+                  onClick={logout}
+                >
+                  Logout
+                </button>
+              </div>
+            </div>
+          ) : (
+            <>
+              <NavLink
+                to={'/signin'}
+                className=' items-center rounded-lg p-2.5 hover:text-hoverblue dark:hover:text-white'
+                onClick={onClick}
+              >
+                <SignInIcon className='h-6 w-6 stroke-mainblue hover:stroke-hoverblue dark:stroke-lightblue dark:hover:stroke-white' />
 
-            <span className='ml-3'>Sign In</span>
-          </NavLink>
+                <span className='ml-3'>Sign In</span>
+              </NavLink>
 
-          <NavLink
-            to={'/signup'}
-            className='flex items-center rounded-lg p-2.5 hover:text-hoverblue dark:hover:text-white'
-            onClick={onClick}
-          >
-            <SignUpIcon className='h-6 w-6 stroke-mainblue hover:stroke-hoverblue dark:stroke-lightblue dark:hover:stroke-white' />
+              <NavLink
+                to={'/signup'}
+                className=' items-center rounded-lg p-2.5 hover:text-hoverblue dark:hover:text-white'
+                onClick={onClick}
+              >
+                <SignUpIcon className='h-6 w-6 stroke-mainblue hover:stroke-hoverblue dark:stroke-lightblue dark:hover:stroke-white' />
 
-            <span className='ml-3'>Sign Up</span>
-          </NavLink>
+                <span className='ml-3'>Sign Up</span>
+              </NavLink>
+            </>
+          )}
 
           <div className='flex justify-center'>
             <Toggle onClick={handlerDark} />
