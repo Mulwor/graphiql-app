@@ -46,17 +46,17 @@ export const SignInPage = () => {
         </div>
         <div className='mt-10 flex w-full shrink grow basis-0.5 flex-col'>
           <h2 className='text-4xl font-bold uppercase text-mainred'>GraphiQL</h2>
-          <div className='text-2xl'>Sign in</div>
+          <div className='text-2xl'>{t('signIn')}</div>
 
           <div className='mt-10'>
             <div className='flex flex-col'>
               <form onSubmit={handleSubmit(handleLogin)}>
                 <input
                   {...register('email', {
-                    required: `${t("validate.required")}`,
+                    required: `${t("requiredEmail")}`,
                     minLength: {
                       value: 10,
-                      message: `${t("validate.required")}`,
+                      message: `${t("messageEmail")}`,
                     },
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -75,11 +75,10 @@ export const SignInPage = () => {
 
                 <input
                   {...register('password', {
-                    required: 'You need write your password',
+                    required: `${t("requiredPassword")}`,
                     minLength: {
                       value: 8,
-                      message:
-                        'Password must have - minimum 8 symbols least one letter, one digit, one special character',
+                      message: `${t("messagePassword")}`,
                     },
                     validate: {
                       checkLength: (value) => value.length >= 8,
@@ -100,8 +99,7 @@ export const SignInPage = () => {
 
                   {errors.password?.type === 'matchPattern' && (
                     <p>
-                      Password should contain at least one uppercase letter, lowercase letter,
-                      digit, and special symbol.
+                      `${t("patternPassword")}`
                     </p>
                   )}
                 </div>

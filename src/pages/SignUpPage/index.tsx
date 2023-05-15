@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { ReactComponent as AuthImage } from '@/assets/auth.svg'
+import { useTranslation } from 'react-i18next'
 
 type Inputs = {
   name: string
@@ -12,6 +13,7 @@ type Inputs = {
 }
 
 export const SignUp = () => {
+  const { t } = useTranslation()
   const [user, loading] = useAuthState(auth)
   const navigate = useNavigate()
 
@@ -43,7 +45,7 @@ export const SignUp = () => {
       </div>
       <div className='mt-10 flex w-full shrink grow basis-0.5 flex-col'>
         <h2 className='text-4xl font-bold uppercase text-mainred'>GraphiQL</h2>
-        <div className='text-2xl'>Sign up</div>
+        <div className='text-2xl'>{t('signUp')}</div>
 
         <div className='mt-10'>
           <div className='flex flex-col'>
@@ -52,7 +54,7 @@ export const SignUp = () => {
                 type='text'
                 className='bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-full rounded-lg border p-2.5 text-sm dark:text-white'
                 {...register('name', {
-                  required: 'You need write your name',
+                  required: `${t('requiredName')}`,
                 })}
                 placeholder='Write your name'
               />
@@ -63,14 +65,14 @@ export const SignUp = () => {
 
               <input
                 {...register('email', {
-                  required: 'You need write your email',
+                  required: `${t('requiredEmail')}`,
                   minLength: {
                     value: 10,
-                    message: 'Email must have - minimum 10 symbols',
+                    message: `${t('messageEmail')}`,
                   },
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: 'Invalid email',
+                    message: `${t('messageEmail')}`,
                   },
                 })}
                 type='email'
@@ -86,11 +88,10 @@ export const SignUp = () => {
               <input
                 defaultValue='89095927614'
                 {...register('password', {
-                  required: 'You need write your password',
+                  required: `${t('requiredPassword')}`,
                   minLength: {
                     value: 8,
-                    message:
-                      'Password must have - minimum 8 symbols least one letter, one digit, one special character',
+                    message: `${t('messagePassword')}`,
                   },
                   validate: {
                     checkLength: (value) => value.length >= 8,
@@ -109,14 +110,9 @@ export const SignUp = () => {
                   <p className='error'>{errors?.password?.message?.toString()}</p>
                 )}
 
-                {errors.password?.type === 'matchPattern' && (
-                  <p>
-                    Password should contain at least one uppercase letter, lowercase letter, digit,
-                    and special symbol.
-                  </p>
-                )}
+                {errors.password?.type === 'matchPattern' && <p>{t('patternPassword')}</p>}
               </div>
-  
+
               <button className='button-hover mt-10 w-1/2 max-w-full justify-center rounded-full bg-mainblue p-3.5 text-white dark:bg-lightblue dark:text-darkblue'>
                 Sign up
               </button>
