@@ -1,6 +1,9 @@
+import { auth, logout } from '@root/src/firebase.config'
 import { changeLanguage } from '@root/src/i18n'
 import { settingActions, useActionCreators, useAppSelector } from '@root/src/store'
 import { useEffect, useState } from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router-dom'
 
 import { ReactComponent as CloseIcon } from '@/assets/close.svg'
@@ -35,8 +38,10 @@ export type ModalType = {
 }
 
 export const Modal = ({ onClick }: ModalType) => {
+  const [user] = useAuthState(auth)
   const { isDark, isRu } = useAppSelector((state) => state.setting)
   const actions = useActionCreators(settingActions)
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (isDark) {
@@ -81,7 +86,7 @@ export const Modal = ({ onClick }: ModalType) => {
             onClick={onClick}
           >
             <HouseIcon className='h-6 w-6 stroke-mainblue hover:stroke-hoverblue dark:stroke-lightblue dark:hover:stroke-white' />
-            <span className='ml-3'>Home</span>
+            <span className='ml-3'>{t('header.firstLink')}</span>
           </NavLink>
 
           <NavLink
@@ -90,28 +95,50 @@ export const Modal = ({ onClick }: ModalType) => {
             onClick={onClick}
           >
             <GraphiIcon className='hover-svg h-6 w-6 fill-mainblue' />
-            <span className='ml-3'>GraphiQL</span>
+            <span className='ml-3'>{t('header.secondLink')}</span>
           </NavLink>
 
-          <NavLink
-            to={'/signin'}
-            className='flex items-center rounded-lg p-2.5 hover:text-hoverblue dark:hover:text-white'
-            onClick={onClick}
-          >
-            <SignInIcon className='h-6 w-6 stroke-mainblue hover:stroke-hoverblue dark:stroke-lightblue dark:hover:stroke-white' />
+          {user ? (
+            <div className='dashboard'>
+              <div className=''>
+                <NavLink
+                  to={'/'}
+                  className='login-button button-hover ml-2 bg-mainblue text-center text-white dark:bg-lightblue dark:text-darkblue'
+                >
+                  {t('header.firstLink')}
+                </NavLink>
+                <div className='m-3'>{user.email}</div>
+                <button
+                  className='login-button button-hover ml-2 bg-mainblue text-center text-white dark:bg-lightblue dark:text-darkblue'
+                  onClick={logout}
+                >
+                  {t('header.sixLink')}
+                </button>
+              </div>
+            </div>
+          ) : (
+            <>
+              <NavLink
+                to={'/signin'}
+                className='flex items-center rounded-lg p-2.5 hover:text-hoverblue dark:hover:text-white'
+                onClick={onClick}
+              >
+                <SignInIcon className='h-6 w-6 stroke-mainblue hover:stroke-hoverblue dark:stroke-lightblue dark:hover:stroke-white' />
 
-            <span className='ml-3'>Sign In</span>
-          </NavLink>
+                <span className='ml-3'>{t('header.thirdLink')}</span>
+              </NavLink>
 
-          <NavLink
-            to={'/signup'}
-            className='flex items-center rounded-lg p-2.5 hover:text-hoverblue dark:hover:text-white'
-            onClick={onClick}
-          >
-            <SignUpIcon className='h-6 w-6 stroke-mainblue hover:stroke-hoverblue dark:stroke-lightblue dark:hover:stroke-white' />
+              <NavLink
+                to={'/signup'}
+                className='flex items-center rounded-lg p-2.5 hover:text-hoverblue dark:hover:text-white'
+                onClick={onClick}
+              >
+                <SignUpIcon className='h-6 w-6 stroke-mainblue hover:stroke-hoverblue dark:stroke-lightblue dark:hover:stroke-white' />
 
-            <span className='ml-3'>Sign Up</span>
-          </NavLink>
+                <span className='ml-3'>{t('header.fourthLink')}</span>
+              </NavLink>
+            </>
+          )}
 
           <div className='flex justify-center'>
             <Toggle onClick={handlerDark} />
