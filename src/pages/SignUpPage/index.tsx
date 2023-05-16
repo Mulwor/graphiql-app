@@ -1,7 +1,10 @@
+import 'react-toastify/dist/ReactToastify.css'
+
 import { registerWithEmailAndPassword } from '@root/src/firebase.config'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify'
 
 import { ReactComponent as AuthImage } from '@/assets/auth.svg'
 
@@ -26,8 +29,18 @@ export const SignUp = () => {
       .then(() => {
         navigate('/')
       })
-      .catch((error) => {
-        console.log(error)
+      .catch(() => {
+        // console.log(error)
+        toast.error(`${t('wrongEmail')}`, {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        })
       })
   }
 
@@ -109,6 +122,19 @@ export const SignUp = () => {
               <button className='button-hover mt-10 w-1/2 max-w-full justify-center rounded-full bg-mainblue p-3.5 text-white dark:bg-lightblue dark:text-darkblue'>
                 Sign up
               </button>
+
+              <ToastContainer
+                position='top-center'
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme='light'
+              />
             </form>
             ,
           </div>
