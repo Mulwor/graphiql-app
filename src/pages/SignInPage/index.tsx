@@ -19,7 +19,7 @@ export const SignInPage = () => {
     formState: { errors },
   } = useForm<Inputs>()
 
-  function handleLogin(data: Inputs) {
+  function handleLogin({ ...data }: Inputs) {
     logInWithEmailAndPassword(data.email, data.password)
       .then(() => {
         navigate('/')

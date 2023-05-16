@@ -24,7 +24,7 @@ export const SignUp = () => {
     formState: { errors },
   } = useForm<Inputs>()
 
-  function handleLogin(data: Inputs) {
+  function handleLogin({ ...data }: Inputs) {
     registerWithEmailAndPassword(data.name, data.email, data.password)
       .then(() => {
         navigate('/')
