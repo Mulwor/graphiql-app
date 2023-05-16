@@ -22,22 +22,13 @@ export const SignInPage = () => {
     formState: { errors },
   } = useForm<Inputs>()
 
-  function handleLogin({ ...data }: Inputs) {
-    logInWithEmailAndPassword(data.email, data.password)
+  function handleLogin({ email, password }: Inputs) {
+    logInWithEmailAndPassword(email, password)
       .then(() => {
         navigate('/')
       })
       .catch(() => {
-        toast.error(`${t('wrongAll')}`, {
-          position: 'top-center',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        })
+        toast.error(t('wrongAll'))
       })
   }
 

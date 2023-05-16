@@ -24,22 +24,13 @@ export const SignUp = () => {
     formState: { errors },
   } = useForm<Inputs>()
 
-  function handleLogin({ ...data }: Inputs) {
-    registerWithEmailAndPassword(data.name, data.email, data.password)
+  function handleLogin({ name, email, password }: Inputs) {
+    registerWithEmailAndPassword(name, email, password)
       .then(() => {
         navigate('/')
       })
       .catch(() => {
-        toast.error(`${t('wrongEmail')}`, {
-          position: 'top-center',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        })
+        toast.error(t('wrongEmail'))
       })
   }
 
