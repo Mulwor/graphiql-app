@@ -38,7 +38,7 @@ export type ModalType = {
 }
 
 export const Modal = ({ onClick }: ModalType) => {
-  const [user, loading] = useAuthState(auth)
+  const [user] = useAuthState(auth)
   const { isDark, isRu } = useAppSelector((state) => state.setting)
   const actions = useActionCreators(settingActions)
   const { t } = useTranslation()
@@ -64,10 +64,6 @@ export const Modal = ({ onClick }: ModalType) => {
       void changeLanguage('ru')
     }
   }
-
-  useEffect(() => {
-    if (loading) return
-  }, [user, loading])
 
   return (
     <div

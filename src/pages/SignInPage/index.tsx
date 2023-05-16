@@ -1,6 +1,4 @@
-import { auth, logInWithEmailAndPassword } from '@root/src/firebase.config'
-import { useEffect } from 'react'
-import { useAuthState } from 'react-firebase-hooks/auth'
+import { logInWithEmailAndPassword } from '@root/src/firebase.config'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
@@ -14,7 +12,6 @@ type Inputs = {
 
 export const SignInPage = () => {
   const { t } = useTranslation()
-  const [user, loading] = useAuthState(auth)
   const navigate = useNavigate()
   const {
     register,
@@ -31,12 +28,6 @@ export const SignInPage = () => {
         console.log(error)
       })
   }
-
-  useEffect(() => {
-    if (loading) {
-      return
-    }
-  }, [user, loading, navigate])
 
   return (
     <>
