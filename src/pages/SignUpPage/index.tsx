@@ -1,6 +1,4 @@
-import { auth, registerWithEmailAndPassword } from '@root/src/firebase.config'
-import { useEffect } from 'react'
-import { useAuthState } from 'react-firebase-hooks/auth'
+import { registerWithEmailAndPassword } from '@root/src/firebase.config'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
@@ -15,7 +13,6 @@ type Inputs = {
 
 export const SignUp = () => {
   const { t } = useTranslation()
-  const [user, loading] = useAuthState(auth)
   const navigate = useNavigate()
 
   const {
@@ -33,11 +30,6 @@ export const SignUp = () => {
         console.log(error)
       })
   }
-
-  useEffect(() => {
-    if (loading) return
-    if (user) navigate('/')
-  }, [user, loading, navigate])
 
   return (
     <div className='flex h-full w-full grow items-start justify-center gap-7'>
