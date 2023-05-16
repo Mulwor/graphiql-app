@@ -30,7 +30,6 @@ export const SignUp = () => {
         navigate('/')
       })
       .catch(() => {
-        // console.log(error)
         toast.error(`${t('wrongEmail')}`, {
           position: 'top-center',
           autoClose: 5000,
