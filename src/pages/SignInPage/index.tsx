@@ -1,7 +1,10 @@
+import 'react-toastify/dist/ReactToastify.css'
+
 import { logInWithEmailAndPassword } from '@root/src/firebase.config'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify'
 
 import { ReactComponent as AuthImage } from '@/assets/auth.svg'
 
@@ -19,13 +22,13 @@ export const SignInPage = () => {
     formState: { errors },
   } = useForm<Inputs>()
 
-  function handleLogin(data: Inputs) {
-    logInWithEmailAndPassword(data.email, data.password)
+  function handleLogin({ email, password }: Inputs) {
+    logInWithEmailAndPassword(email, password)
       .then(() => {
         navigate('/')
       })
-      .catch((error) => {
-        console.log(error)
+      .catch(() => {
+        toast.error(t('wrongAll'))
       })
   }
 
@@ -88,12 +91,25 @@ export const SignInPage = () => {
                     <p className='error'>{errors?.password?.message?.toString()}</p>
                   )}
 
-                  {errors.password?.type === 'matchPattern' && <p>`${t('patternPassword')}`</p>}
+                  {errors.password?.type === 'matchPattern' && <p>{t('patternPassword')}</p>}
                 </div>
 
                 <button className='button-hover mt-10 w-1/3 max-w-full justify-center rounded-full bg-mainblue p-3.5 text-white dark:bg-lightblue dark:text-darkblue'>
                   Sign in grapiQL
                 </button>
+
+                <ToastContainer
+                  position='top-center'
+                  autoClose={5000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme='light'
+                />
               </form>
             </div>
           </div>
