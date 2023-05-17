@@ -1,9 +1,10 @@
-import { auth, registerWithEmailAndPassword } from '@root/src/firebase.config'
-import { useEffect } from 'react'
-import { useAuthState } from 'react-firebase-hooks/auth'
+import 'react-toastify/dist/ReactToastify.css'
+
+import { registerWithEmailAndPassword } from '@root/src/firebase.config'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify'
 
 import { ReactComponent as AuthImage } from '@/assets/auth.svg'
 
@@ -15,7 +16,6 @@ type Inputs = {
 
 export const SignUp = () => {
   const { t } = useTranslation()
-  const [user, loading] = useAuthState(auth)
   const navigate = useNavigate()
 
   const {
@@ -24,20 +24,15 @@ export const SignUp = () => {
     formState: { errors },
   } = useForm<Inputs>()
 
-  function handleLogin(data: Inputs) {
-    registerWithEmailAndPassword(data.name, data.email, data.password)
+  function handleLogin({ name, email, password }: Inputs) {
+    registerWithEmailAndPassword(name, email, password)
       .then(() => {
         navigate('/')
       })
-      .catch((error) => {
-        console.log(error)
+      .catch(() => {
+        toast.error(t('wrongEmail'))
       })
   }
-
-  useEffect(() => {
-    if (loading) return
-    if (user) navigate('/')
-  }, [user, loading, navigate])
 
   return (
     <div className='mx-auto flex max-w-7xl shrink grow flex-col-reverse gap-7 sm:columns-2 sm:flex-row'>
@@ -116,6 +111,19 @@ export const SignUp = () => {
               <button className='button-hover mt-10 w-full max-w-full justify-center rounded-full bg-seagreen p-1.5 text-white dark:bg-lightblue dark:text-prussianblue md:w-1/2'>
                 Sign up
               </button>
+
+              <ToastContainer
+                position='top-center'
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme='light'
+              />
             </form>
           </div>
         </div>
