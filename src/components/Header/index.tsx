@@ -1,7 +1,7 @@
 import { auth, logout } from '@root/src/firebase.config'
 import { changeLanguage } from '@root/src/i18n'
 import { settingActions, useActionCreators, useAppSelector } from '@root/src/store'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useTranslation } from 'react-i18next'
 import { NavLink, useNavigate } from 'react-router-dom'
@@ -15,6 +15,8 @@ export const Header = () => {
   const navigate = useNavigate()
   const { t } = useTranslation()
 
+  const [scroll, setScroll] = useState(0)
+
   const { isDark, isRu } = useAppSelector((state) => state.setting)
   const actions = useActionCreators(settingActions)
 
@@ -25,6 +27,18 @@ export const Header = () => {
       document.documentElement.classList.remove('dark')
     }
   }, [isDark])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScroll(window.scrollY)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   const handlerDark = () => {
     actions.setIsDark({ isDark: !isDark })
@@ -46,7 +60,13 @@ export const Header = () => {
   }, [user, loading, navigate])
 
   return (
-    <header className='mx-auto mb-5 flex w-full items-baseline justify-between'>
+    <header
+      className={
+        scroll
+          ? 'dark: sticky top-0 mx-auto mb-5 flex w-full items-baseline justify-between bg-white px-5 pb-2.5 dark:bg-darknavy'
+          : 'sticky top-0 mx-auto mb-5 flex w-full items-baseline justify-between px-5'
+      }
+    >
       <Burger />
       <Nav />
 
@@ -55,19 +75,10 @@ export const Header = () => {
         <Lang onClick={handlerLang} />
       </div>
 
-      {/* <button onClick={() => void changeLanguage('en')}>EN</button> */}
-      {/* <button onClick={() => void changeLanguage('ru')}>RU</button> */}
-
       <div className='hidden gap-7 md:flex'>
         {user ? (
           <div className='dashboard'>
             <div className='flex'>
-              <NavLink
-                to={'/'}
-                className='login-button button-hover mr-5 bg-seagreen text-center text-white dark:bg-lightblue dark:text-prussianblue'
-              >
-                <div>{t('header.fivethLink')}</div>
-              </NavLink>
               <div>{user.email}</div>
               <button
                 className='login-button button-hover ml-5 bg-seagreen text-center text-white dark:bg-lightblue dark:text-prussianblue'
@@ -75,6 +86,12 @@ export const Header = () => {
               >
                 <div>{t('header.sixLink')}</div>
               </button>
+              <NavLink
+                to={'/'}
+                className='login-button button-hover ml-5 bg-seagreen text-center text-white dark:bg-lightblue dark:text-prussianblue'
+              >
+                <div>{t('header.fivethLink')}</div>
+              </NavLink>
             </div>
           </div>
         ) : (

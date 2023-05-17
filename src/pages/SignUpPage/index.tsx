@@ -79,7 +79,7 @@ export const SignUp = () => {
                 type='email'
                 id='email'
                 placeholder='email@mail.com'
-                className='bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-full rounded-lg border p-2.5 text-sm dark:text-white'
+                className='placeholder-gray-400 block w-full rounded-lg border p-2.5 text-seagreen focus:border-seagreen focus:ring-seagreen'
               />
 
               <div style={{ height: 20 }}>
@@ -103,7 +103,7 @@ export const SignUp = () => {
                 type='password'
                 id='confirm_password'
                 placeholder='**************'
-                className='bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-5 block w-full rounded-lg border p-2.5 text-sm dark:text-white'
+                className='placeholder-gray-400 block w-full rounded-lg border p-2.5 text-seagreen focus:border-seagreen focus:ring-seagreen'
               />
 
               <div style={{ height: 20 }}>

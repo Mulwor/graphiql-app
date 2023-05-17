@@ -9,7 +9,7 @@ export const Footer = () => {
 
   return (
     <footer className='mt-4'>
-      <div className='items-center justify-between sm:flex'>
+      <div className='shrink-0 items-center justify-between px-5 sm:flex'>
         <ul className='flex items-center justify-center gap-x-1.5 self-center text-sm font-medium sm:justify-start'>
           <li>
             <Link to='https://github.com/Mulwor'>

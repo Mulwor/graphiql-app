@@ -57,7 +57,7 @@ export const SignInPage = () => {
                   type='email'
                   id='email'
                   placeholder='thisIsYourEmail@mail.com'
-                  className='bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-full rounded-lg border p-2.5 text-sm dark:text-white'
+                  className='placeholder-gray-400 block w-full rounded-lg border p-2.5 text-seagreen focus:border-seagreen focus:ring-seagreen'
                 />
 
                 <div style={{ height: 20 }}>
@@ -80,7 +80,7 @@ export const SignInPage = () => {
                   type='password'
                   id='confirm_password'
                   placeholder='**************'
-                  className='bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-5 block w-full rounded-lg border p-2.5 text-sm dark:text-white'
+                  className='placeholder-gray-400 block w-full rounded-lg border p-2.5 text-seagreen focus:border-seagreen focus:ring-seagreen'
                 />
 
                 <div style={{ height: 20 }}>
@@ -91,7 +91,7 @@ export const SignInPage = () => {
                   {errors.password?.type === 'matchPattern' && <p>`${t('patternPassword')}`</p>}
                 </div>
 
-                <button className='button-hover bg-mainblue dark:text-darkblue mt-10 w-1/3 max-w-full justify-center rounded-full p-3.5 text-white dark:bg-lightblue'>
+                <button className='button-hover mt-10 w-full max-w-full justify-center rounded-full bg-seagreen p-1.5 text-white dark:bg-lightblue dark:text-prussianblue md:w-1/2'>
                   Sign in grapiQL
                 </button>
               </form>

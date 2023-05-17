@@ -81,16 +81,16 @@ export const Modal = ({ onClick }: ModalType) => {
 
           {user ? (
             <div className='dashboard'>
-              <div className=''>
-                <NavLink
+              <div className='flex flex-col items-center'>
+                {/* <NavLink
                   to={'/'}
                   className='login-button button-hover bg-mainblue dark:text-darkblue ml-2 text-center text-white dark:bg-lightblue'
                 >
                   {t('header.firstLink')}
-                </NavLink>
-                <div className='m-3'>{user.email}</div>
+                </NavLink> */}
+                <div className='my-6'>{user.email}</div>
                 <button
-                  className='login-button button-hover bg-mainblue dark:text-darkblue ml-2 text-center text-white dark:bg-lightblue'
+                  className='button-hover w-1/2 max-w-full rounded-full bg-seagreen p-1.5 text-white dark:bg-lightblue dark:text-prussianblue'
                   onClick={logout}
                 >
                   {t('header.sixLink')}
