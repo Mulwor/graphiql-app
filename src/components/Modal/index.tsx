@@ -107,16 +107,17 @@ export const Modal = ({ onClick }: ModalType) => {
                 <SignInIcon className='h-6 w-6 stroke-seagreen transition-all hover:stroke-prussianblue dark:stroke-lightblue dark:hover:stroke-white' />
 
                 <span className='ml-3'>{t('header.thirdLink')}</span>
-              </NavLink><NavLink
+              </NavLink>
+              <NavLink
                 to={'/signup'}
                 className='flex items-center rounded-lg p-2.5 transition-all hover:text-prussianblue dark:hover:text-white'
                 onClick={onClick}
               >
-                  <SignUpIcon className='h-6 w-6 stroke-seagreen transition-all hover:stroke-prussianblue dark:stroke-lightblue dark:hover:stroke-white' />
+                <SignUpIcon className='h-6 w-6 stroke-seagreen transition-all hover:stroke-prussianblue dark:stroke-lightblue dark:hover:stroke-white' />
 
-                  <span className='ml-3'>{t('header.fourthLink')}</span>
-                  </NavLink>
-                  </>
+                <span className='ml-3'>{t('header.fourthLink')}</span>
+              </NavLink>
+            </>
           )}
 
           <div className='flex justify-center'>
