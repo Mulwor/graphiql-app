@@ -35,7 +35,16 @@
     "unicorn/no-useless-undefined": "off",
     "unicorn/prevent-abbreviations": "off",
     "unicorn/prefer-spread": "off",
-    "import/no-default-export": "error"
+    "import/no-default-export": "error",
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": {
+          "arguments": false,
+          "attributes": false
+        }
+      }
+    ]
   },
   "settings": {
     "import/resolver": {

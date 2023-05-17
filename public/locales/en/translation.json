@@ -21,5 +21,13 @@
   },
   "footer": {
     "rights": "All Rights Reserved."
-  }
+  },
+  "signUp": "Sign up",
+  "signIn": "Sign in",
+  "requiredEmail": "Write your email",
+  "messageEmail": "Your email must contain at least 10 characters",
+  "requiredName": "Write your name",
+  "requiredPassword": "Write your password",
+  "messagePassword": "Password must have - minimum 8 symbols least one letter, one digit, one special character",
+  "patternPassword":  "Password should contain at least one uppercase letter, lowercase letter, digit, and special symbol"
 }

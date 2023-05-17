@@ -1,4 +1,8 @@
+import { auth, logout } from '@root/src/firebase.config'
+import { changeLanguage } from '@root/src/i18n'
+import { settingActions, useActionCreators, useAppSelector } from '@root/src/store'
 import { useState } from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
 import { ReactComponent as Menu } from '@/assets/menu.svg'
 import { Modal } from '@/components'
