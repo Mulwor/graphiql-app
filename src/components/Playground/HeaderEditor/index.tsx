@@ -34,7 +34,7 @@ const handleChange = (value: string) => {
 export const HeaderEditor = memo(({ value, onKeyDown, className }: HeaderEditorProps) => {
   return (
     <CodeMirror
-      className={cx('h-full w-full border', className)}
+      className={cx('h-full w-full', className)}
       height='100%'
       theme={materialLight}
       value={value}

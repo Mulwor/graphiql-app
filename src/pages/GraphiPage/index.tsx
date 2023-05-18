@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels'
 import { toast, ToastContainer } from 'react-toastify'
 
+import { ReactComponent as Play } from '@/assets/play.svg'
 import {
   HeaderEditor,
   QueryEditor,
@@ -55,10 +56,10 @@ export const GraphiPage = () => {
 
   return (
     <Fragment>
-      <div className='grid h-full w-full grid-cols-2 gap-2'>
+      <div className='grid h-full w-full grid-cols-2 gap-7'>
         <PanelGroup
           direction='vertical'
-          className='space-y-1'
+          className='relative space-y-1 rounded-lg shadow-xl'
         >
           <Panel defaultSize={50}>
             <div className='h-full'>
@@ -68,12 +69,15 @@ export const GraphiPage = () => {
               />
             </div>
           </Panel>
-          <PanelResizeHandle className='bg-mainblue p-2'>
+          <button>
+            <Play className='z-1000 absolute right-3 top-7 h-12 w-12 rounded-full bg-fuchsia fill-white p-2' />
+          </button>
+          <PanelResizeHandle className='bg-seagreen p-2'>
             <div className='space-x-2'>
               <span
                 onClick={() => (activeTab.value = 'variables')}
                 className={cx(
-                  'inline-block cursor-pointer rounded-lg px-3 py-1 text-white hover:bg-[#333]',
+                  'inline-block cursor-pointer px-3 py-1 text-white transition-all hover:text-prussianblue',
                 )}
               >
                 <div>{t('graph.firstValue')}</div>
@@ -81,7 +85,7 @@ export const GraphiPage = () => {
               <span
                 onClick={() => (activeTab.value = 'headers')}
                 className={cx(
-                  'inline-block cursor-pointer rounded-lg px-3 py-1 text-white hover:bg-[#333]',
+                  'inline-block cursor-pointer px-3 py-1 text-white transition-all hover:text-prussianblue',
                 )}
               >
                 <div>{t('graph.secondValue')}</div>

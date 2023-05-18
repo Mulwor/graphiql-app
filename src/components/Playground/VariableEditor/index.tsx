@@ -34,7 +34,7 @@ const handleChange = (value: string) => {
 export const VariableEditor = memo(({ value, onKeyDown, className }: VariableEditorProps) => {
   return (
     <CodeMirror
-      className={cx('h-full w-full border', className)}
+      className={cx('h-full w-full', className)}
       height='100%'
       theme={materialLight}
       value={value}
