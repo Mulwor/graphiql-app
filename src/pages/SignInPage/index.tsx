@@ -1,6 +1,8 @@
 import 'react-toastify/dist/ReactToastify.css'
 
-import { logInWithEmailAndPassword } from '@root/src/firebase.config'
+import { auth, logInWithEmailAndPassword } from '@root/src/firebase.config'
+import { useEffect } from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
@@ -32,6 +34,14 @@ export const SignInPage = () => {
       })
   }
 
+  const [user] = useAuthState(auth)
+
+  useEffect(() => {
+    if (user) {
+      navigate('/')
+    }
+  }, [navigate, user])
+  console.log('sign in')
   return (
     <>
       <div className='mx-auto flex max-w-7xl shrink grow flex-col-reverse gap-7 sm:columns-2 sm:flex-row'>

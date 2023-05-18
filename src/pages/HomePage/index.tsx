@@ -6,7 +6,7 @@ import { Button } from '@/components'
 
 export const HomePage = () => {
   const { t } = useTranslation()
-
+console.log('home')
   return (
     <>
       <div className='mx-auto max-w-7xl shrink grow gap-7 sm:flex sm:columns-2'>

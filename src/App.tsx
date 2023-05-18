@@ -1,11 +1,9 @@
-import { auth } from '@root/src/firebase.config'
-import { useAuthState } from 'react-firebase-hooks/auth'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import { Layout } from '@/components'
-import { GraphiPage, HomePage, NotFound, SignInPage, SignUp } from '@/pages'
+import { GraphiPage, HomePage, NotFound, SignInPage, SignUpPage } from '@/pages'
 
-const privatRouter = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
@@ -15,44 +13,23 @@ const privatRouter = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: '/signin',
+        path: 'signin',
         element: <SignInPage />,
       },
       {
-        path: '/signup',
-        element: <SignUp />,
+        path: 'signup',
+        element: <SignUpPage />,
       },
       {
-        path: '/graphi',
+        path: 'graphi',
         element: <GraphiPage />,
       },
       {
-        path: '/*',
+        path: '*',
         element: <NotFound />,
       },
-    ],
-  },
-])
-
-const publicRouter = createBrowserRouter([
-  {
-    path: '/',
-    element: <Layout />,
-    children: [
       {
-        path: '/',
-        element: <HomePage />,
-      },
-      {
-        path: '/signin',
-        element: <SignInPage />,
-      },
-      {
-        path: '/signup',
-        element: <SignUp />,
-      },
-      {
-        path: '/*',
+        path: '404',
         element: <NotFound />,
       },
     ],
@@ -60,7 +37,5 @@ const publicRouter = createBrowserRouter([
 ])
 
 export const App = () => {
-  const [user] = useAuthState(auth)
-
-  return <RouterProvider router={user ? privatRouter : publicRouter} />
+  return <RouterProvider router={router} />
 }

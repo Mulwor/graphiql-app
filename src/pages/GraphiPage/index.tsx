@@ -1,9 +1,12 @@
 import { signal } from '@preact/signals-react'
+import { auth } from '@root/src/firebase.config'
 import cx from 'clsx'
 import { buildClientSchema } from 'graphql'
-import { Fragment, useCallback } from 'react'
+import { Fragment, useCallback, useEffect } from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
 import { useTranslation } from 'react-i18next'
 import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels'
+import { useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 
 import { ReactComponent as Play } from '@/assets/play.svg'
@@ -22,6 +25,15 @@ export const GraphiPage = () => {
   const { data: schema, isFetching } = useGetSchemaQuery()
   const [request, { data, error, isError }] = useLazyGetDataQuery()
   const { t } = useTranslation()
+
+  const navigate = useNavigate()
+  const [user] = useAuthState(auth)
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/signup')
+    }
+  }, [navigate, user])
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {

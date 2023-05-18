@@ -1,6 +1,8 @@
 import 'react-toastify/dist/ReactToastify.css'
 
-import { registerWithEmailAndPassword } from '@root/src/firebase.config'
+import { auth, registerWithEmailAndPassword } from '@root/src/firebase.config'
+import { useEffect } from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
@@ -14,10 +16,10 @@ type Inputs = {
   password: string
 }
 
-export const SignUp = () => {
+export const SignUpPage = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
-
+  console.log('sign up')
   const {
     register,
     handleSubmit,
@@ -33,6 +35,14 @@ export const SignUp = () => {
         toast.error(t('wrongEmail'))
       })
   }
+
+  const [user] = useAuthState(auth)
+
+  useEffect(() => {
+    if (user) {
+      navigate('/')
+    }
+  }, [navigate, user])
 
   return (
     <div className='mx-auto flex max-w-7xl shrink grow flex-col-reverse gap-7 sm:columns-2 sm:flex-row'>
