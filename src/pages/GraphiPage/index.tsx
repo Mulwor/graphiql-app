@@ -1,9 +1,9 @@
 import { signal } from '@preact/signals-react'
 import cx from 'clsx'
 import { buildClientSchema } from 'graphql'
-import { Fragment, useCallback } from 'react'
+import { Fragment, useCallback, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels'
+import { ImperativePanelHandle, Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels'
 import { toast, ToastContainer } from 'react-toastify'
 
 import {
@@ -13,14 +13,43 @@ import {
   values,
   VariableEditor,
 } from '@/components/Playground'
+import { ChevronDown, ChevronUp } from '@/icons'
 import { useGetSchemaQuery, useLazyGetDataQuery } from '@/store'
 
-const activeTab = signal<'variables' | 'headers' | null>(null)
+type ActiveTab = 'variables' | 'headers'
+const activeTab = signal<ActiveTab | null>(null)
+const isCollapsed = signal(true)
+
+const handleCollapse = (collapsed: boolean) => {
+  if (!activeTab.value) {
+    activeTab.value = 'variables'
+  }
+
+  isCollapsed.value = collapsed
+}
 
 export const GraphiPage = () => {
   const { data: schema, isFetching } = useGetSchemaQuery()
   const [request, { data, error, isError }] = useLazyGetDataQuery()
   const { t } = useTranslation()
+
+  const panelRef = useRef<ImperativePanelHandle>(null)
+
+  const expandPanel = (value: ActiveTab) => () => {
+    if (value) {
+      activeTab.value = value
+    }
+
+    panelRef.current?.expand()
+  }
+
+  const handleChevronClick = () => {
+    if (!activeTab.value) {
+      activeTab.value = 'variables'
+    }
+
+    isCollapsed.value ? panelRef.current?.expand() : panelRef.current?.collapse()
+  }
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -39,7 +68,6 @@ export const GraphiPage = () => {
             headers,
           })
         } catch (error) {
-          console.dir(error)
           if (error instanceof Error) {
             toast.error(`🦄 ${error.message}`, {
               theme: 'light',
@@ -56,11 +84,8 @@ export const GraphiPage = () => {
   return (
     <Fragment>
       <div className='grid h-full w-full grid-cols-2 gap-2'>
-        <PanelGroup
-          direction='vertical'
-          className='space-y-1'
-        >
-          <Panel defaultSize={50}>
+        <PanelGroup direction='vertical'>
+          <Panel defaultSize={100}>
             <div className='h-full'>
               <QueryEditor
                 schema={schema && buildClientSchema(schema)}
@@ -68,10 +93,10 @@ export const GraphiPage = () => {
               />
             </div>
           </Panel>
-          <PanelResizeHandle className='bg-mainblue p-2'>
+          <PanelResizeHandle className='flex justify-between bg-mainblue p-2'>
             <div className='space-x-2'>
               <span
-                onClick={() => (activeTab.value = 'variables')}
+                onClick={expandPanel('variables')}
                 className={cx(
                   'inline-block cursor-pointer rounded-lg px-3 py-1 text-white hover:bg-[#333]',
                 )}
@@ -79,7 +104,7 @@ export const GraphiPage = () => {
                 <div>{t('graph.firstValue')}</div>
               </span>
               <span
-                onClick={() => (activeTab.value = 'headers')}
+                onClick={expandPanel('headers')}
                 className={cx(
                   'inline-block cursor-pointer rounded-lg px-3 py-1 text-white hover:bg-[#333]',
                 )}
@@ -87,8 +112,18 @@ export const GraphiPage = () => {
                 <div>{t('graph.secondValue')}</div>
               </span>
             </div>
+            <span
+              className='flex cursor-pointer items-center justify-center text-white'
+              onClick={handleChevronClick}
+            >
+              {isCollapsed.value ? <ChevronUp /> : <ChevronDown />}
+            </span>
           </PanelResizeHandle>
-          <Panel defaultSize={50}>
+          <Panel
+            collapsible
+            ref={panelRef}
+            onCollapse={handleCollapse}
+          >
             <div className='flex h-full flex-col gap-1'>
               <VariableEditor
                 onKeyDown={handleKeyDown}

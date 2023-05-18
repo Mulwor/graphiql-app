@@ -15,7 +15,11 @@ type HeaderEditorProps = {
 }
 
 const extensions = [
-  materialLightInit(),
+  materialLightInit({
+    settings: {
+      fontFamily: 'Fira Code',
+    },
+  }),
   langs.json(),
   Prec.high(
     keymap.of([

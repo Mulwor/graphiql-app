@@ -15,7 +15,14 @@ export const ResponseEditor = memo(({ value }: ResponseEditorProps) => {
       theme={materialLight}
       readOnly
       value={value}
-      extensions={[materialLightInit(), langs.json()]}
+      extensions={[
+        materialLightInit({
+          settings: {
+            fontFamily: 'Fira Code',
+          },
+        }),
+        langs.json(),
+      ]}
     />
   )
 })

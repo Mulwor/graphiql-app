@@ -1,1 +1,1 @@
-export * from '@root/src/store/slices/setting'
+export * from '@/store/slices/setting'

@@ -10,7 +10,11 @@ import { memo } from 'react'
 import { values } from '@/components/Playground'
 
 const extensions = (schema?: GraphQLSchema) => [
-  materialLightInit(),
+  materialLightInit({
+    settings: {
+      fontFamily: 'Fira Code',
+    },
+  }),
   graphql(schema),
   autocompletion({
     activateOnTyping: true,

@@ -1,36 +1,43 @@
-import { createApi } from '@reduxjs/toolkit/query/react'
-import { graphqlRequestBaseQuery } from '@rtk-query/graphql-request-base-query'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { getIntrospectionQuery, IntrospectionQuery } from 'graphql'
 import { gql } from 'graphql-request'
 
 type GetData = {
   document?: string
   variables?: Record<string, unknown>
-  headers?: Record<string, unknown>
+  headers?: Record<string, string>
 }
 
 export const api = createApi({
   reducerPath: 'api',
-  baseQuery: graphqlRequestBaseQuery({
-    url: 'https://rickandmortyapi.com/graphql',
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'https://rickandmortyapi.com/graphql',
   }),
   endpoints: ({ query }) => ({
     getSchema: query<IntrospectionQuery, void>({
       query: () => ({
-        document: getIntrospectionQuery(),
+        url: '/',
+        method: 'POST',
+        body: {
+          query: getIntrospectionQuery(),
+        },
       }),
+      transformResponse: ({ data }: { data: IntrospectionQuery }) => {
+        return data
+      },
     }),
     getData: query<Record<string, unknown>, GetData>({
-      query: ({ document, variables, headers }) => ({
-        document: gql`
-          ${document}
-        `,
-        variables,
+      query: ({ document, headers, variables }) => ({
+        url: '/',
+        method: 'POST',
+        body: {
+          query: gql`
+            ${document}
+          `,
+          variables,
+        },
         headers,
       }),
-      transformErrorResponse(_, meta: { response: { errors: Record<string, unknown> } }) {
-        return { errors: meta.response.errors }
-      },
     }),
   }),
 })
