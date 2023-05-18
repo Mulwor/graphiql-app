@@ -22,7 +22,7 @@ export const HomePage = () => {
                 'button-hover w-1/2 max-w-full rounded-full bg-seagreen p-1.5 text-white dark:bg-lightblue dark:text-prussianblue sm:w-full md:w-1/2'
               }
             >
-              <Link to={'/auth'}>{t('section.firstblock.button')}</Link>
+              <Link to={'/signup'}>{t('section.firstblock.button')}</Link>
             </Button>
           </div>
         </div>

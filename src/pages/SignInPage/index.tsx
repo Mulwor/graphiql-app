@@ -25,7 +25,7 @@ export const SignInPage = () => {
   function handleLogin({ email, password }: Inputs) {
     logInWithEmailAndPassword(email, password)
       .then(() => {
-        navigate('/')
+        navigate('/graphi')
       })
       .catch(() => {
         toast.error(t('wrongAll'))

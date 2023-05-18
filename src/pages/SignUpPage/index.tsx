@@ -27,7 +27,7 @@ export const SignUp = () => {
   function handleLogin({ name, email, password }: Inputs) {
     registerWithEmailAndPassword(name, email, password)
       .then(() => {
-        navigate('/')
+        navigate('/graphi')
       })
       .catch(() => {
         toast.error(t('wrongEmail'))
