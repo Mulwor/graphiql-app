@@ -15,7 +15,7 @@
     "firstblock": {
       "title": "GRAPHIQL",
       "heading": "Application for your queries",
-      "paragraph": "...", 
+      "paragraph": "To use the application, sign up or sign in to your account", 
       "button": "Get started"
     }
   },
@@ -29,5 +29,8 @@
   "requiredName": "Write your name",
   "requiredPassword": "Write your password",
   "messagePassword": "Password must have - minimum 8 symbols least one letter, one digit, one special character",
-  "patternPassword":  "Password should contain at least one uppercase letter, lowercase letter, digit, and special symbol"
+  "patternPassword":  "Password should contain at least one uppercase letter, lowercase letter, digit, and special symbol",
+  "wrongEmail": "🦄 Your email is already in use!",
+  "wrongAll": "🦄 You entered your email or password incorrectly. Please double check!"
+  
 }

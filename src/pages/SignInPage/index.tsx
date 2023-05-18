@@ -1,7 +1,10 @@
+import 'react-toastify/dist/ReactToastify.css'
+
 import { logInWithEmailAndPassword } from '@root/src/firebase.config'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify'
 
 import { ReactComponent as AuthImage } from '@/assets/auth.svg'
 
@@ -19,25 +22,25 @@ export const SignInPage = () => {
     formState: { errors },
   } = useForm<Inputs>()
 
-  function handleLogin(data: Inputs) {
-    logInWithEmailAndPassword(data.email, data.password)
+  function handleLogin({ email, password }: Inputs) {
+    logInWithEmailAndPassword(email, password)
       .then(() => {
         navigate('/')
       })
-      .catch((error) => {
-        console.log(error)
+      .catch(() => {
+        toast.error(t('wrongAll'))
       })
   }
 
   return (
     <>
-      <div className='flex h-full w-full max-w-7xl grow items-start justify-center gap-7 '>
-        <div className='flex h-full max-w-full shrink grow basis-0.5'>
+      <div className='mx-auto flex max-w-7xl shrink grow flex-col-reverse gap-7 sm:columns-2 sm:flex-row'>
+        <div className='mx-auto w-full max-w-md shrink grow lg:self-center'>
           <AuthImage />
         </div>
-        <div className='mt-10 flex w-full shrink grow basis-0.5 flex-col'>
-          <h2 className='text-4xl font-bold uppercase text-mainred'>GraphiQL</h2>
-          <div className='text-2xl'>{t('signIn')}</div>
+        <div className='mx-auto w-full max-w-lg px-5 sm:flex sm:flex-col sm:p-0 lg:mt-[6%]'>
+          <h2 className='text-4xl font-bold uppercase text-fuchsia'>GraphiQL</h2>
+          <div className='text-2xl'>Sign in</div>
 
           <div className='mt-10'>
             <div className='flex flex-col'>
@@ -57,7 +60,7 @@ export const SignInPage = () => {
                   type='email'
                   id='email'
                   placeholder='thisIsYourEmail@mail.com'
-                  className='bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-full rounded-lg border p-2.5 text-sm dark:text-white'
+                  className='placeholder-gray-400 block w-full rounded-lg border p-2.5 text-seagreen focus:border-seagreen focus:ring-seagreen'
                 />
 
                 <div style={{ height: 20 }}>
@@ -80,7 +83,7 @@ export const SignInPage = () => {
                   type='password'
                   id='confirm_password'
                   placeholder='**************'
-                  className='bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-5 block w-full rounded-lg border p-2.5 text-sm dark:text-white'
+                  className='placeholder-gray-400 block w-full rounded-lg border p-2.5 text-seagreen focus:border-seagreen focus:ring-seagreen'
                 />
 
                 <div style={{ height: 20 }}>
@@ -88,12 +91,25 @@ export const SignInPage = () => {
                     <p className='error'>{errors?.password?.message?.toString()}</p>
                   )}
 
-                  {errors.password?.type === 'matchPattern' && <p>`${t('patternPassword')}`</p>}
+                  {errors.password?.type === 'matchPattern' && <p>{t('patternPassword')}</p>}
                 </div>
 
-                <button className='button-hover mt-10 w-1/3 max-w-full justify-center rounded-full bg-mainblue p-3.5 text-white dark:bg-lightblue dark:text-darkblue'>
+                <button className='button-hover mt-10 w-full max-w-full justify-center rounded-full bg-seagreen p-1.5 text-white dark:bg-lightblue dark:text-prussianblue md:w-1/2'>
                   Sign in grapiQL
                 </button>
+
+                <ToastContainer
+                  position='top-center'
+                  autoClose={5000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme='light'
+                />
               </form>
             </div>
           </div>

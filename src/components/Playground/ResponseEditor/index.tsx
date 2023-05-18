@@ -10,7 +10,7 @@ type ResponseEditorProps = {
 export const ResponseEditor = memo(({ value }: ResponseEditorProps) => {
   return (
     <CodeMirror
-      className='h-full w-full border'
+      className='h-full w-full'
       height='100%'
       theme={materialLight}
       readOnly

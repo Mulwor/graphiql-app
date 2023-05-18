@@ -9,21 +9,21 @@ export const Footer = () => {
 
   return (
     <footer className='mt-4'>
-      <div className='items-center justify-between sm:flex'>
+      <div className='shrink-0 items-center justify-between px-5 sm:flex'>
         <ul className='flex items-center justify-center gap-x-1.5 self-center text-sm font-medium sm:justify-start'>
           <li>
             <Link to='https://github.com/Mulwor'>
-              <Github className='fill-mainblue hover:fill-hoverblue dark:fill-lightblue dark:hover:fill-white' />
+              <Github className='fill-seagreen transition-all hover:fill-prussianblue dark:fill-lightblue dark:hover:fill-white' />
             </Link>
           </li>
           <li>
             <Link to='https://github.com/sodapng'>
-              <Github className='fill-mainblue hover:fill-hoverblue dark:fill-lightblue dark:hover:fill-white' />
+              <Github className='fill-seagreen transition-all hover:fill-prussianblue dark:fill-lightblue dark:hover:fill-white' />
             </Link>
           </li>
           <li>
             <Link to='https://github.com/YuliDemins'>
-              <Github className='fill-mainblue hover:fill-hoverblue dark:fill-lightblue dark:hover:fill-white' />
+              <Github className='fill-seagreen transition-all hover:fill-prussianblue dark:fill-lightblue dark:hover:fill-white' />
             </Link>
           </li>
         </ul>

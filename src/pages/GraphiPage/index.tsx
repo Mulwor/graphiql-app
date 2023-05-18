@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { ImperativePanelHandle, Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels'
 import { toast, ToastContainer } from 'react-toastify'
 
+import { ReactComponent as Play } from '@/assets/play.svg'
 import {
   HeaderEditor,
   QueryEditor,
@@ -83,8 +84,11 @@ export const GraphiPage = () => {
 
   return (
     <Fragment>
-      <div className='grid h-full w-full grid-cols-2 gap-2'>
-        <PanelGroup direction='vertical'>
+      <div className='grid h-full w-full grid-cols-2 gap-7'>
+        <PanelGroup
+          direction='vertical'
+          className='relative space-y-1 rounded-lg shadow-xl'
+        >
           <Panel defaultSize={100}>
             <div className='h-full'>
               <QueryEditor
@@ -93,12 +97,15 @@ export const GraphiPage = () => {
               />
             </div>
           </Panel>
-          <PanelResizeHandle className='flex justify-between bg-mainblue p-2'>
+          <button>
+            <Play className='z-1000 absolute right-3 top-7 h-12 w-12 rounded-full bg-fuchsia fill-white p-2' />
+          </button>
+          <PanelResizeHandle className='flex justify-between bg-seagreen p-2'>
             <div className='space-x-2'>
               <span
                 onClick={expandPanel('variables')}
                 className={cx(
-                  'inline-block cursor-pointer rounded-lg px-3 py-1 text-white hover:bg-[#333]',
+                  'inline-block cursor-pointer px-3 py-1 text-white transition-all hover:text-prussianblue',
                 )}
               >
                 <div>{t('graph.firstValue')}</div>
@@ -106,7 +113,7 @@ export const GraphiPage = () => {
               <span
                 onClick={expandPanel('headers')}
                 className={cx(
-                  'inline-block cursor-pointer rounded-lg px-3 py-1 text-white hover:bg-[#333]',
+                  'inline-block cursor-pointer px-3 py-1 text-white transition-all hover:text-prussianblue',
                 )}
               >
                 <div>{t('graph.secondValue')}</div>
