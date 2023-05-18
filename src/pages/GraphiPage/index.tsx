@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next'
 import { ImperativePanelHandle, Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels'
 import { toast, ToastContainer } from 'react-toastify'
 
-import { ReactComponent as Play } from '@/assets/play.svg'
 import {
   HeaderEditor,
   QueryEditor,
@@ -14,7 +13,7 @@ import {
   values,
   VariableEditor,
 } from '@/components/Playground'
-import { ChevronDown, ChevronUp } from '@/icons'
+import { ChevronDown, ChevronUp, Play } from '@/icons'
 import { useGetSchemaQuery, useLazyGetDataQuery } from '@/store'
 
 type ActiveTab = 'variables' | 'headers'
@@ -89,17 +88,22 @@ export const GraphiPage = () => {
           direction='vertical'
           className='relative space-y-1 rounded-lg shadow-xl'
         >
-          <Panel defaultSize={100}>
-            <div className='h-full'>
+          <Panel
+            defaultSize={100}
+            className='flex space-x-2 px-2'
+          >
+            <div className='h-full flex-1'>
               <QueryEditor
                 schema={schema && buildClientSchema(schema)}
                 onKeyDown={handleKeyDown}
               />
             </div>
+            <div>
+              <button className='flex h-10 w-10 items-center justify-center rounded-xl bg-fuchsia p-2'>
+                <Play className='fill-white' />
+              </button>
+            </div>
           </Panel>
-          <button>
-            <Play className='z-1000 absolute right-3 top-7 h-12 w-12 rounded-full bg-fuchsia fill-white p-2' />
-          </button>
           <PanelResizeHandle className='flex justify-between bg-seagreen p-2'>
             <div className='space-x-2'>
               <span
