@@ -15,11 +15,6 @@ type VariableEditorProps = {
 }
 
 const extensions = [
-  materialLightInit({
-    settings: {
-      fontFamily: 'Fira Code',
-    },
-  }),
   langs.json(),
   Prec.high(
     keymap.of([
@@ -40,7 +35,12 @@ export const VariableEditor = memo(({ value, onKeyDown, className }: VariableEdi
     <CodeMirror
       className={cx('h-full w-full', className)}
       height='100%'
-      theme={materialLight}
+      theme={materialLightInit({
+        settings: {
+          fontFamily: 'Fira Code',
+          lineHighlight: '#FAFAFA',
+        },
+      })}
       value={value}
       onChange={handleChange}
       onKeyDown={onKeyDown}

@@ -10,11 +10,6 @@ import { memo } from 'react'
 import { values } from '@/components/Playground'
 
 const extensions = (schema?: GraphQLSchema) => [
-  materialLightInit({
-    settings: {
-      fontFamily: 'Fira Code',
-    },
-  }),
   graphql(schema),
   autocompletion({
     activateOnTyping: true,
@@ -46,9 +41,14 @@ const handleChange = (value: string) => {
 export const QueryEditor = memo(({ schema, onKeyDown }: QueryEditorProps) => {
   return (
     <CodeMirror
-      className='h-full w-full'
+      className='h-full'
       height='100%'
-      theme={materialLight}
+      theme={materialLightInit({
+        settings: {
+          fontFamily: 'Fira Code',
+          lineHighlight: '#FAFAFA',
+        },
+      })}
       onChange={handleChange}
       onKeyDown={onKeyDown}
       extensions={extensions(schema)}

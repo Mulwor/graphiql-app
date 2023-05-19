@@ -83,33 +83,34 @@ export const GraphiPage = () => {
 
   return (
     <Fragment>
-      <div className='grid h-full w-full grid-cols-2 gap-7'>
+      <div className='grid h-full w-full grid-cols-2 gap-7 px-3'>
         <PanelGroup
           direction='vertical'
-          className='relative space-y-1 rounded-lg shadow-xl'
+          className='relative ml-2 space-y-1 rounded-lg shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]'
         >
           <Panel
             defaultSize={100}
-            className='flex space-x-2 px-2'
+            className='mt-2 flex space-x-2 px-2'
           >
-            <div className='h-full flex-1'>
+            <div className='h-full w-full overflow-hidden'>
               <QueryEditor
                 schema={schema && buildClientSchema(schema)}
                 onKeyDown={handleKeyDown}
               />
             </div>
-            <div>
+            <div className='w-10'>
               <button className='flex h-10 w-10 items-center justify-center rounded-xl bg-fuchsia p-2'>
                 <Play className='fill-white' />
               </button>
             </div>
           </Panel>
-          <PanelResizeHandle className='flex justify-between bg-seagreen p-2'>
-            <div className='space-x-2'>
+          <PanelResizeHandle className='flex justify-between border-t-2 p-2'>
+            <div className='cursor-default space-x-2 transition-all'>
               <span
                 onClick={expandPanel('variables')}
                 className={cx(
-                  'inline-block cursor-pointer px-3 py-1 text-white transition-all hover:text-prussianblue',
+                  'inline-block cursor-pointer rounded-md px-3 py-1 text-deepsea hover:bg-slate-200',
+                  activeTab.value === 'variables' && 'bg-slate-200',
                 )}
               >
                 <div>{t('graph.firstValue')}</div>
@@ -117,14 +118,15 @@ export const GraphiPage = () => {
               <span
                 onClick={expandPanel('headers')}
                 className={cx(
-                  'inline-block cursor-pointer px-3 py-1 text-white transition-all hover:text-prussianblue',
+                  'inline-block cursor-pointer rounded-md px-3 py-1 text-deepsea hover:bg-slate-200',
+                  activeTab.value === 'headers' && 'bg-slate-200',
                 )}
               >
                 <div>{t('graph.secondValue')}</div>
               </span>
             </div>
             <span
-              className='flex cursor-pointer items-center justify-center text-white'
+              className='flex cursor-pointer items-center justify-center rounded-md px-3 py-1 text-deepsea hover:bg-slate-200'
               onClick={handleChevronClick}
             >
               {isCollapsed.value ? <ChevronUp /> : <ChevronDown />}
@@ -134,8 +136,9 @@ export const GraphiPage = () => {
             collapsible
             ref={panelRef}
             onCollapse={handleCollapse}
+            className='px-2'
           >
-            <div className='flex h-full flex-col gap-1'>
+            <div className='h-full pb-3'>
               <VariableEditor
                 onKeyDown={handleKeyDown}
                 className={cx(activeTab.value !== 'variables' && 'hidden')}

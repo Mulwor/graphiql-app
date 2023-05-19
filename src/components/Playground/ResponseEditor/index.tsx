@@ -12,17 +12,15 @@ export const ResponseEditor = memo(({ value }: ResponseEditorProps) => {
     <CodeMirror
       className='h-full w-full'
       height='100%'
-      theme={materialLight}
+      theme={materialLightInit({
+        settings: {
+          fontFamily: 'Fira Code',
+          lineHighlight: '#FAFAFA',
+        },
+      })}
       readOnly
       value={value}
-      extensions={[
-        materialLightInit({
-          settings: {
-            fontFamily: 'Fira Code',
-          },
-        }),
-        langs.json(),
-      ]}
+      extensions={[langs.json()]}
     />
   )
 })
