@@ -1,6 +1,6 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 
-import { Layout } from '@/components'
+import { Layout, ProtectedRoutes } from '@/components'
 import { GraphiPage, HomePage, NotFound, SignInPage, SignUpPage } from '@/pages'
 
 const router = createBrowserRouter([
@@ -9,7 +9,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: '/',
+        index: true,
         element: <HomePage />,
       },
       {
@@ -21,12 +21,16 @@ const router = createBrowserRouter([
         element: <SignUpPage />,
       },
       {
-        path: 'graphi',
-        element: <GraphiPage />,
+        path: 'editer',
+        element: (
+          <ProtectedRoutes>
+            <GraphiPage />
+          </ProtectedRoutes>
+        ),
       },
       {
         path: '*',
-        element: <NotFound />,
+        element: <Navigate to={'/404'} />,
       },
       {
         path: '404',

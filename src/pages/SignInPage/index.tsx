@@ -27,7 +27,7 @@ export const SignInPage = () => {
   function handleLogin({ email, password }: Inputs) {
     logInWithEmailAndPassword(email, password)
       .then(() => {
-        navigate('/graphi')
+        navigate('/editer')
       })
       .catch(() => {
         toast.error(t('wrongAll'))
@@ -38,10 +38,10 @@ export const SignInPage = () => {
 
   useEffect(() => {
     if (user) {
-      navigate('/')
+      navigate('/editer')
     }
   }, [navigate, user])
-  console.log('sign in')
+
   return (
     <>
       <div className='mx-auto flex max-w-7xl shrink grow flex-col-reverse gap-7 sm:columns-2 sm:flex-row'>

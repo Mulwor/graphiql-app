@@ -19,7 +19,7 @@ type Inputs = {
 export const SignUpPage = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  console.log('sign up')
+
   const {
     register,
     handleSubmit,
@@ -29,21 +29,19 @@ export const SignUpPage = () => {
   function handleLogin({ name, email, password }: Inputs) {
     registerWithEmailAndPassword(name, email, password)
       .then(() => {
-        navigate('/graphi')
+        navigate('/editer')
       })
       .catch(() => {
         toast.error(t('wrongEmail'))
       })
   }
-
   const [user] = useAuthState(auth)
 
   useEffect(() => {
     if (user) {
-      navigate('/')
+      navigate('/editer')
     }
   }, [navigate, user])
-
   return (
     <div className='mx-auto flex max-w-7xl shrink grow flex-col-reverse gap-7 sm:columns-2 sm:flex-row'>
       <div className='mx-auto w-full max-w-md shrink grow lg:self-center'>

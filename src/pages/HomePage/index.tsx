@@ -1,3 +1,5 @@
+import { auth } from '@root/src/firebase.config'
+import { useAuthState } from 'react-firebase-hooks/auth'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
@@ -6,7 +8,8 @@ import { Button } from '@/components'
 
 export const HomePage = () => {
   const { t } = useTranslation()
-console.log('home')
+  const [user] = useAuthState(auth)
+
   return (
     <>
       <div className='mx-auto max-w-7xl shrink grow gap-7 sm:flex sm:columns-2'>
@@ -22,7 +25,11 @@ console.log('home')
                 'button-hover w-1/2 max-w-full rounded-full bg-seagreen p-1.5 text-white dark:bg-lightblue dark:text-prussianblue sm:w-full md:w-1/2'
               }
             >
-              <Link to={'/signup'}>{t('section.firstblock.button')}</Link>
+              {user ? (
+                <Link to={'/editer'}>{t('section.firstblock.button')}</Link>
+              ) : (
+                <Link to={'/signup'}>{t('section.firstblock.button')}</Link>
+              )}
             </Button>
           </div>
         </div>
