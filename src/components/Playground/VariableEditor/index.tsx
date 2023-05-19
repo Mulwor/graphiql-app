@@ -1,7 +1,7 @@
 import { Prec } from '@codemirror/state'
 import { keymap } from '@codemirror/view'
 import { langs } from '@uiw/codemirror-extensions-langs'
-import { materialLight, materialLightInit } from '@uiw/codemirror-themes-all'
+import { materialLightInit } from '@uiw/codemirror-themes-all'
 import CodeMirror from '@uiw/react-codemirror'
 import cx from 'clsx'
 import { memo } from 'react'

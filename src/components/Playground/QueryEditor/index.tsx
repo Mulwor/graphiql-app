@@ -1,7 +1,7 @@
 import { acceptCompletion, autocompletion } from '@codemirror/autocomplete'
 import { Prec } from '@codemirror/state'
 import { keymap } from '@codemirror/view'
-import { materialLight, materialLightInit } from '@uiw/codemirror-themes-all'
+import { materialLightInit } from '@uiw/codemirror-themes-all'
 import CodeMirror from '@uiw/react-codemirror'
 import { graphql } from 'cm6-graphql'
 import { GraphQLSchema } from 'graphql'

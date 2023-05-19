@@ -1,5 +1,5 @@
 import { langs } from '@uiw/codemirror-extensions-langs'
-import { materialLight, materialLightInit } from '@uiw/codemirror-themes-all'
+import { materialLightInit } from '@uiw/codemirror-themes-all'
 import CodeMirror from '@uiw/react-codemirror'
 import { memo } from 'react'
 
