@@ -1,7 +1,7 @@
 import { Prec } from '@codemirror/state'
 import { keymap } from '@codemirror/view'
 import { langs } from '@uiw/codemirror-extensions-langs'
-import { materialLight, materialLightInit } from '@uiw/codemirror-themes-all'
+import { materialLightInit } from '@uiw/codemirror-themes-all'
 import CodeMirror from '@uiw/react-codemirror'
 import cx from 'clsx'
 import { memo } from 'react'
@@ -15,7 +15,6 @@ type HeaderEditorProps = {
 }
 
 const extensions = [
-  materialLightInit(),
   langs.json(),
   Prec.high(
     keymap.of([
@@ -36,7 +35,12 @@ export const HeaderEditor = memo(({ value, onKeyDown, className }: HeaderEditorP
     <CodeMirror
       className={cx('h-full w-full', className)}
       height='100%'
-      theme={materialLight}
+      theme={materialLightInit({
+        settings: {
+          fontFamily: 'Fira Code',
+          lineHighlight: '#FAFAFA',
+        },
+      })}
       value={value}
       onChange={handleChange}
       onKeyDown={onKeyDown}

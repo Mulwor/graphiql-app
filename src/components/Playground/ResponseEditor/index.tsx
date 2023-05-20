@@ -1,5 +1,5 @@
 import { langs } from '@uiw/codemirror-extensions-langs'
-import { materialLight, materialLightInit } from '@uiw/codemirror-themes-all'
+import { materialLightInit } from '@uiw/codemirror-themes-all'
 import CodeMirror from '@uiw/react-codemirror'
 import { memo } from 'react'
 
@@ -12,10 +12,15 @@ export const ResponseEditor = memo(({ value }: ResponseEditorProps) => {
     <CodeMirror
       className='h-full w-full'
       height='100%'
-      theme={materialLight}
+      theme={materialLightInit({
+        settings: {
+          fontFamily: 'Fira Code',
+          lineHighlight: '#FAFAFA',
+        },
+      })}
       readOnly
       value={value}
-      extensions={[materialLightInit(), langs.json()]}
+      extensions={[langs.json()]}
     />
   )
 })

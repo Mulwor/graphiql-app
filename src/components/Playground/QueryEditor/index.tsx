@@ -1,7 +1,7 @@
 import { acceptCompletion, autocompletion } from '@codemirror/autocomplete'
 import { Prec } from '@codemirror/state'
 import { keymap } from '@codemirror/view'
-import { materialLight, materialLightInit } from '@uiw/codemirror-themes-all'
+import { materialLightInit } from '@uiw/codemirror-themes-all'
 import CodeMirror from '@uiw/react-codemirror'
 import { graphql } from 'cm6-graphql'
 import { GraphQLSchema } from 'graphql'
@@ -10,7 +10,6 @@ import { memo } from 'react'
 import { values } from '@/components/Playground'
 
 const extensions = (schema?: GraphQLSchema) => [
-  materialLightInit(),
   graphql(schema),
   autocompletion({
     activateOnTyping: true,
@@ -42,9 +41,14 @@ const handleChange = (value: string) => {
 export const QueryEditor = memo(({ schema, onKeyDown }: QueryEditorProps) => {
   return (
     <CodeMirror
-      className='h-full w-full'
+      className='h-full'
       height='100%'
-      theme={materialLight}
+      theme={materialLightInit({
+        settings: {
+          fontFamily: 'Fira Code',
+          lineHighlight: '#FAFAFA',
+        },
+      })}
       onChange={handleChange}
       onKeyDown={onKeyDown}
       extensions={extensions(schema)}
