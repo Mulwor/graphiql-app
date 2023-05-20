@@ -48,10 +48,10 @@ export const Modal = ({ onClick }: ModalType) => {
   return (
     <>
       <div
-        className='z-8888 fixed left-0 top-0 h-screen w-screen bg-opacitycolor backdrop-blur'
+        className='fixed left-0 top-0 h-screen w-screen bg-opacitycolor backdrop-blur'
         onClick={onClick}
       ></div>
-      <div className='z-9999 fixed left-0 top-0 h-screen w-80 overflow-y-auto bg-whitesmoke p-4 shadow-2xl transition-all dark:bg-darknavy dark:text-lightblue'>
+      <div className='fixed left-0 top-0 h-screen w-80 overflow-y-auto bg-whitesmoke p-4 shadow-2xl transition-all dark:bg-darknavy dark:text-lightblue'>
         <h5 className='font-bold uppercase'>Menu</h5>
         <button
           type='button'
