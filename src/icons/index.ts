@@ -1,3 +1,3 @@
-export * from '@/icons/chevronDown'
-export * from '@/icons/chevronUp'
+export * from '@/icons/ChevronDown'
+export * from '@/icons/ChevronUp'
 export * from '@/icons/Play'
