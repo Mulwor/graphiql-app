@@ -1,7 +1,7 @@
 import { signal } from '@preact/signals-react'
 import cx from 'clsx'
 import { buildClientSchema } from 'graphql'
-import { Fragment, useCallback, useRef } from 'react'
+import { KeyboardEvent, useCallback, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ImperativePanelHandle, Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels'
 import { toast, ToastContainer } from 'react-toastify'
@@ -30,7 +30,7 @@ const handleCollapse = (collapsed: boolean) => {
 
 export const GraphiPage = () => {
   const { data: schema, isFetching } = useGetSchemaQuery()
-  const [request, { data, error, isError }] = useLazyGetDataQuery()
+  const [request, { data, error, isError, isFetching: isLoading }] = useLazyGetDataQuery()
   const { t } = useTranslation()
 
   const panelRef = useRef<ImperativePanelHandle>(null)
@@ -51,38 +51,41 @@ export const GraphiPage = () => {
     isCollapsed.value ? panelRef.current?.expand() : panelRef.current?.collapse()
   }
 
-  const handleKeyDown = useCallback(
-    (event: React.KeyboardEvent<HTMLDivElement>) => {
-      if (event.ctrlKey && event.key === 'Enter') {
-        try {
-          const variables = values.value.variables
-            ? (JSON.parse(values.value.variables) as Record<string, unknown>)
-            : undefined
-          const headers = values.value.headers
-            ? (JSON.parse(values.value.headers) as Record<string, string>)
-            : undefined
+  const handleClick = useCallback(() => {
+    try {
+      const { variables, headers, document } = values.value
+      const parsedVariables = variables
+        ? (JSON.parse(variables) as Record<string, unknown>)
+        : undefined
+      const parsedHeaders = headers ? (JSON.parse(headers) as Record<string, string>) : undefined
 
-          void request({
-            document: values.value.document,
-            variables,
-            headers,
-          })
-        } catch (error) {
-          if (error instanceof Error) {
-            toast.error(`🦄 ${error.message}`, {
-              theme: 'light',
-            })
-          }
-        }
+      void request({
+        document,
+        variables: parsedVariables,
+        headers: parsedHeaders,
+      })
+    } catch (error) {
+      if (error instanceof Error) {
+        toast.error(`🦄 ${error.message}`, {
+          theme: 'light',
+        })
+      }
+    }
+  }, [request])
+
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.ctrlKey && event.key === 'Enter') {
+        handleClick()
       }
     },
-    [request],
+    [handleClick],
   )
 
   if (isFetching) return <div>isFetching</div>
 
   return (
-    <Fragment>
+    <>
       <div className='grid h-full w-full grid-cols-2 gap-7 px-3'>
         <PanelGroup
           direction='vertical'
@@ -99,18 +102,23 @@ export const GraphiPage = () => {
               />
             </div>
             <div className='w-10'>
-              <button className='flex h-10 w-10 items-center justify-center rounded-xl bg-fuchsia p-2'>
+              <button
+                onClick={handleClick}
+                className='flex h-10 w-10 items-center justify-center rounded-xl bg-fuchsia p-2'
+              >
                 <Play className='fill-white' />
               </button>
             </div>
           </Panel>
-          <PanelResizeHandle className='flex justify-between border-t-2 p-2'>
-            <div className='cursor-default space-x-2 transition-all'>
+          <PanelResizeHandle
+            className={'flex justify-between border-t-2 p-2 dark:border-t-[rgba(0,_0,_0,_0.1)]'}
+          >
+            <div className='cursor-default space-x-2 text-deepsea transition-all dark:text-lightblue'>
               <span
                 onClick={expandPanel('variables')}
                 className={cx(
-                  'inline-block cursor-pointer rounded-md px-3 py-1 text-deepsea hover:bg-slate-200',
-                  activeTab.value === 'variables' && 'bg-slate-200',
+                  'inline-block cursor-pointer rounded-md px-3 py-1 hover:bg-slate-200 dark:hover:bg-[rgba(0,_0,_0,_0.1)]',
+                  activeTab.value === 'variables' && 'bg-slate-200 dark:bg-[rgba(0,_0,_0,_0.1)]',
                 )}
               >
                 <div>{t('graph.firstValue')}</div>
@@ -118,15 +126,15 @@ export const GraphiPage = () => {
               <span
                 onClick={expandPanel('headers')}
                 className={cx(
-                  'inline-block cursor-pointer rounded-md px-3 py-1 text-deepsea hover:bg-slate-200',
-                  activeTab.value === 'headers' && 'bg-slate-200',
+                  'inline-block cursor-pointer rounded-md px-3 py-1 hover:bg-slate-200 dark:hover:bg-[rgba(0,_0,_0,_0.1)]',
+                  activeTab.value === 'headers' && 'bg-slate-200 dark:bg-[rgba(0,_0,_0,_0.1)]',
                 )}
               >
                 <div>{t('graph.secondValue')}</div>
               </span>
             </div>
             <span
-              className='flex cursor-pointer items-center justify-center rounded-md px-3 py-1 text-deepsea hover:bg-slate-200'
+              className='flex cursor-pointer items-center justify-center rounded-md px-3 py-1 hover:bg-slate-200 dark:hover:bg-[rgba(0,_0,_0,_0.1)]'
               onClick={handleChevronClick}
             >
               {isCollapsed.value ? <ChevronUp /> : <ChevronDown />}
@@ -150,11 +158,17 @@ export const GraphiPage = () => {
             </div>
           </Panel>
         </PanelGroup>
-        <div className='w-full'>
-          <ResponseEditor value={JSON.stringify(isError ? error : data, null, 2)} />
+        <div className='relative h-full w-full p-2'>
+          {isLoading ? (
+            <span className='absolute left-1/2 top-1/2 inline-block h-10 w-10 -translate-x-1/2 -translate-y-1/2 '>
+              <span className='inline-block h-full w-full animate-spin rounded-full border-4 border-fuchsia border-t-[rgba(0,_0,_0,_0.1)]' />
+            </span>
+          ) : (
+            <ResponseEditor value={JSON.stringify(isError ? error : data, null, 2)} />
+          )}
         </div>
       </div>
       <ToastContainer />
-    </Fragment>
+    </>
   )
 }
