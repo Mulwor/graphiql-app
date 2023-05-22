@@ -113,7 +113,7 @@ export const GraphiPage = () => {
                   activeTab.value === 'variables' && 'bg-slate-200',
                 )}
               >
-                <div>{t('graph.firstValue')}</div>
+                <div>{t('variables')}</div>
               </span>
               <span
                 onClick={expandPanel('headers')}
@@ -122,7 +122,7 @@ export const GraphiPage = () => {
                   activeTab.value === 'headers' && 'bg-slate-200',
                 )}
               >
-                <div>{t('graph.secondValue')}</div>
+                <div>{t('headers')}</div>
               </span>
             </div>
             <span

@@ -13,7 +13,7 @@ export const Nav = () => {
             : 'mr-5 border-b-2 border-whitesmoke pb-2.5 transition-all hover:border-b-2 hover:border-darknavy hover:text-darknavy dark:border-prussianblue dark:hover:border-white dark:hover:text-white'
         }
       >
-        <div>{t('header.firstLink')}</div>
+        <div>{t('home')}</div>
       </NavLink>
 
       <NavLink
@@ -24,7 +24,7 @@ export const Nav = () => {
             : 'border-b-2 border-whitesmoke pb-2.5 transition-all hover:border-b-2 hover:border-darknavy hover:text-darknavy dark:border-prussianblue dark:hover:border-white dark:hover:text-white'
         }
       >
-        <div>{t('header.secondLink')}</div>
+        <div>{t('graphi')}</div>
       </NavLink>
     </nav>
   )
