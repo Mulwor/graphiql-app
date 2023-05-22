@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import { Layout, ProtectedRoutes } from '@/components'
 import { GraphiPage, HomePage, NotFound, SignInPage, SignUpPage } from '@/pages'
