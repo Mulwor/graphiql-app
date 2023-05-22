@@ -1,3 +1,5 @@
+import { auth } from '@root/src/firebase.config'
+import { useAuthState } from 'react-firebase-hooks/auth'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
@@ -6,6 +8,7 @@ import { Button } from '@/components'
 
 export const HomePage = () => {
   const { t } = useTranslation()
+  const [user] = useAuthState(auth)
 
   return (
     <>
@@ -20,7 +23,11 @@ export const HomePage = () => {
                 'button-hover w-1/2 max-w-full rounded-full bg-seagreen p-1.5 text-white dark:bg-lightblue dark:text-prussianblue sm:w-full md:w-1/2'
               }
             >
-              <Link to={'/auth'}>{t('button')}</Link>
+              {user ? (
+                <Link to={'/editor'}>Get started</Link>
+              ) : (
+                <Link to={'/signup'}>Get started</Link>
+              )}
             </Button>
           </div>
         </div>

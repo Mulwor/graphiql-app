@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import { Layout } from '@/components'
-import { GraphiPage, HomePage, NotFound, SignInPage, SignUp } from '@/pages'
+import { Layout, ProtectedRoutes } from '@/components'
+import { GraphiPage, HomePage, NotFound, SignInPage, SignUpPage } from '@/pages'
 
 const router = createBrowserRouter([
   {
@@ -9,23 +9,27 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: '/',
+        index: true,
         element: <HomePage />,
       },
       {
-        path: '/signin',
+        path: 'signin',
         element: <SignInPage />,
       },
       {
-        path: '/signup',
-        element: <SignUp />,
+        path: 'signup',
+        element: <SignUpPage />,
       },
       {
-        path: '/graphi',
-        element: <GraphiPage />,
+        path: 'editor',
+        element: (
+          <ProtectedRoutes>
+            <GraphiPage />
+          </ProtectedRoutes>
+        ),
       },
       {
-        path: '/*',
+        path: '*',
         element: <NotFound />,
       },
     ],

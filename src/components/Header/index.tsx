@@ -1,23 +1,21 @@
 import { auth, logout } from '@root/src/firebase.config'
 import { changeLanguage } from '@root/src/i18n'
-import { settingActions, useActionCreators, useAppSelector } from '@root/src/store'
+import { RootState, settingActions, useActionCreators, useAppSelector } from '@root/src/store'
 import { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useTranslation } from 'react-i18next'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
-import { Lang, Nav, Toggle } from '@/components'
-
-import { Burger } from '../Burger'
+import { Burger, Lang, Logo, Toggle } from '@/components'
 
 export const Header = () => {
-  const [user, loading] = useAuthState(auth)
-  const navigate = useNavigate()
+  const [user] = useAuthState(auth)
+
   const { t } = useTranslation()
 
   const [scroll, setScroll] = useState(0)
 
-  const { isDark, isRu } = useAppSelector((state) => state.setting)
+  const { isDark, isRu } = useAppSelector((state: RootState) => state.setting)
   const actions = useActionCreators(settingActions)
 
   useEffect(() => {
@@ -54,21 +52,20 @@ export const Header = () => {
     }
   }
 
-  useEffect(() => {
-    if (loading) return
-    if (!user) return navigate('/')
-  }, [user, loading, navigate])
-
   return (
     <header
       className={
         scroll
-          ? 'dark: sticky top-0 mx-auto mb-5 flex w-full items-baseline justify-between bg-white px-5 pb-2.5 dark:bg-darknavy'
-          : 'sticky top-0 mx-auto mb-5 flex w-full items-baseline justify-between px-5'
+          ? 'dark: sticky top-0 z-20 mx-auto mb-5 flex w-full items-baseline justify-between bg-white px-5 pb-2.5 dark:bg-darknavy'
+          : 'sticky top-0 z-20 mx-auto mb-5 flex w-full items-center justify-between px-5'
       }
     >
       <Burger />
-      <Nav />
+      <nav className='hidden md:flex'>
+        <NavLink to='/'>
+          <Logo />
+        </NavLink>
+      </nav>
 
       <div className='hidden md:flex'>
         <Toggle onClick={handlerDark} />
@@ -87,10 +84,10 @@ export const Header = () => {
                 <div>{t('logout')}</div>
               </button>
               <NavLink
-                to={'/'}
+                to={'/editor'}
                 className='login-button button-hover ml-5 bg-seagreen text-center text-white dark:bg-lightblue dark:text-prussianblue'
               >
-                <div>{t('home')}</div>
+                <div>GraphiQL</div>
               </NavLink>
             </div>
           </div>

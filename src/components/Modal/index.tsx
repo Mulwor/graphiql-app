@@ -48,10 +48,10 @@ export const Modal = ({ onClick }: ModalType) => {
   return (
     <>
       <div
-        className='fixed left-0 top-0 z-40 h-screen w-screen bg-opacitycolor backdrop-blur'
+        className='fixed left-0 top-0 h-screen w-screen bg-opacitycolor backdrop-blur'
         onClick={onClick}
       ></div>
-      <div className='fixed left-0 top-0 z-40 h-screen w-80 overflow-y-auto bg-whitesmoke p-4 shadow-2xl transition-all dark:bg-darknavy dark:text-lightblue'>
+      <div className='fixed left-0 top-0 h-screen w-80 overflow-y-auto bg-whitesmoke p-4 shadow-2xl transition-all dark:bg-darknavy dark:text-lightblue'>
         <h5 className='font-bold uppercase'>Menu</h5>
         <button
           type='button'
@@ -70,24 +70,17 @@ export const Modal = ({ onClick }: ModalType) => {
             <span className='ml-3'>{t('home')}</span>
           </NavLink>
 
-          <NavLink
-            to={'/graphi'}
-            className='flex items-center rounded-lg p-2.5 hover:text-prussianblue dark:hover:text-white'
-            onClick={onClick}
-          >
-            <GraphiIcon className='hover-svg h-6 w-6 fill-seagreen' />
-            <span className='ml-3'>{t('graphi')}</span>
-          </NavLink>
-
           {user ? (
             <div className='dashboard'>
               <div className='flex flex-col items-center'>
-                {/* <NavLink
-                  to={'/'}
-                  className='login-button button-hover bg-mainblue dark:text-darkblue ml-2 text-center text-white dark:bg-lightblue'
+                <NavLink
+                  to={'/editor'}
+                  className='flex items-center rounded-lg p-2.5 hover:text-prussianblue dark:hover:text-white'
+                  onClick={onClick}
                 >
-                  {t('header.firstLink')}
-                </NavLink> */}
+                  <GraphiIcon className='hover-svg h-6 w-6 fill-seagreen' />
+                  <span className='ml-3'>{t('header.secondLink')}</span>
+                </NavLink>
                 <div className='my-6'>{user.email}</div>
                 <button
                   className='button-hover w-1/2 max-w-full rounded-full bg-seagreen p-1.5 text-white dark:bg-lightblue dark:text-prussianblue'

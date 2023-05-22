@@ -1,6 +1,8 @@
 import 'react-toastify/dist/ReactToastify.css'
 
-import { logInWithEmailAndPassword } from '@root/src/firebase.config'
+import { auth, logInWithEmailAndPassword } from '@root/src/firebase.config'
+import { useEffect } from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
@@ -25,12 +27,20 @@ export const SignInPage = () => {
   function handleLogin({ email, password }: Inputs) {
     logInWithEmailAndPassword(email, password)
       .then(() => {
-        navigate('/')
+        navigate('/editor')
       })
       .catch(() => {
         toast.error(t('wrongAll'))
       })
   }
+
+  const [user] = useAuthState(auth)
+
+  useEffect(() => {
+    if (user) {
+      navigate('/editor')
+    }
+  }, [navigate, user])
 
   return (
     <>
