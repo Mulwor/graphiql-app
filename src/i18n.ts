@@ -9,14 +9,11 @@ export const i18next = i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'en',
-    debug: true,
     detection: {
-      order: ['queryString', 'cookies'],
-      caches: ['cookie'],
+      order: ['localStorage'],
+      caches: ['localStorage'],
     },
     interpolation: {
       escapeValue: false,
     },
   })
-
-export const changeLanguage = (language: 'ru' | 'en') => i18n.changeLanguage(language)
