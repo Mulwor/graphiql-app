@@ -74,7 +74,7 @@ export const Modal = ({ onClick }: ModalType) => {
             <div className='dashboard'>
               <div className='flex flex-col items-center'>
                 <NavLink
-                  to={'/editer'}
+                  to={'/editor'}
                   className='flex items-center rounded-lg p-2.5 hover:text-prussianblue dark:hover:text-white'
                   onClick={onClick}
                 >

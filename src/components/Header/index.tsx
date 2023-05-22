@@ -84,7 +84,7 @@ export const Header = () => {
                 <div>{t('logout')}</div>
               </button>
               <NavLink
-                to={'/editer'}
+                to={'/editor'}
                 className='login-button button-hover ml-5 bg-seagreen text-center text-white dark:bg-lightblue dark:text-prussianblue'
               >
                 <div>GraphiQL</div>

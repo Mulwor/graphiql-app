@@ -29,7 +29,7 @@ export const SignUpPage = () => {
   function handleLogin({ name, email, password }: Inputs) {
     registerWithEmailAndPassword(name, email, password)
       .then(() => {
-        navigate('/editer')
+        navigate('/editor')
       })
       .catch(() => {
         toast.error(t('wrongEmail'))
@@ -39,7 +39,7 @@ export const SignUpPage = () => {
 
   useEffect(() => {
     if (user) {
-      navigate('/editer')
+      navigate('/editor')
     }
   }, [navigate, user])
   return (

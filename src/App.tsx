@@ -21,7 +21,7 @@ const router = createBrowserRouter([
         element: <SignUpPage />,
       },
       {
-        path: 'editer',
+        path: 'editor',
         element: (
           <ProtectedRoutes>
             <GraphiPage />
@@ -30,10 +30,6 @@ const router = createBrowserRouter([
       },
       {
         path: '*',
-        element: <Navigate to={'/404'} />,
-      },
-      {
-        path: '404',
         element: <NotFound />,
       },
     ],

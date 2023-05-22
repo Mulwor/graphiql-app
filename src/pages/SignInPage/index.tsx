@@ -27,7 +27,7 @@ export const SignInPage = () => {
   function handleLogin({ email, password }: Inputs) {
     logInWithEmailAndPassword(email, password)
       .then(() => {
-        navigate('/editer')
+        navigate('/editor')
       })
       .catch(() => {
         toast.error(t('wrongAll'))
@@ -38,7 +38,7 @@ export const SignInPage = () => {
 
   useEffect(() => {
     if (user) {
-      navigate('/editer')
+      navigate('/editor')
     }
   }, [navigate, user])
 

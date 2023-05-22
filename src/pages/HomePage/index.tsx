@@ -24,7 +24,7 @@ export const HomePage = () => {
               }
             >
               {user ? (
-                <Link to={'/editer'}>Get started</Link>
+                <Link to={'/editor'}>Get started</Link>
               ) : (
                 <Link to={'/signup'}>Get started</Link>
               )}
