@@ -38,7 +38,7 @@ export const Footer = () => {
         </Link>
         <div className='justify-center text-center text-sm sm:flex'>
           © 2023 <Link to='https://github.com/Mulwor/graphiql-app'>QraphiQL</Link>
-          <div>{t('footer.rights')}</div>
+          <div>{t('rights')}</div>
         </div>
       </div>
     </footer>

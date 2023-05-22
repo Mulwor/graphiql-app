@@ -82,7 +82,6 @@ export const SignUp = () => {
               </div>
 
               <input
-                defaultValue='89095927614'
                 {...register('password', {
                   required: `${t('requiredPassword')}`,
                   minLength: {
