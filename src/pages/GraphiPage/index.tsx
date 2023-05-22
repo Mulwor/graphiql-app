@@ -1,12 +1,11 @@
 import { signal } from '@preact/signals-react'
 import cx from 'clsx'
 import { buildClientSchema } from 'graphql'
-import { Fragment, useCallback } from 'react'
+import { KeyboardEvent, useCallback, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels'
+import { ImperativePanelHandle, Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels'
 import { toast, ToastContainer } from 'react-toastify'
 
-import { ReactComponent as Play } from '@/assets/play.svg'
 import {
   HeaderEditor,
   QueryEditor,
@@ -14,86 +13,140 @@ import {
   values,
   VariableEditor,
 } from '@/components/Playground'
+import { ChevronDown, ChevronUp, Play } from '@/icons'
 import { useGetSchemaQuery, useLazyGetDataQuery } from '@/store'
 
-const activeTab = signal<'variables' | 'headers' | null>(null)
+type ActiveTab = 'variables' | 'headers'
+const activeTab = signal<ActiveTab | null>(null)
+const isCollapsed = signal(true)
+
+const handleCollapse = (collapsed: boolean) => {
+  if (!activeTab.value) {
+    activeTab.value = 'variables'
+  }
+
+  isCollapsed.value = collapsed
+}
 
 export const GraphiPage = () => {
   const { data: schema, isFetching } = useGetSchemaQuery()
-  const [request, { data, error, isError }] = useLazyGetDataQuery()
+  const [request, { data, error, isError, isFetching: isLoading }] = useLazyGetDataQuery()
   const { t } = useTranslation()
 
-  const handleKeyDown = useCallback(
-    (event: React.KeyboardEvent<HTMLDivElement>) => {
-      if (event.ctrlKey && event.key === 'Enter') {
-        try {
-          const variables = values.value.variables
-            ? (JSON.parse(values.value.variables) as Record<string, unknown>)
-            : undefined
-          const headers = values.value.headers
-            ? (JSON.parse(values.value.headers) as Record<string, string>)
-            : undefined
+  const panelRef = useRef<ImperativePanelHandle>(null)
 
-          void request({
-            document: values.value.document,
-            variables,
-            headers,
-          })
-        } catch (error) {
-          console.dir(error)
-          if (error instanceof Error) {
-            toast.error(`🦄 ${error.message}`, {
-              theme: 'light',
-            })
-          }
-        }
+  const expandPanel = (value: ActiveTab) => () => {
+    if (value) {
+      activeTab.value = value
+    }
+
+    panelRef.current?.expand()
+  }
+
+  const handleChevronClick = () => {
+    if (!activeTab.value) {
+      activeTab.value = 'variables'
+    }
+
+    isCollapsed.value ? panelRef.current?.expand() : panelRef.current?.collapse()
+  }
+
+  const handleClick = useCallback(() => {
+    try {
+      const { variables, headers, document } = values.value
+      const parsedVariables = variables
+        ? (JSON.parse(variables) as Record<string, unknown>)
+        : undefined
+      const parsedHeaders = headers ? (JSON.parse(headers) as Record<string, string>) : undefined
+
+      void request({
+        document,
+        variables: parsedVariables,
+        headers: parsedHeaders,
+      })
+    } catch (error) {
+      if (error instanceof Error) {
+        toast.error(`🦄 ${error.message}`, {
+          theme: 'light',
+        })
+      }
+    }
+  }, [request])
+
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.ctrlKey && event.key === 'Enter') {
+        handleClick()
       }
     },
-    [request],
+    [handleClick],
   )
 
   if (isFetching) return <div>isFetching</div>
 
   return (
-    <Fragment>
-      <div className='grid h-full w-full grid-cols-2 gap-7'>
+    <>
+      <div className='grid h-full w-full grid-cols-2 gap-7 px-3'>
         <PanelGroup
           direction='vertical'
-          className='relative space-y-1 rounded-lg shadow-xl'
+          className='relative ml-2 space-y-1 rounded-lg shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]'
         >
-          <Panel defaultSize={50}>
-            <div className='h-full'>
+          <Panel
+            defaultSize={100}
+            className='mt-2 flex space-x-2 px-2'
+          >
+            <div className='h-full w-full overflow-hidden'>
               <QueryEditor
                 schema={schema && buildClientSchema(schema)}
                 onKeyDown={handleKeyDown}
               />
             </div>
+            <div className='w-10'>
+              <button
+                onClick={handleClick}
+                className='flex h-10 w-10 items-center justify-center rounded-xl bg-fuchsia p-2'
+              >
+                <Play className='fill-white' />
+              </button>
+            </div>
           </Panel>
-          <button>
-            <Play className='z-1000 absolute right-3 top-7 h-12 w-12 rounded-full bg-fuchsia fill-white p-2' />
-          </button>
-          <PanelResizeHandle className='bg-seagreen p-2'>
-            <div className='space-x-2'>
+          <PanelResizeHandle
+            className={'flex justify-between border-t-2 p-2 dark:border-t-[rgba(0,_0,_0,_0.1)]'}
+          >
+            <div className='cursor-default space-x-2 text-deepsea transition-all dark:text-lightblue'>
               <span
-                onClick={() => (activeTab.value = 'variables')}
+                onClick={expandPanel('variables')}
                 className={cx(
-                  'inline-block cursor-pointer px-3 py-1 text-white transition-all hover:text-prussianblue',
+                  'inline-block cursor-pointer rounded-md px-3 py-1 hover:bg-slate-200 dark:hover:bg-[rgba(0,_0,_0,_0.1)]',
+                  activeTab.value === 'variables' && 'bg-slate-200 dark:bg-[rgba(0,_0,_0,_0.1)]',
                 )}
               >
-                <div>{t('graph.firstValue')}</div>
+                <div>{t('variables')}</div>
               </span>
               <span
-                onClick={() => (activeTab.value = 'headers')}
+                onClick={expandPanel('headers')}
                 className={cx(
-                  'inline-block cursor-pointer px-3 py-1 text-white transition-all hover:text-prussianblue',
+                  'inline-block cursor-pointer rounded-md px-3 py-1 hover:bg-slate-200 dark:hover:bg-[rgba(0,_0,_0,_0.1)]',
+                  activeTab.value === 'headers' && 'bg-slate-200 dark:bg-[rgba(0,_0,_0,_0.1)]',
                 )}
               >
-                <div>{t('graph.secondValue')}</div>
+                <div>{t('headers')}</div>
               </span>
             </div>
+            <span
+              className='flex cursor-pointer items-center justify-center rounded-md px-3 py-1 hover:bg-slate-200 dark:hover:bg-[rgba(0,_0,_0,_0.1)]'
+              onClick={handleChevronClick}
+            >
+              {isCollapsed.value ? <ChevronUp /> : <ChevronDown />}
+            </span>
           </PanelResizeHandle>
-          <Panel defaultSize={50}>
-            <div className='flex h-full flex-col gap-1'>
+          <Panel
+            collapsible
+            ref={panelRef}
+            onCollapse={handleCollapse}
+            className='px-2'
+          >
+            <div className='h-full pb-3'>
               <VariableEditor
                 onKeyDown={handleKeyDown}
                 className={cx(activeTab.value !== 'variables' && 'hidden')}
@@ -105,11 +158,17 @@ export const GraphiPage = () => {
             </div>
           </Panel>
         </PanelGroup>
-        <div className='w-full'>
-          <ResponseEditor value={JSON.stringify(isError ? error : data, null, 2)} />
+        <div className='relative h-full w-full p-2'>
+          {isLoading ? (
+            <span className='absolute left-1/2 top-1/2 inline-block h-10 w-10 -translate-x-1/2 -translate-y-1/2 '>
+              <span className='inline-block h-full w-full animate-spin rounded-full border-4 border-fuchsia border-t-[rgba(0,_0,_0,_0.1)]' />
+            </span>
+          ) : (
+            <ResponseEditor value={JSON.stringify(isError ? error : data, null, 2)} />
+          )}
         </div>
       </div>
       <ToastContainer />
-    </Fragment>
+    </>
   )
 }

@@ -1,29 +1,14 @@
 {
-  "header": {
-    "firstLink": "HOME",
-    "secondLink": "GRAPHIQL",
-    "thirdLink": "Sign in",
-    "fourthLink": "Sign up",
-    "fivethLink": "Home",
-    "sixLink": "Log out"
-  },
-  "graph": {
-    "firstValue": "Variables",
-    "secondValue": "Headers"
-  },
-  "section": {
-    "firstblock": {
-      "title": "GRAPHIQL",
-      "heading": "Application for your queries",
-      "paragraph": "To use the application, sign up or sign in to your account", 
-      "button": "Get started"
-    }
-  },
-  "footer": {
-    "rights": "All Rights Reserved."
-  },
+  "home": "HOME",
+  "graphi": "GRAPHIQL",
   "signUp": "Sign up",
   "signIn": "Sign in",
+  "logout": "Log out",
+  "heading": "Application for your queries",
+  "paragraph": "To use the application, sign up or sign in to your account", 
+  "button": "Get started",
+  "variables": "Variables",
+  "headers": "Headers",
   "requiredEmail": "Write your email",
   "messageEmail": "Your email must contain at least 10 characters",
   "requiredName": "Write your name",
@@ -31,6 +16,6 @@
   "messagePassword": "Password must have - minimum 8 symbols least one letter, one digit, one special character",
   "patternPassword":  "Password should contain at least one uppercase letter, lowercase letter, digit, and special symbol",
   "wrongEmail": "🦄 Your email is already in use!",
-  "wrongAll": "🦄 You entered your email or password incorrectly. Please double check!"
-  
+  "wrongAll": "🦄 You entered your email or password incorrectly. Please double check!",
+  "rights": "All Rights Reserved."
 }

@@ -81,7 +81,7 @@ export const Header = () => {
                 className='login-button button-hover ml-5 bg-seagreen text-center text-white dark:bg-lightblue dark:text-prussianblue'
                 onClick={logout}
               >
-                <div>{t('header.sixLink')}</div>
+                <div>{t('logout')}</div>
               </button>
               <NavLink
                 to={'/editer'}
@@ -101,7 +101,7 @@ export const Header = () => {
                   : 'login-button button-hover'
               }
             >
-              <div>{t('header.thirdLink')}</div>
+              <div>{t('signIn')}</div>
             </NavLink>
             <NavLink
               to={'/signup'}
@@ -111,7 +111,7 @@ export const Header = () => {
                   : 'login-button button-hover'
               }
             >
-              <div>{t('header.fourthLink')}</div>
+              <div>{t('signUp')}</div>
             </NavLink>
           </>
         )}

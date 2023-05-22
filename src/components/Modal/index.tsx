@@ -67,8 +67,9 @@ export const Modal = ({ onClick }: ModalType) => {
             onClick={onClick}
           >
             <HouseIcon className='h-6 w-6 stroke-seagreen hover:stroke-prussianblue dark:stroke-lightblue dark:hover:stroke-white' />
-            <span className='ml-3'>{t('header.firstLink')}</span>
+            <span className='ml-3'>{t('home')}</span>
           </NavLink>
+
           {user ? (
             <div className='dashboard'>
               <div className='flex flex-col items-center'>
@@ -85,7 +86,7 @@ export const Modal = ({ onClick }: ModalType) => {
                   className='button-hover w-1/2 max-w-full rounded-full bg-seagreen p-1.5 text-white dark:bg-lightblue dark:text-prussianblue'
                   onClick={logout}
                 >
-                  {t('header.sixLink')}
+                  {t('logout')}
                 </button>
               </div>
             </div>
@@ -98,7 +99,7 @@ export const Modal = ({ onClick }: ModalType) => {
               >
                 <SignInIcon className='h-6 w-6 stroke-seagreen transition-all hover:stroke-prussianblue dark:stroke-lightblue dark:hover:stroke-white' />
 
-                <span className='ml-3'>{t('header.thirdLink')}</span>
+                <span className='ml-3'>{t('signIn')}</span>
               </NavLink>
               <NavLink
                 to={'/signup'}
@@ -107,7 +108,7 @@ export const Modal = ({ onClick }: ModalType) => {
               >
                 <SignUpIcon className='h-6 w-6 stroke-seagreen transition-all hover:stroke-prussianblue dark:stroke-lightblue dark:hover:stroke-white' />
 
-                <span className='ml-3'>{t('header.fourthLink')}</span>
+                <span className='ml-3'>{t('signUp')}</span>
               </NavLink>
             </>
           )}

@@ -56,7 +56,7 @@ export const SignUpPage = () => {
             <form onSubmit={handleSubmit(handleLogin)}>
               <input
                 type='text'
-                className='bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-full rounded-lg border p-2.5 text-sm dark:text-white'
+                className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
                 {...register('name', {
                   required: `${t('requiredName')}`,
                 })}
@@ -82,7 +82,7 @@ export const SignUpPage = () => {
                 type='email'
                 id='email'
                 placeholder='email@mail.com'
-                className='placeholder-gray-400 block w-full rounded-lg border p-2.5 text-seagreen focus:border-seagreen focus:ring-seagreen'
+                className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray-400 focus:border-seagreen focus:ring-seagreen'
               />
 
               <div style={{ height: 20 }}>
@@ -90,7 +90,6 @@ export const SignUpPage = () => {
               </div>
 
               <input
-                defaultValue='89095927614'
                 {...register('password', {
                   required: `${t('requiredPassword')}`,
                   minLength: {
@@ -106,7 +105,7 @@ export const SignUpPage = () => {
                 type='password'
                 id='confirm_password'
                 placeholder='**************'
-                className='placeholder-gray-400 block w-full rounded-lg border p-2.5 text-seagreen focus:border-seagreen focus:ring-seagreen'
+                className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray-400 focus:border-seagreen focus:ring-seagreen'
               />
 
               <div style={{ height: 20 }}>

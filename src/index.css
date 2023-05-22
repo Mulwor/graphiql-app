@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Mulish:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -22,4 +22,9 @@
 
 .hover-svg {
   @apply fill-seagreen transition-all hover:fill-prussianblue focus:outline-none dark:fill-lightblue dark:hover:fill-white;
+}
+
+.cm-editor.cm-focused {
+  outline: none;
+  border: none;
 }
