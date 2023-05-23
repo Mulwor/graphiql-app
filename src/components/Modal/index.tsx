@@ -40,7 +40,7 @@ export const Modal = ({ onClick }: ModalType) => {
         className='fixed left-0 top-0 h-screen w-screen bg-opacitycolor backdrop-blur'
         onClick={onClick}
       ></div>
-      <div className='fixed left-0 top-0 h-screen w-80 overflow-y-auto bg-whitesmoke p-4 shadow-2xl transition-all dark:bg-darknavy dark:text-lightblue'>
+      <div className='fixed left-0 top-0 h-screen w-80 overflow-y-auto bg-whitesmoke p-4 shadow-2xl transition-all dark:bg-darknavy dark:text-sky'>
         <h5 className='font-bold uppercase'>Menu</h5>
         <button
           type='button'
@@ -55,7 +55,7 @@ export const Modal = ({ onClick }: ModalType) => {
             className='flex items-center rounded-lg p-2.5 hover:text-prussianblue dark:hover:text-white'
             onClick={onClick}
           >
-            <HouseIcon className='h-6 w-6 stroke-seagreen hover:stroke-prussianblue dark:stroke-lightblue dark:hover:stroke-white' />
+            <HouseIcon className='h-6 w-6 stroke-seagreen hover:stroke-prussianblue dark:stroke-sky dark:hover:stroke-white' />
             <span className='ml-3'>{t('home')}</span>
           </NavLink>
 
@@ -72,7 +72,7 @@ export const Modal = ({ onClick }: ModalType) => {
                 </NavLink>
                 <div className='my-6'>{user.email}</div>
                 <button
-                  className='button-hover w-1/2 max-w-full rounded-full bg-seagreen p-1.5 text-white dark:bg-lightblue dark:text-prussianblue'
+                  className='button-hover w-1/2 max-w-full rounded-full bg-seagreen p-1.5 text-white dark:bg-sky dark:text-prussianblue'
                   onClick={logout}
                 >
                   {t('logout')}
@@ -86,7 +86,7 @@ export const Modal = ({ onClick }: ModalType) => {
                 className='flex items-center rounded-lg p-2.5 transition-all hover:text-prussianblue dark:hover:text-white'
                 onClick={onClick}
               >
-                <SignInIcon className='h-6 w-6 stroke-seagreen transition-all hover:stroke-prussianblue dark:stroke-lightblue dark:hover:stroke-white' />
+                <SignInIcon className='h-6 w-6 stroke-seagreen transition-all hover:stroke-prussianblue dark:stroke-sky dark:hover:stroke-white' />
 
                 <span className='ml-3'>{t('signIn')}</span>
               </NavLink>
@@ -95,7 +95,7 @@ export const Modal = ({ onClick }: ModalType) => {
                 className='flex items-center rounded-lg p-2.5 transition-all hover:text-prussianblue dark:hover:text-white'
                 onClick={onClick}
               >
-                <SignUpIcon className='h-6 w-6 stroke-seagreen transition-all hover:stroke-prussianblue dark:stroke-lightblue dark:hover:stroke-white' />
+                <SignUpIcon className='h-6 w-6 stroke-seagreen transition-all hover:stroke-prussianblue dark:stroke-sky dark:hover:stroke-white' />
 
                 <span className='ml-3'>{t('signUp')}</span>
               </NavLink>

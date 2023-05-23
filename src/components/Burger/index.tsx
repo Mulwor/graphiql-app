@@ -11,9 +11,9 @@ export const Burger = () => {
   }
 
   return (
-    <div className='flex self-center p-2.5 md:hidden'>
+    <div className='flex self-center rounded-lg p-2.5 hover:bg-white dark:hover:bg-deepsea md:hidden'>
       <Menu
-        className='hover-svg h-8 w-8 rounded-md hover:bg-white hover:stroke-deepsea focus:outline-none dark:stroke-lightblue dark:hover:bg-deepsea dark:hover:stroke-white'
+        className='hover-svg h-8 w-8 hover:stroke-deepsea focus:outline-none dark:stroke-sky'
         onClick={handleClick}
       />
       {modal && <Modal onClick={handleClick} />}

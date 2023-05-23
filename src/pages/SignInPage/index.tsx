@@ -44,7 +44,7 @@ export const SignInPage = () => {
 
   return (
     <>
-      <div className='mx-auto flex max-w-7xl shrink grow flex-col-reverse gap-7 sm:columns-2 sm:flex-row'>
+      <div className='mx-auto flex max-w-7xl shrink grow flex-col-reverse gap-7 px-5 sm:columns-2 sm:flex-row'>
         <div className='mx-auto w-full max-w-md shrink grow lg:self-center'>
           <AuthImage />
         </div>
@@ -70,10 +70,10 @@ export const SignInPage = () => {
                   type='email'
                   id='email'
                   placeholder='E-mail'
-                  className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray-400 focus:border-seagreen focus:ring-seagreen'
+                  className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray focus:border-seagreen focus:ring-seagreen'
                 />
 
-                <div style={{ height: 20 }}>
+                <div style={{ height: 20, color: 'red', fontSize: 14 }}>
                   {errors?.email && <p className='error'>{errors?.email?.message?.toString()}</p>}
                 </div>
 
@@ -93,10 +93,10 @@ export const SignInPage = () => {
                   type='password'
                   id='confirm_password'
                   placeholder='Password'
-                  className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray-400 focus:border-seagreen focus:ring-seagreen'
+                  className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray focus:border-seagreen focus:ring-seagreen'
                 />
 
-                <div style={{ height: 20 }}>
+                <div style={{ height: 20, color: 'red', fontSize: 14 }}>
                   {errors?.password && (
                     <p className='error'>{errors?.password?.message?.toString()}</p>
                   )}
@@ -104,7 +104,7 @@ export const SignInPage = () => {
                   {errors.password?.type === 'matchPattern' && <p>{t('patternPassword')}</p>}
                 </div>
 
-                <button className='button-hover mt-10 w-full max-w-full justify-center rounded-full bg-seagreen p-1.5 text-white dark:bg-lightblue dark:text-prussianblue md:w-1/2'>
+                <button className='button-hover mt-10 w-full max-w-full justify-center rounded-full bg-seagreen p-1.5 text-white dark:bg-sky dark:text-prussianblue md:w-1/2'>
                   {t('signIn')}
                 </button>
 
