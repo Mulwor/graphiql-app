@@ -1,12 +1,13 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import { Layout, ProtectedRoutes } from '@/components'
+import { ErrorBoundary, Layout, ProtectedRoutes } from '@/components'
 import { GraphiPage, HomePage, NotFound, SignInPage, SignUpPage } from '@/pages'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
+    errorElement: <ErrorBoundary />,
     children: [
       {
         index: true,
