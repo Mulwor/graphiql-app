@@ -117,8 +117,8 @@ export const GraphiPage = () => {
               <span
                 onClick={expandPanel('variables')}
                 className={cx(
-                  'inline-block cursor-pointer rounded-md px-3 py-1 hover:bg-slate-200 dark:hover:bg-[rgba(0,_0,_0,_0.1)]',
-                  activeTab.value === 'variables' && 'bg-slate-200 dark:bg-[rgba(0,_0,_0,_0.1)]',
+                  'inline-block cursor-pointer rounded-md px-3 py-1 hover:bg-slate dark:hover:bg-[rgba(0,_0,_0,_0.1)]',
+                  activeTab.value === 'variables' && 'bg-slate dark:bg-[rgba(0,_0,_0,_0.1)]',
                 )}
               >
                 <div>{t('variables')}</div>
@@ -126,15 +126,15 @@ export const GraphiPage = () => {
               <span
                 onClick={expandPanel('headers')}
                 className={cx(
-                  'inline-block cursor-pointer rounded-md px-3 py-1 hover:bg-slate-200 dark:hover:bg-[rgba(0,_0,_0,_0.1)]',
-                  activeTab.value === 'headers' && 'bg-slate-200 dark:bg-[rgba(0,_0,_0,_0.1)]',
+                  'inline-block cursor-pointer rounded-md px-3 py-1 hover:bg-slate dark:hover:bg-[rgba(0,_0,_0,_0.1)]',
+                  activeTab.value === 'headers' && 'bg-slate dark:bg-[rgba(0,_0,_0,_0.1)]',
                 )}
               >
                 <div>{t('headers')}</div>
               </span>
             </div>
             <span
-              className='flex cursor-pointer items-center justify-center rounded-md px-3 py-1 hover:bg-slate-200 dark:hover:bg-[rgba(0,_0,_0,_0.1)]'
+              className='flex cursor-pointer items-center justify-center rounded-md px-3 py-1 hover:bg-slate dark:hover:bg-[rgba(0,_0,_0,_0.1)]'
               onClick={handleChevronClick}
             >
               {isCollapsed.value ? <ChevronUp /> : <ChevronDown />}

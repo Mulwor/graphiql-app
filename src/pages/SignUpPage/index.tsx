@@ -56,7 +56,7 @@ export const SignUpPage = () => {
             <form onSubmit={handleSubmit(handleLogin)}>
               <input
                 type='text'
-                className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray-400 focus:border-seagreen focus:ring-seagreen'
+                className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray focus:border-seagreen focus:ring-seagreen'
                 {...register('name', {
                   required: `${t('requiredName')}`,
                 })}
@@ -82,7 +82,7 @@ export const SignUpPage = () => {
                 type='email'
                 id='email'
                 placeholder='email@mail.com'
-                className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray-400 focus:border-seagreen focus:ring-seagreen'
+                className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray focus:border-seagreen focus:ring-seagreen'
               />
 
               <div style={{ height: 20, color: 'red', fontSize: 14 }}>
@@ -105,7 +105,7 @@ export const SignUpPage = () => {
                 type='password'
                 id='confirm_password'
                 placeholder='**************'
-                className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray-400 focus:border-seagreen focus:ring-seagreen'
+                className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray focus:border-seagreen focus:ring-seagreen'
               />
 
               <div style={{ height: 20, color: 'red', fontSize: 14 }}>

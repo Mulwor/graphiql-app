@@ -6,7 +6,6 @@ export default {
   darkMode: 'class',
   theme: {
     colors: {
-      ...colors,
       seagreen: '#005b7f',
       fuchsia: '#D81B60',
       whitesmoke: '#FAFAFA',
@@ -16,6 +15,8 @@ export default {
       sky: '#a6e2ed',
       darknavy: '#002030',
       opacitycolor: '#00000022',
+      slate: '#e2e8f0',
+      gray: '#9ca3af'
     },
     screens: {
       sm: '640px',

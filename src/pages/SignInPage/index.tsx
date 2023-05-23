@@ -70,7 +70,7 @@ export const SignInPage = () => {
                   type='email'
                   id='email'
                   placeholder='thisIsYourEmail@mail.com'
-                  className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray-400 focus:border-seagreen focus:ring-seagreen'
+                  className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray focus:border-seagreen focus:ring-seagreen'
                 />
 
                 <div style={{ height: 20, color: 'red', fontSize: 14 }}>
@@ -93,7 +93,7 @@ export const SignInPage = () => {
                   type='password'
                   id='confirm_password'
                   placeholder='**************'
-                  className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray-400 focus:border-seagreen focus:ring-seagreen'
+                  className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray focus:border-seagreen focus:ring-seagreen'
                 />
 
                 <div style={{ height: 20, color: 'red', fontSize: 14 }}>
