@@ -1,10 +1,10 @@
-import { auth } from '@root/src/firebase.config'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import { ReactComponent as HomeImage } from '@/assets/home.svg'
 import { Button } from '@/components'
+import { auth } from '@/firebase.config'
 
 export const HomePage = () => {
   const { t } = useTranslation()
