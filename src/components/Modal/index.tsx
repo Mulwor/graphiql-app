@@ -1,5 +1,4 @@
 import { auth, logout } from '@root/src/firebase.config'
-import { changeLanguage } from '@root/src/i18n'
 import { RootState, settingActions, useActionCreators, useAppSelector } from '@root/src/store'
 import { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -19,7 +18,7 @@ export type ModalType = {
 
 export const Modal = ({ onClick }: ModalType) => {
   const [user] = useAuthState(auth)
-  const { isDark, isRu } = useAppSelector((state: RootState) => state.setting)
+  const isDark = useAppSelector((state: RootState) => state.setting.isDark)
   const actions = useActionCreators(settingActions)
   const { t } = useTranslation()
 
@@ -33,16 +32,6 @@ export const Modal = ({ onClick }: ModalType) => {
 
   const handlerDark = () => {
     actions.setIsDark({ isDark: !isDark })
-  }
-
-  const handlerLang = () => {
-    if (isRu) {
-      actions.setIsRu({ isRu: false })
-      void changeLanguage('en')
-    } else {
-      actions.setIsRu({ isRu: true })
-      void changeLanguage('ru')
-    }
   }
 
   return (
@@ -115,7 +104,7 @@ export const Modal = ({ onClick }: ModalType) => {
 
           <div className='flex justify-center'>
             <Toggle onClick={handlerDark} />
-            <Lang onClick={handlerLang} />
+            <Lang />
           </div>
         </div>
       </div>

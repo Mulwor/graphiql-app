@@ -1,6 +1,5 @@
 import { auth, logout } from '@root/src/firebase.config'
-import { changeLanguage } from '@root/src/i18n'
-import { RootState, settingActions, useActionCreators, useAppSelector } from '@root/src/store'
+import { settingActions, useActionCreators, useAppSelector } from '@root/src/store'
 import { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useTranslation } from 'react-i18next'
@@ -15,7 +14,7 @@ export const Header = () => {
 
   const [scroll, setScroll] = useState(0)
 
-  const { isDark, lang } = useAppSelector((state: RootState) => state.setting)
+  const isDark = useAppSelector((state) => state.setting.isDark)
   const actions = useActionCreators(settingActions)
 
   useEffect(() => {
@@ -42,16 +41,6 @@ export const Header = () => {
     actions.setIsDark({ isDark: !isDark })
   }
 
-  const handlerLang = () => {
-    if (lang === 'ru') {
-      actions.setLang({ lang: 'en' })
-      void changeLanguage('en')
-    } else {
-      actions.setLang({ lang: 'ru' })
-      void changeLanguage('ru')
-    }
-  }
-
   return (
     <header
       className={
@@ -69,7 +58,7 @@ export const Header = () => {
 
       <div className='hidden md:flex'>
         <Toggle onClick={handlerDark} />
-        <Lang onClick={handlerLang} />
+        <Lang />
       </div>
 
       <div className='hidden gap-7 md:flex'>
