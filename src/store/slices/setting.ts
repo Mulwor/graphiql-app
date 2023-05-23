@@ -2,12 +2,12 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
 type SettingState = {
   isDark: boolean
-  isRu: boolean
+  lang: 'ru' | 'en'
 }
 
 const initialState: SettingState = {
   isDark: false,
-  isRu: false,
+  lang: 'en',
 }
 
 const slice = createSlice({
@@ -17,8 +17,8 @@ const slice = createSlice({
     setIsDark: (state, action: PayloadAction<Pick<SettingState, 'isDark'>>) => {
       state.isDark = action.payload.isDark
     },
-    setIsRu: (state, action: PayloadAction<Pick<SettingState, 'isRu'>>) => {
-      state.isRu = action.payload.isRu
+    setLang: (state, action: PayloadAction<Pick<SettingState, 'lang'>>) => {
+      state.lang = action.payload.lang
     },
   },
 })

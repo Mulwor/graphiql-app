@@ -15,7 +15,7 @@ export const Header = () => {
 
   const [scroll, setScroll] = useState(0)
 
-  const { isDark, isRu } = useAppSelector((state: RootState) => state.setting)
+  const { isDark, lang } = useAppSelector((state: RootState) => state.setting)
   const actions = useActionCreators(settingActions)
 
   useEffect(() => {
@@ -43,11 +43,11 @@ export const Header = () => {
   }
 
   const handlerLang = () => {
-    if (isRu) {
-      actions.setIsRu({ isRu: false })
+    if (lang === 'ru') {
+      actions.setLang({ lang: 'en' })
       void changeLanguage('en')
     } else {
-      actions.setIsRu({ isRu: true })
+      actions.setLang({ lang: 'ru' })
       void changeLanguage('ru')
     }
   }

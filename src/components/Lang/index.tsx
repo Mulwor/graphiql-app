@@ -5,7 +5,7 @@ type LangProp = {
 }
 
 export const Lang = ({ onClick }: LangProp) => {
-  const isRu = useAppSelector((state) => state.setting.isRu)
+  const lang = useAppSelector((state) => state.setting.lang)
 
   return (
     <button
@@ -14,7 +14,7 @@ export const Lang = ({ onClick }: LangProp) => {
       className='fill-seagreen p-2.5 transition-all hover:text-prussianblue focus:outline-none dark:text-lightblue dark:hover:text-white'
       onClick={onClick}
     >
-      {isRu ? 'RU' : 'EN'}
+      {lang === 'en' ? 'RU' : 'EN'}
     </button>
   )
 }
