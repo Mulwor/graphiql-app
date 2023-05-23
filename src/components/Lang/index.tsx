@@ -15,7 +15,7 @@ export const Lang = () => {
       className='fill-seagreen p-2.5 transition-all hover:text-prussianblue focus:outline-none dark:text-sky dark:hover:text-white'
       onClick={handleClick}
     >
-      {i18n.language.toUpperCase()}
+      {i18n.language === 'ru' ? 'EN' : 'RU'}
     </button>
   )
 }
