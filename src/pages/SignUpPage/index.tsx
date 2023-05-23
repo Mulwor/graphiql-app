@@ -43,7 +43,7 @@ export const SignUpPage = () => {
     }
   }, [navigate, user])
   return (
-    <div className='mx-auto flex max-w-7xl shrink grow flex-col-reverse gap-7 sm:columns-2 sm:flex-row'>
+    <div className='mx-auto flex max-w-7xl shrink grow flex-col-reverse gap-7 px-5 sm:columns-2 sm:flex-row'>
       <div className='mx-auto w-full max-w-md shrink grow lg:self-center'>
         <AuthImage />
       </div>
@@ -56,14 +56,14 @@ export const SignUpPage = () => {
             <form onSubmit={handleSubmit(handleLogin)}>
               <input
                 type='text'
-                className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
+                className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray focus:border-seagreen focus:ring-seagreen'
                 {...register('name', {
                   required: `${t('requiredName')}`,
                 })}
                 placeholder='Write your name'
               />
 
-              <div style={{ height: 40 }}>
+              <div style={{ height: 40, color: 'red', fontSize: 14 }}>
                 {errors?.name && <p className='error'>{errors?.name?.message?.toString()}</p>}
               </div>
 
@@ -82,10 +82,10 @@ export const SignUpPage = () => {
                 type='email'
                 id='email'
                 placeholder='email@mail.com'
-                className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray-400 focus:border-seagreen focus:ring-seagreen'
+                className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray focus:border-seagreen focus:ring-seagreen'
               />
 
-              <div style={{ height: 20 }}>
+              <div style={{ height: 20, color: 'red', fontSize: 14 }}>
                 {errors?.email && <p className='error'>{errors?.email?.message?.toString()}</p>}
               </div>
 
@@ -105,17 +105,17 @@ export const SignUpPage = () => {
                 type='password'
                 id='confirm_password'
                 placeholder='**************'
-                className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray-400 focus:border-seagreen focus:ring-seagreen'
+                className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray focus:border-seagreen focus:ring-seagreen'
               />
 
-              <div style={{ height: 20 }}>
+              <div style={{ height: 20, color: 'red', fontSize: 14 }}>
                 {errors?.password && (
                   <p className='error'>{errors?.password?.message?.toString()}</p>
                 )}
 
                 {errors.password?.type === 'matchPattern' && <p>{t('patternPassword')}</p>}
               </div>
-              <button className='button-hover mt-10 w-full max-w-full justify-center rounded-full bg-seagreen p-1.5 text-white dark:bg-lightblue dark:text-prussianblue md:w-1/2'>
+              <button className='button-hover mt-10 w-full max-w-full justify-center rounded-full bg-seagreen p-1.5 text-white dark:bg-sky dark:text-prussianblue md:w-1/2'>
                 Sign up
               </button>
 
