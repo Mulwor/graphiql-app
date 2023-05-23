@@ -1,20 +1,21 @@
-import { useAppSelector } from '@/store'
+import { useTranslation } from 'react-i18next'
 
-type LangProp = {
-  onClick: () => void
-}
+export const Lang = () => {
+  const { i18n } = useTranslation()
 
-export const Lang = ({ onClick }: LangProp) => {
-  const isRu = useAppSelector((state) => state.setting.isRu)
+  const handleClick = () => {
+    const lng = i18n.language === 'ru' ? 'en' : 'ru'
+    void i18n.changeLanguage(lng)
+  }
 
   return (
     <button
       id='lang-toggle'
       type='button'
       className='fill-seagreen p-2.5 transition-all hover:text-prussianblue focus:outline-none dark:text-lightblue dark:hover:text-white'
-      onClick={onClick}
+      onClick={handleClick}
     >
-      {isRu ? 'RU' : 'EN'}
+      {i18n.language.toUpperCase()}
     </button>
   )
 }
