@@ -1,36 +1,11 @@
-import { acceptCompletion, autocompletion } from '@codemirror/autocomplete'
-import { Prec } from '@codemirror/state'
-import { keymap } from '@codemirror/view'
 import CodeMirror from '@uiw/react-codemirror'
-import { graphql } from 'cm6-graphql'
 import { GraphQLSchema } from 'graphql'
 import { memo } from 'react'
 
-import { material } from '@/components/Playground/lib'
+import { extensions, material } from '@/components/Playground/lib'
 import { values } from '@/components/Playground/signals'
 import { useAppSelector } from '@/store'
 
-const extensions = (schema?: GraphQLSchema) => {
-  return [
-    graphql(schema),
-    autocompletion({
-      activateOnTyping: true,
-      icons: true,
-    }),
-    Prec.high(
-      keymap.of([
-        {
-          key: 'Tab',
-          run: acceptCompletion,
-        },
-        {
-          key: 'Mod-Enter',
-          run: () => true,
-        },
-      ]),
-    ),
-  ]
-}
 type QueryEditorProps = {
   schema?: GraphQLSchema
   onKeyDown?: (event: React.KeyboardEvent<HTMLDivElement>) => void
