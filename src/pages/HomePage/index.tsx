@@ -20,7 +20,7 @@ export const HomePage = () => {
           <div className='mt-5'>
             <Button
               className={
-                'button-hover w-1/2 max-w-full rounded-full bg-seagreen p-1.5 text-white dark:bg-lightblue dark:text-prussianblue sm:w-full md:w-1/2'
+                'button-hover w-1/2 max-w-full rounded-full bg-seagreen p-1.5 text-white dark:bg-sky dark:text-prussianblue sm:w-full md:w-1/2'
               }
             >
               {user ? (

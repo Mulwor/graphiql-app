@@ -115,7 +115,7 @@ export const SignUpPage = () => {
 
                 {errors.password?.type === 'matchPattern' && <p>{t('patternPassword')}</p>}
               </div>
-              <button className='button-hover mt-10 w-full max-w-full justify-center rounded-full bg-seagreen p-1.5 text-white dark:bg-lightblue dark:text-prussianblue md:w-1/2'>
+              <button className='button-hover mt-10 w-full max-w-full justify-center rounded-full bg-seagreen p-1.5 text-white dark:bg-sky dark:text-prussianblue md:w-1/2'>
                 Sign up
               </button>
 

@@ -13,7 +13,7 @@ export const Burger = () => {
   return (
     <div className='flex self-center p-2.5 md:hidden'>
       <Menu
-        className='hover-svg h-8 w-8 rounded-md hover:bg-white hover:stroke-deepsea focus:outline-none dark:stroke-lightblue dark:hover:bg-deepsea dark:hover:stroke-white'
+        className='hover-svg h-8 w-8 rounded-md hover:bg-white hover:stroke-deepsea focus:outline-none dark:stroke-sky dark:hover:bg-deepsea dark:hover:stroke-white'
         onClick={handleClick}
       />
       {modal && <Modal onClick={handleClick} />}

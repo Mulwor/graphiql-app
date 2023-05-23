@@ -113,7 +113,7 @@ export const GraphiPage = () => {
           <PanelResizeHandle
             className={'flex justify-between border-t-2 p-2 dark:border-t-[rgba(0,_0,_0,_0.1)]'}
           >
-            <div className='cursor-default space-x-2 text-deepsea transition-all dark:text-lightblue'>
+            <div className='cursor-default space-x-2 text-deepsea transition-all dark:text-sky'>
               <span
                 onClick={expandPanel('variables')}
                 className={cx(
