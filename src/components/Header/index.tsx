@@ -76,7 +76,7 @@ export const Header = () => {
                 to={'/editor'}
                 className='login-button button-hover ml-5 bg-seagreen text-center text-white dark:bg-lightblue dark:text-prussianblue'
               >
-                <div>GraphiQL</div>
+                <div>{t('graphi')}</div>
               </NavLink>
             </div>
           </div>

@@ -24,9 +24,9 @@ export const HomePage = () => {
               }
             >
               {user ? (
-                <Link to={'/editor'}>Get started</Link>
+                <Link to={'/editor'}> {t('getStarted')}</Link>
               ) : (
-                <Link to={'/signup'}>Get started</Link>
+                <Link to={'/signup'}> {t('getStarted')}</Link>
               )}
             </Button>
           </div>
