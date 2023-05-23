@@ -12,7 +12,7 @@ export const HomePage = () => {
 
   return (
     <>
-      <div className='mx-auto max-w-7xl shrink grow gap-7 sm:flex sm:columns-2'>
+      <div className='mx-auto max-w-7xl shrink grow gap-7 px-5 sm:flex sm:columns-2'>
         <div className='mx-auto max-w-md shrink grow flex-col sm:mt-[10%] sm:flex md:mt-[14%]'>
           <h1 className='text-4xl font-bold uppercase text-fuchsia'>{t('graphi')}</h1>
           <div className='text-2xl'> {t('heading')}</div>
