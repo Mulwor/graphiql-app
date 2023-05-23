@@ -48,8 +48,8 @@ export const SignUpPage = () => {
         <AuthImage />
       </div>
       <div className='mx-auto w-full max-w-lg px-5 sm:flex sm:flex-col sm:p-0 lg:mt-[6%]'>
-        <h2 className='text-4xl font-bold uppercase text-fuchsia'>GraphiQL</h2>
-        <div className='text-2xl'>Sign up</div>
+        <h2 className='text-4xl font-bold uppercase text-fuchsia'>{t('graphi')}</h2>
+        <div className='text-2xl'>{t('signUp')}</div>
 
         <div className='mt-10'>
           <div className='flex flex-col'>
@@ -60,7 +60,7 @@ export const SignUpPage = () => {
                 {...register('name', {
                   required: `${t('requiredName')}`,
                 })}
-                placeholder='Write your name'
+                placeholder='Name'
               />
 
               <div style={{ height: 40, color: 'red', fontSize: 14 }}>
@@ -81,7 +81,7 @@ export const SignUpPage = () => {
                 })}
                 type='email'
                 id='email'
-                placeholder='email@mail.com'
+                placeholder='E-mail'
                 className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray focus:border-seagreen focus:ring-seagreen'
               />
 
@@ -104,7 +104,7 @@ export const SignUpPage = () => {
                 })}
                 type='password'
                 id='confirm_password'
-                placeholder='**************'
+                placeholder='Password'
                 className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray focus:border-seagreen focus:ring-seagreen'
               />
 
@@ -116,7 +116,7 @@ export const SignUpPage = () => {
                 {errors.password?.type === 'matchPattern' && <p>{t('patternPassword')}</p>}
               </div>
               <button className='button-hover mt-10 w-full max-w-full justify-center rounded-full bg-seagreen p-1.5 text-white dark:bg-sky dark:text-prussianblue md:w-1/2'>
-                Sign up
+                {t('signUp')}
               </button>
 
               <ToastContainer

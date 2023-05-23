@@ -68,7 +68,7 @@ export const Modal = ({ onClick }: ModalType) => {
                   onClick={onClick}
                 >
                   <GraphiIcon className='hover-svg h-6 w-6 fill-seagreen' />
-                  <span className='ml-3'>{t('header.secondLink')}</span>
+                  <span className='ml-3'>{t('graphi')}</span>
                 </NavLink>
                 <div className='my-6'>{user.email}</div>
                 <button

@@ -1,11 +1,15 @@
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 export const NotFound = () => {
+  const { t } = useTranslation()
+
   return (
     <div>
       <h1 className='title'>404</h1>
       <p className='info'>
-        This page doesn&lsquo;t exist. Go <Link to='/'>Home</Link>
+        {t('notFound')}
+        <Link to='/'>{t('home')}</Link>
       </p>
     </div>
   )

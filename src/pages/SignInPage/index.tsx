@@ -49,8 +49,8 @@ export const SignInPage = () => {
           <AuthImage />
         </div>
         <div className='mx-auto w-full max-w-lg px-5 sm:flex sm:flex-col sm:p-0 lg:mt-[6%]'>
-          <h2 className='text-4xl font-bold uppercase text-fuchsia'>GraphiQL</h2>
-          <div className='text-2xl'>Sign in</div>
+          <h2 className='text-4xl font-bold uppercase text-fuchsia'>{t('graphi')}</h2>
+          <div className='text-2xl'>{t('signIn')}</div>
 
           <div className='mt-10'>
             <div className='flex flex-col'>
@@ -69,7 +69,7 @@ export const SignInPage = () => {
                   })}
                   type='email'
                   id='email'
-                  placeholder='thisIsYourEmail@mail.com'
+                  placeholder='E-mail'
                   className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray focus:border-seagreen focus:ring-seagreen'
                 />
 
@@ -92,7 +92,7 @@ export const SignInPage = () => {
                   })}
                   type='password'
                   id='confirm_password'
-                  placeholder='**************'
+                  placeholder='Password'
                   className='block w-full rounded-lg border p-2.5 text-seagreen placeholder-gray focus:border-seagreen focus:ring-seagreen'
                 />
 
@@ -105,7 +105,7 @@ export const SignInPage = () => {
                 </div>
 
                 <button className='button-hover mt-10 w-full max-w-full justify-center rounded-full bg-seagreen p-1.5 text-white dark:bg-sky dark:text-prussianblue md:w-1/2'>
-                  Sign in grapiQL
+                  {t('signIn')}
                 </button>
 
                 <ToastContainer
