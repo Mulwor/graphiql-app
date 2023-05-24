@@ -1,5 +1,3 @@
-import { auth, logout } from '@root/src/firebase.config'
-import { RootState, settingActions, useActionCreators, useAppSelector } from '@root/src/store'
 import { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useTranslation } from 'react-i18next'
@@ -11,6 +9,8 @@ import { ReactComponent as HouseIcon } from '@/assets/house.svg'
 import { ReactComponent as SignInIcon } from '@/assets/signin.svg'
 import { ReactComponent as SignUpIcon } from '@/assets/signup.svg'
 import { Lang, Toggle } from '@/components'
+import { auth, logout } from '@/firebase.config'
+import { RootState, settingActions, useActionCreators, useAppSelector } from '@/store'
 
 export type ModalType = {
   onClick: () => void

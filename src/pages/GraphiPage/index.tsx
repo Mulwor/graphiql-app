@@ -4,16 +4,13 @@ import { buildClientSchema } from 'graphql'
 import { KeyboardEvent, useCallback, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ImperativePanelHandle, Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels'
-import { toast, ToastContainer } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 
-import {
-  HeaderEditor,
-  QueryEditor,
-  ResponseEditor,
-  values,
-  VariableEditor,
-} from '@/components/Playground'
+import { Preloader } from '@/components'
+import { HeaderEditor, QueryEditor, ResponseEditor, VariableEditor } from '@/components/Playground'
+import { values } from '@/components/Playground/signals'
 import { ChevronDown, ChevronUp, Play } from '@/icons'
+import { notify } from '@/lib'
 import { useGetSchemaQuery, useLazyGetDataQuery } from '@/store'
 
 type ActiveTab = 'variables' | 'headers'
@@ -35,21 +32,24 @@ export const GraphiPage = () => {
 
   const panelRef = useRef<ImperativePanelHandle>(null)
 
-  const expandPanel = (value: ActiveTab) => () => {
-    if (value) {
-      activeTab.value = value
-    }
+  const expandPanel = useCallback(
+    (value: ActiveTab) => () => {
+      if (value) {
+        activeTab.value = value
+      }
 
-    panelRef.current?.expand()
-  }
+      panelRef.current?.expand()
+    },
+    [],
+  )
 
-  const handleChevronClick = () => {
+  const handleChevronClick = useCallback(() => {
     if (!activeTab.value) {
       activeTab.value = 'variables'
     }
 
     isCollapsed.value ? panelRef.current?.expand() : panelRef.current?.collapse()
-  }
+  }, [])
 
   const handleClick = useCallback(() => {
     try {
@@ -59,6 +59,15 @@ export const GraphiPage = () => {
         : undefined
       const parsedHeaders = headers ? (JSON.parse(headers) as Record<string, string>) : undefined
 
+      if (
+        typeof parsedVariables === 'string' ||
+        Array.isArray(parsedVariables) ||
+        typeof parsedHeaders === 'string' ||
+        Array.isArray(parsedHeaders)
+      ) {
+        throw new TypeError('Is not a JSON object')
+      }
+
       void request({
         document,
         variables: parsedVariables,
@@ -66,9 +75,7 @@ export const GraphiPage = () => {
       })
     } catch (error) {
       if (error instanceof Error) {
-        toast.error(`🦄 ${error.message}`, {
-          theme: 'light',
-        })
+        notify(`🦄 ${error.message}`)
       }
     }
   }, [request])
@@ -82,7 +89,7 @@ export const GraphiPage = () => {
     [handleClick],
   )
 
-  if (isFetching) return <div>isFetching</div>
+  if (isFetching) return <Preloader />
 
   return (
     <>

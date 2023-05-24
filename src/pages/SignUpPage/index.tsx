@@ -1,14 +1,15 @@
 import 'react-toastify/dist/ReactToastify.css'
 
-import { auth, registerWithEmailAndPassword } from '@root/src/firebase.config'
 import { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-import { toast, ToastContainer } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 
 import { ReactComponent as AuthImage } from '@/assets/auth.svg'
+import { auth, registerWithEmailAndPassword } from '@/firebase.config'
+import { notify } from '@/lib'
 
 type Inputs = {
   name: string
@@ -32,7 +33,7 @@ export const SignUpPage = () => {
         navigate('/editor')
       })
       .catch(() => {
-        toast.error(t('wrongEmail'))
+        notify(t('wrongEmail'))
       })
   }
   const [user] = useAuthState(auth)
@@ -42,6 +43,7 @@ export const SignUpPage = () => {
       navigate('/editor')
     }
   }, [navigate, user])
+
   return (
     <div className='mx-auto flex max-w-7xl shrink grow flex-col-reverse gap-7 px-5 sm:columns-2 sm:flex-row'>
       <div className='mx-auto w-full max-w-md shrink grow lg:self-center'>
@@ -119,18 +121,7 @@ export const SignUpPage = () => {
                 {t('signUp')}
               </button>
 
-              <ToastContainer
-                position='top-center'
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme='light'
-              />
+              <ToastContainer />
             </form>
           </div>
         </div>

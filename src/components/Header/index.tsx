@@ -1,11 +1,11 @@
-import { auth, logout } from '@root/src/firebase.config'
-import { settingActions, useActionCreators, useAppSelector } from '@root/src/store'
 import { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router-dom'
 
 import { Burger, Lang, Logo, Toggle } from '@/components'
+import { auth, logout } from '@/firebase.config'
+import { settingActions, useActionCreators, useAppSelector } from '@/store'
 
 export const Header = () => {
   const [user] = useAuthState(auth)
