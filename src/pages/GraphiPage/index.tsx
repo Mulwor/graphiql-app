@@ -7,6 +7,7 @@ import { ImperativePanelHandle, Panel, PanelGroup, PanelResizeHandle } from 'rea
 import { ToastContainer } from 'react-toastify'
 
 import { Preloader } from '@/components'
+import { Explorer } from '@/components/Explorer'
 import { HeaderEditor, QueryEditor, ResponseEditor, VariableEditor } from '@/components/Playground'
 import { values } from '@/components/Playground/signals'
 import { ChevronDown, ChevronUp, Play } from '@/icons'
@@ -93,7 +94,8 @@ export const GraphiPage = () => {
 
   return (
     <>
-      <div className='grid h-full w-full grid-cols-2 gap-7 px-3'>
+      <div className='grid h-full w-full grid-cols-3 gap-7 px-3'>
+        <Explorer schema={schema && buildClientSchema(schema)} />
         <PanelGroup
           direction='vertical'
           className='relative ml-2 space-y-1 rounded-lg shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]'

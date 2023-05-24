@@ -10,11 +10,11 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths(), svgr()],
   server: {
     open: true,
+    host: true,
   },
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
-      '@root': resolve(__dirname),
     },
   },
 })
