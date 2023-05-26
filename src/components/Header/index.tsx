@@ -83,7 +83,7 @@ export const Header = () => {
         ) : (
           <>
             <NavLink
-              to={'/signin'}
+              to={'/login'}
               className={({ isActive }) =>
                 isActive
                   ? 'login-button button-hover bg-seagreen text-white dark:bg-sky dark:text-prussianblue'
@@ -93,7 +93,7 @@ export const Header = () => {
               <div>{t('signIn')}</div>
             </NavLink>
             <NavLink
-              to={'/signup'}
+              to={'/register'}
               className={({ isActive }) =>
                 isActive
                   ? 'login-button button-hover bg-seagreen text-white dark:bg-sky dark:text-prussianblue'

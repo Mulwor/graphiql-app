@@ -16,7 +16,7 @@ export default {
       darknavy: '#002030',
       opacitycolor: '#00000022',
       slate: '#e2e8f0',
-      gray: '#9ca3af'
+      gray: '#9ca3af',
     },
     screens: {
       sm: '640px',

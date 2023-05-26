@@ -14,7 +14,7 @@ export const ProtectedRoutes = ({ children }: { children: React.ReactElement }) 
     if (isLoading) return
 
     if (!user) {
-      navigate('/signin')
+      navigate('/login')
     }
   }, [user, navigate, isLoading])
 

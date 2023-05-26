@@ -16,7 +16,7 @@ type Inputs = {
   password: string
 }
 
-export const SignUpPage = () => {
+export const RegisterPage = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
 

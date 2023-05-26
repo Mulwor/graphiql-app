@@ -28,7 +28,7 @@ const handleCollapse = (collapsed: boolean) => {
   isCollapsed.value = collapsed
 }
 
-export const GraphiPage = () => {
+export const EditorPage = () => {
   const { data: schema, isFetching } = useGetSchemaQuery()
   const [request, { data, error, isError, isFetching: isLoading }] = useLazyGetDataQuery()
   const { t } = useTranslation()
