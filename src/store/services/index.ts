@@ -1,1 +1,1 @@
-export * from '@root/src/store/services/api'
+export * from '@/store/services/api'

@@ -1,14 +1,15 @@
 import 'react-toastify/dist/ReactToastify.css'
 
-import { auth, logInWithEmailAndPassword } from '@root/src/firebase.config'
 import { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-import { toast, ToastContainer } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 
 import { ReactComponent as AuthImage } from '@/assets/auth.svg'
+import { auth, logInWithEmailAndPassword } from '@/firebase.config'
+import { notify } from '@/lib'
 
 type Inputs = {
   email: string
@@ -30,7 +31,7 @@ export const LoginPage = () => {
         navigate('/editor')
       })
       .catch(() => {
-        toast.error(t('wrongAll'))
+        notify(t('wrongAll'))
       })
   }
 
@@ -108,18 +109,7 @@ export const LoginPage = () => {
                   {t('signIn')}
                 </button>
 
-                <ToastContainer
-                  position='top-center'
-                  autoClose={5000}
-                  hideProgressBar={false}
-                  newestOnTop={false}
-                  closeOnClick
-                  rtl={false}
-                  pauseOnFocusLoss
-                  draggable
-                  pauseOnHover
-                  theme='light'
-                />
+                <ToastContainer />
               </form>
             </div>
           </div>

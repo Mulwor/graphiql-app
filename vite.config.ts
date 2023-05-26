@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import { resolve } from 'node:path'
-import svgr from "vite-plugin-svgr";
+import svgr from 'vite-plugin-svgr'
 
 /// <reference types="vite-plugin-svgr/client" />
 // https://vitejs.dev/config/
