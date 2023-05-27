@@ -41,7 +41,7 @@ export const Footer = () => {
           ))}
         </div>
         <Link
-          to='https://rs.school/js/'
+          to='https://rs.school/react/'
           className='flex justify-center'
         >
           <RSS

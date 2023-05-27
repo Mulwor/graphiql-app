@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import { ErrorBoundary, Layout, ProtectedRoutes } from '@/components'
-import { GraphiPage, HomePage, NotFound, SignInPage, SignUpPage } from '@/pages'
+import { EditorPage, HomePage, LoginPage, NotFound, RegisterPage } from '@/pages'
 
 const router = createBrowserRouter([
   {
@@ -14,18 +14,18 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: 'signin',
-        element: <SignInPage />,
+        path: 'login',
+        element: <LoginPage />,
       },
       {
-        path: 'signup',
-        element: <SignUpPage />,
+        path: 'register',
+        element: <RegisterPage />,
       },
       {
         path: 'editor',
         element: (
           <ProtectedRoutes>
-            <GraphiPage />
+            <EditorPage />
           </ProtectedRoutes>
         ),
       },
