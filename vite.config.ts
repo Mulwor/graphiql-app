@@ -9,7 +9,7 @@ import svgr from 'vite-plugin-svgr'
 export default defineConfig({
   plugins: [react(), tsconfigPaths(), svgr()],
   server: {
-    open: true,
+    // open: true,
     host: true,
   },
   resolve: {
