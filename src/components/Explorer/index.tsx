@@ -191,7 +191,7 @@ export const Explorer = memo(({ schema }: ExplorerProps) => {
           query:{' '}
           <span
             onClick={() =>
-              handleCLick(schema.getQueryType()?.name, getNamedType(schema.getQueryType()))
+              handleCLick(schema?.getQueryType()?.name, getNamedType(schema?.getQueryType()))
             }
           >
             Query
