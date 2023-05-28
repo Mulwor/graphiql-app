@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import { ReactComponent as HomeImage } from '@/assets/home.svg'
-import { Button } from '@/components'
+import { Button, TeamInfo } from '@/components'
 import { auth } from '@/firebase.config'
 
 export const HomePage = () => {
@@ -13,7 +13,7 @@ export const HomePage = () => {
   return (
     <>
       <div className='mx-auto max-w-7xl shrink grow gap-7 px-5 sm:flex sm:columns-2'>
-        <div className='mx-auto max-w-md shrink grow flex-col sm:mt-[10%] sm:flex md:mt-[14%]'>
+        <div className='mx-auto max-w-md shrink grow flex-col sm:flex lg:mt-[14%]'>
           <h1 className='text-4xl font-bold uppercase text-fuchsia'>{t('graphi')}</h1>
           <div className='text-2xl'> {t('heading')}</div>
           <div> {t('paragraph')}</div>
@@ -30,6 +30,7 @@ export const HomePage = () => {
               )}
             </Button>
           </div>
+          <TeamInfo />
         </div>
         <div className='mx-auto max-w-md shrink grow sm:w-full lg:self-center'>
           <HomeImage />
