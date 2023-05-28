@@ -35,6 +35,7 @@ export const Footer = () => {
             <Link
               key={link.name}
               to={link.path}
+              target='_blank'
             >
               <Github className='fill-seagreen transition-all hover:fill-prussianblue dark:fill-sky dark:hover:fill-white' />
             </Link>
@@ -43,6 +44,7 @@ export const Footer = () => {
         <Link
           to='https://rs.school/react/'
           className='flex justify-center'
+          target='_blank'
         >
           <RSS
             className='hover-svg'
