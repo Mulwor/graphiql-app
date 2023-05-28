@@ -12,7 +12,7 @@ import {
 import { memo, useCallback, useState } from 'react'
 
 type ExplorerProps = {
-  schema: GraphQLSchema
+  schema?: GraphQLSchema
 }
 
 export const Explorer = memo(({ schema }: ExplorerProps) => {
