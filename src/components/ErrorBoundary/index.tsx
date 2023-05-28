@@ -1,3 +1,7 @@
+import { useRouteError } from 'react-router-dom'
+
 export const ErrorBoundary = () => {
-  return <div className='text-center'>Something went wrong...</div>
+  const error = useRouteError()
+
+  return <div className='text-center'>Something went wrong... {JSON.stringify(error)}</div>
 }
