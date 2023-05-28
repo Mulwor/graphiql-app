@@ -34,7 +34,6 @@ export const Explorer = memo(({ schema }: ExplorerProps) => {
       def: GraphQLNamedType | GraphQLField<{}, {}, {}> | GraphQLInputField | undefined,
       isField?: boolean,
     ) => {
-      console.log(t.value)
       t.value = [
         ...t.value,
         {

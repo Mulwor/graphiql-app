@@ -58,6 +58,9 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
+  react-error-boundary:
+    specifier: ^4.0.7
+    version: 4.0.7(react@18.2.0)
   react-firebase-hooks:
     specifier: ^5.1.1
     version: 5.1.1(firebase@9.22.0)(react@18.2.0)
@@ -4716,6 +4719,15 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-error-boundary@4.0.7(react@18.2.0):
+    resolution: {integrity: sha512-XyDSL7Uhv3PMs0e1k29cMSnZPSlUCsF7Ci0dtdcpkaWDi9bM2hw6ru2l+PgBhiqilE1ne2XIlsllcaHsn0B6Dw==}
+    peerDependencies:
+      react: '>=16.13.1'
+    dependencies:
+      '@babel/runtime': 7.21.5
+      react: 18.2.0
     dev: false
 
   /react-firebase-hooks@5.1.1(firebase@9.22.0)(react@18.2.0):
