@@ -1,30 +1,31 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import { Layout, ProtectedRoutes } from '@/components'
-import { GraphiPage, HomePage, NotFound, SignInPage, SignUpPage } from '@/pages'
+import { ErrorBoundary, Layout, ProtectedRoutes } from '@/components'
+import { EditorPage, HomePage, LoginPage, NotFound, RegisterPage } from '@/pages'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
+    errorElement: <ErrorBoundary />,
     children: [
       {
         index: true,
         element: <HomePage />,
       },
       {
-        path: 'signin',
-        element: <SignInPage />,
+        path: 'login',
+        element: <LoginPage />,
       },
       {
-        path: 'signup',
-        element: <SignUpPage />,
+        path: 'register',
+        element: <RegisterPage />,
       },
       {
         path: 'editor',
         element: (
           <ProtectedRoutes>
-            <GraphiPage />
+            <EditorPage />
           </ProtectedRoutes>
         ),
       },

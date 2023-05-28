@@ -91,7 +91,7 @@ export const Modal = ({ onClick }: ModalType) => {
                 <span className='ml-3'>{t('signIn')}</span>
               </NavLink>
               <NavLink
-                to={'/signup'}
+                to={'/register'}
                 className='flex items-center rounded-lg p-2.5 transition-all hover:text-prussianblue dark:hover:text-white'
                 onClick={onClick}
               >

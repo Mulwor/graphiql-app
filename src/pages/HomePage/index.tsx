@@ -26,7 +26,7 @@ export const HomePage = () => {
               {user ? (
                 <Link to={'/editor'}> {t('getStarted')}</Link>
               ) : (
-                <Link to={'/signup'}> {t('getStarted')}</Link>
+                <Link to={'/register'}> {t('getStarted')}</Link>
               )}
             </Button>
           </div>
