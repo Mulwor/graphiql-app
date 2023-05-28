@@ -1,7 +1,7 @@
 import { signal } from '@preact/signals-react'
 import cx from 'clsx'
 import { buildClientSchema } from 'graphql'
-import { KeyboardEvent, useCallback, useRef } from 'react'
+import { KeyboardEvent, lazy, Suspense, useCallback, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ImperativePanelHandle, Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels'
 import { ToastContainer } from 'react-toastify'
@@ -9,13 +9,22 @@ import { ToastContainer } from 'react-toastify'
 import { Preloader } from '@/components'
 import { HeaderEditor, QueryEditor, ResponseEditor, VariableEditor } from '@/components/Playground'
 import { values } from '@/components/Playground/signals'
-import { ChevronDown, ChevronUp, Play } from '@/icons'
+import { ChevronDown, ChevronUp, Document, Play } from '@/icons'
 import { notify } from '@/lib'
 import { useGetSchemaQuery, useLazyGetDataQuery } from '@/store'
+
+const Explorer = lazy(async () => {
+  const { Explorer } = await import('@/components/Explorer')
+
+  return {
+    default: Explorer,
+  }
+})
 
 type ActiveTab = 'variables' | 'headers'
 const activeTab = signal<ActiveTab | null>(null)
 const isCollapsed = signal(true)
+const showExplorer = signal(false)
 
 const handleCollapse = (collapsed: boolean) => {
   if (!activeTab.value) {
@@ -93,7 +102,17 @@ export const EditorPage = () => {
 
   return (
     <>
-      <div className='grid h-full w-full grid-cols-2 gap-7 px-3'>
+      <div
+        className={cx(
+          'grid h-full w-full gap-7 px-3',
+          showExplorer.value ? 'grid-cols-3' : 'grid-cols-2',
+        )}
+      >
+        {showExplorer.value && (
+          <Suspense fallback={<Preloader />}>
+            <Explorer schema={schema && buildClientSchema(schema)} />
+          </Suspense>
+        )}
         <PanelGroup
           direction='vertical'
           className='relative ml-2 space-y-1 rounded-lg shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]'
@@ -108,12 +127,18 @@ export const EditorPage = () => {
                 onKeyDown={handleKeyDown}
               />
             </div>
-            <div className='w-10'>
+            <div className='w-10 space-y-2'>
               <button
                 onClick={handleClick}
                 className='flex h-10 w-10 items-center justify-center rounded-xl bg-fuchsia p-2'
               >
                 <Play className='fill-white' />
+              </button>
+              <button
+                onClick={() => (showExplorer.value = !showExplorer.value)}
+                className='flex h-10 w-10 items-center justify-center rounded-xl bg-fuchsia p-2'
+              >
+                <Document />
               </button>
             </div>
           </Panel>
