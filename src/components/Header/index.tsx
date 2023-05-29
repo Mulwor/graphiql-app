@@ -45,8 +45,8 @@ export const Header = () => {
     <header
       className={
         scroll
-          ? 'dark: sticky top-0 z-20 mx-auto mb-5 flex w-full items-baseline justify-between bg-white px-5 pb-2.5 dark:bg-darknavy'
-          : 'sticky top-0 z-20 mx-auto mb-5 flex w-full items-center justify-between px-5'
+          ? 'fixed top-0 z-20 mx-auto mb-5 flex w-full items-center justify-between bg-white px-5 pb-2.5 dark:bg-darknavy'
+          : 'top-0 z-20 mx-auto mb-5 flex w-full items-center justify-between px-5'
       }
     >
       <Burger />

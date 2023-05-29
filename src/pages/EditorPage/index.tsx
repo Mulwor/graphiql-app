@@ -103,10 +103,7 @@ export const EditorPage = () => {
   return (
     <>
       <div
-        className={cx(
-          'grid h-full w-full gap-7 px-3',
-          showExplorer.value ? 'grid-cols-3' : 'grid-cols-2',
-        )}
+        className={cx('grid w-full gap-7 px-3', showExplorer.value ? 'grid-cols-3' : 'grid-cols-2')}
       >
         {showExplorer.value && (
           <Suspense fallback={<Preloader />}>
