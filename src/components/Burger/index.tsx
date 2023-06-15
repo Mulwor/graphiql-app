@@ -1,13 +1,13 @@
 import { useState } from 'react'
 
 import { ReactComponent as Menu } from '@/assets/menu.svg'
-import { Modal } from '@/components'
+import { Model } from '@/components'
 
 export const Burger = () => {
-  const [modal, setModal] = useState<boolean>(false)
+  const [model, setModel] = useState<boolean>(false)
 
   const handleClick = () => {
-    setModal(!modal)
+    setModel(!model)
   }
 
   return (
@@ -16,7 +16,7 @@ export const Burger = () => {
         className='hover-svg h-8 w-8 hover:stroke-deepsea focus:outline-none dark:stroke-sky'
         onClick={handleClick}
       />
-      {modal && <Modal onClick={handleClick} />}
+      {model && <Model onClick={handleClick} />}
     </div>
   )
 }

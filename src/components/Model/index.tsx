@@ -12,11 +12,11 @@ import { Lang, Toggle } from '@/components'
 import { auth, logout } from '@/firebase.config'
 import { RootState, settingActions, useActionCreators, useAppSelector } from '@/store'
 
-export type ModalType = {
+export type ModelType = {
   onClick: () => void
 }
 
-export const Modal = ({ onClick }: ModalType) => {
+export const Model = ({ onClick }: ModelType) => {
   const [user] = useAuthState(auth)
   const isDark = useAppSelector((state: RootState) => state.setting.isDark)
   const actions = useActionCreators(settingActions)
