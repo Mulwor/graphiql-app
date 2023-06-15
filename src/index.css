@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Mulish:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  font-family: 'Mulish', sans-serif;
+}
+
+.header-link {
+  @apply pb-2.5 transition-all hover:border-b-2 hover:border-deepsea hover:text-deepsea;
+}
+
+.login-button {
+  @apply rounded-full border border-solid border-seagreen px-5 py-1.5 dark:border-sky;
+}
+.button-hover {
+  @apply transition-all hover:border-deepsea hover:bg-deepsea hover:text-white dark:hover:bg-deepsea dark:hover:text-white;
+}
+
+.hover-svg {
+  @apply fill-seagreen transition-all hover:fill-prussianblue focus:outline-none dark:fill-sky dark:hover:fill-white;
+}
+
+.cm-editor.cm-focused {
+  outline: none;
+  border: none;
+}
